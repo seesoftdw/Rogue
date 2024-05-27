@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon / ellipsis-h</title>
+    <g id="icon-/-ellipsis-h" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M328,256 C328,295.8 295.8,328 256,328 C216.2,328 184,295.8 184,256 C184,216.2 216.2,184 256,184 C295.8,184 328,216.2 328,256 Z M432,184 C392.2,184 360,216.2 360,256 C360,295.8 392.2,328 432,328 C471.8,328 504,295.8 504,256 C504,216.2 471.8,184 432,184 Z M80,184 C40.2,184 8,216.2 8,256 C8,295.8 40.2,328 80,328 C119.8,328 152,295.8 152,256 C152,216.2 119.8,184 80,184 Z" id="Shape" fill="#000000" fill-rule="nonzero"></path>
+    </g>
+</svg>

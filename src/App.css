@@ -37,3 +37,13 @@
     transform: rotate(360deg);
   }
 }
+.sidebar .MuiPaper-root {
+  margin-top: 80px !important;
+}
+.typography{
+  display: none !important;
+}
+
+.profile1{
+  border-bottom: 1px solid gray;
+}

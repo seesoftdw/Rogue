@@ -2,89 +2,88 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import { createTheme, Theme, useMediaQuery } from '@mui/material';
+import { Home, LibraryMusic, NewReleases, PlaylistPlay } from '@mui/icons-material';
+import QueueMusicIcon from '@mui/icons-material/QueueMusic';
+import AddIcon from '@mui/icons-material/Add';
+import { FaMusic } from "react-icons/fa";
+import { GiGrandPiano } from "react-icons/gi";
+import { FaHome } from "react-icons/fa";
+
+
 
 
 
 const drawerWidth = 240;
 
 interface Props {
-
   window?: () => Window;
 }
 
-export default function ResponsiveDrawer(props: Props) {
+export default function Sidebar(props: Props) {
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [isClosing, setIsClosing] = React.useState(false);
 
-  const handleDrawerClose = () => {
-    setIsClosing(true);
-    setMobileOpen(false);
-  };
+  const theme: Theme = createTheme({});
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const [open, setOpen] = React.useState(false);
+  const [activeTab, setActiveTab] = React.useState('Home'); // Initial active tab
 
-  const handleDrawerTransitionEnd = () => {
-    setIsClosing(false);
-  };
-
-  const handleDrawerToggle = () => {
-    if (!isClosing) {
-      setMobileOpen(!mobileOpen);
+  const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+    if (
+      event.type === 'keydown' &&
+      ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')
+    ) {
+      return;
     }
+    setOpen(open);
   };
 
+  const handleTabClick = (tabName: string) => {
+    setActiveTab(tabName);
+  };
 
+  const activeLinkStyles = {
+    color: '#379ad5',
+  };
 
-  const drawer = (
+  const sidebarContent = (
     <div>
-      <Toolbar />
-      <Divider />
       <List>
-        {['Home', 'Trending', 'Send email', 'My Librery'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <AccountBalanceIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <ListItem button key="Home" selected={activeTab === 'Home'} onClick={() => handleTabClick('Home')}>
+          <ListItemIcon style={activeTab === 'Home' ? activeLinkStyles : undefined}><FaHome /></ListItemIcon>
+          <ListItemText primary="Home" />
+        </ListItem>
+        <ListItem button key="New Releases" selected={activeTab === 'New Releases'} onClick={() => handleTabClick('New Releases')}>
+          <ListItemIcon style={activeTab === 'New Releases' ? activeLinkStyles : undefined}><GiGrandPiano /></ListItemIcon>
+          <ListItemText primary="New Releases" />
+        </ListItem>
+        <ListItem button key="My Library" selected={activeTab === 'My Library'} onClick={() => handleTabClick('My Library')}>
+          <ListItemIcon style={activeTab === 'My Library' ? activeLinkStyles : undefined}><FaMusic /></ListItemIcon>
+          <ListItemText primary="My Library" />
+        </ListItem>
       </List>
-      <Divider />
+      <Typography variant="subtitle1" sx={{ padding: theme.spacing(2), fontSize: '14px', fontWeight: 'bold', color: 'gray', letterSpacing: '1px', textTransform: 'uppercase' }}>Playlists < AddIcon sx={{ ml: 10 , pt : 3 , height : '40px' }} /> </Typography>
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
+        {['Vintage Jazz Vibes', 'Blue Note Odyssey', 'Latin Jazz Fiesta', 'Groovy Fusion', 'Funky Fusion', 'Cool Chronicles'].map((text, index) => (
+          <ListItem button key={text} selected={activeTab === text} onClick={() => handleTabClick(text)}>
+            <ListItemIcon style={activeTab === text ? activeLinkStyles : undefined}><QueueMusicIcon /></ListItemIcon>
+            <ListItemText primary={text} />
           </ListItem>
         ))}
       </List>
     </div>
   );
 
-  // Remove this const when copying and pasting into your project.
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar
@@ -94,62 +93,43 @@ export default function ResponsiveDrawer(props: Props) {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        
-
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            {/* Responsive drawer */}
-          </Typography>
-        </Toolbar>
       </AppBar>
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
+        className='sidebar'
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onTransitionEnd={handleDrawerTransitionEnd}
-          onClose={handleDrawerClose}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-        >
-          {drawer}
-        </Drawer>
-        <Drawer
-          variant="permanent"
-          sx={{
-            display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-          open
-        >
-          {drawer}
-        </Drawer>
-      </Box>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
-      >
-        <Toolbar />
-
+        {isMobile ? (
+          <>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={toggleDrawer(true)}
+            >
+              {/* <Menu /> */}
+            </IconButton>
+            <Drawer
+              anchor="left"
+              open={open}
+              onClose={toggleDrawer(false)}
+            >
+              {sidebarContent}
+            </Drawer>
+          </>
+        ) : (
+          <Drawer
+            variant="permanent"
+            anchor="left"
+            open
+            sx={{
+              '& .MuiDrawer-paper': { width: 240, boxSizing: 'border-box' },
+            }}
+          >
+            {sidebarContent}
+          </Drawer>
+        )}
       </Box>
     </Box>
   );

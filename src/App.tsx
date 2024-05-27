@@ -1,14 +1,15 @@
+// src/App.tsx
+import React, { Suspense } from 'react';
+import { RouterProvider } from 'react-router-dom';
+import AppRouter from './router';
+import CircularProgress from '@mui/material/CircularProgress';
 
-import Header from './components/Header'
-import SideBar from './components/SideBar'
-
-const App = () => {
+const App: React.FC = () => {
   return (
-    <>
-      <Header></Header> 
-      <SideBar></SideBar>
-    </>
-  )
-}
+    <Suspense fallback={<CircularProgress />}>
+      <RouterProvider router={AppRouter} />
+    </Suspense>
+  );
+};
 
-export default App
+export default App;
