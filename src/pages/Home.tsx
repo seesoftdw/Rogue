@@ -45,6 +45,7 @@ const playlists = [
 const Home: React.FC = () => {
   return (
     <MainWrapper >
+      
       <Box sx={{ padding: 0 }}>
         <section>
           <Link to='Artists'  style={{ textDecoration: 'none' }}><Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1 , color : 'black'  }} variant="h4" gutterBottom>{'Artists'} <MdKeyboardArrowRight  style={{ height: '11.66px' , width: '15.28px;' }}/></Typography></Link>

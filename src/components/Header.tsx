@@ -14,7 +14,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
-import { Avatar } from '@mui/material';
+import { Avatar, Button } from '@mui/material';
 import Profile from '../assets/images/avatar-artist.jpg'
 import Divider from '@mui/material/Divider';
 import PersonAdd from '@mui/icons-material/PersonAdd';
@@ -45,6 +45,7 @@ const AppBar = styled(MuiAppBar, {
 interface HeaderProps {
   open: boolean;
   toggleDrawer: () => void;
+  isLoggedIn: boolean;
 }
 
 const itemData = [
@@ -54,7 +55,7 @@ const itemData = [
   },
 ];
 
-const Header: React.FC<HeaderProps> = ({ toggleDrawer }) => {
+const Header: React.FC<HeaderProps> = ({ toggleDrawer, isLoggedIn }) => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const settings = [' Manage Profile', 'Settings', 'Sign Out'];
@@ -128,115 +129,121 @@ const Header: React.FC<HeaderProps> = ({ toggleDrawer }) => {
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'center', alignItems: 'center' }}>
             <MusicPlayerSlider />
           </Box>
+          {isLoggedIn ? (
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', ml: 'auto', gap: 2, height: '100%' }}>
+              <Box sx={{ display: { xs: 'none', sm: 'flex' }, fontSize: '27px', color: '#707070', alignItems: 'center' }}>
 
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', ml: 'auto', gap: 2, height: '100%' }}>
-            <Box sx={{ display: { xs: 'none', sm: 'flex' }, fontSize: '27px', color: '#707070', alignItems: 'center' }}>
+                <Box sx={{ ml: { sm: '50%' }, fontSize: { lg: '27px', md: '27px', sm: '21px' } }}>
+                  <IoCart />
+                </Box>
 
-              <Box sx={{ ml: { sm: '50%' }, fontSize: { lg: '27px', md: '27px', sm: '21px' } }}>
-                <IoCart />
+              </Box>
+
+
+
+              <Box sx={{ flexGrow: 0 }}>
+
+                <React.Fragment >
+                  <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+                    <Tooltip title="Account settings">
+                      <IconButton
+                        onClick={handleClick}
+                        size="small"
+                        sx={{ ml: 2 }}
+                        aria-controls={open ? 'account-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                      >
+                        <Avatar alt="Remy Sharp" src={Profile} />
+                      </IconButton>
+                    </Tooltip>
+                  </Box>
+                  <Menu
+                    anchorEl={anchorEl}
+                    id="account-menu"
+                    open={open}
+                    onClose={handleClose}
+                    onClick={handleClose}
+                    PaperProps={{
+                      elevation: 0,
+                      sx: {
+                        overflow: 'visible',
+                        filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                        mt: 1.5,
+                        height: '271px', width: '280px',
+
+                        '& .MuiAvatar-root': {
+                          width: 32,
+                          height: 32,
+                          ml: -0.5,
+                          mr: 1,
+                        },
+                        '&::before': {
+                          content: '""',
+                          display: 'block',
+                          position: 'absolute',
+                          top: 0,
+                          right: 14,
+                          width: 10,
+                          height: 10,
+                          bgcolor: 'background.paper',
+                          transform: 'translateY(-50%) rotate(45deg)',
+                          zIndex: 0,
+                        },
+                      },
+                    }}
+                    transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                    anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                  >
+                    <MenuItem onClick={handleClose} >
+                      <Avatar alt="Remy Sharp" src={Profile} /> Fred Smith
+                    </MenuItem>
+                    <Divider />
+                    <MenuItem onClick={handleClose} sx={{}}>
+                      <PersonAdd fontSize="small" />
+                      <p>Manage Profile</p>
+                    </MenuItem>
+                    <MenuItem onClick={handleClose} sx={{}}>
+                      <Settings fontSize="small" />
+                      Settings
+                    </MenuItem>
+                    <MenuItem onClick={handleClose} >
+                      <Settings fontSize="small" />
+                      <p >Sign Out</p>
+                    </MenuItem>
+                  </Menu>
+                </React.Fragment>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {settings.map((setting) => (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu} sx={{ borderBottom: '1px solid ' }}>
+                      <Typography textAlign="center">{setting}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
               </Box>
 
             </Box>
-
-
-
-            <Box sx={{ flexGrow: 0 }}>
-
-              <React.Fragment >
-                <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                  <Tooltip title="Account settings">
-                    <IconButton
-                      onClick={handleClick}
-                      size="small"
-                      sx={{ ml: 2 }}
-                      aria-controls={open ? 'account-menu' : undefined}
-                      aria-haspopup="true"
-                      aria-expanded={open ? 'true' : undefined}
-                    >
-                      <Avatar alt="Remy Sharp" src={Profile} />
-                    </IconButton>
-                  </Tooltip>
-                </Box>
-                <Menu
-                  anchorEl={anchorEl}
-                  id="account-menu"
-                  open={open}
-                  onClose={handleClose}
-                  onClick={handleClose}
-                  PaperProps={{
-                    elevation: 0,
-                    sx: {
-                      overflow: 'visible',
-                      filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                      mt: 1.5,
-                      height: '271px', width: '280px',
-
-                      '& .MuiAvatar-root': {
-                        width: 32,
-                        height: 32,
-                        ml: -0.5,
-                        mr: 1,
-                      },
-                      '&::before': {
-                        content: '""',
-                        display: 'block',
-                        position: 'absolute',
-                        top: 0,
-                        right: 14,
-                        width: 10,
-                        height: 10,
-                        bgcolor: 'background.paper',
-                        transform: 'translateY(-50%) rotate(45deg)',
-                        zIndex: 0,
-                      },
-                    },
-                  }}
-                  transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                  anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-                >
-                  <MenuItem onClick={handleClose} >
-                    <Avatar alt="Remy Sharp" src={Profile} /> Fred Smith
-                  </MenuItem>
-                  <Divider />
-                  <MenuItem onClick={handleClose} sx={{}}>
-                    <PersonAdd fontSize="small" />
-                    <p>Manage Profile</p>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose} sx={{}}>
-                    <Settings fontSize="small" />
-                    Settings
-                  </MenuItem>
-                  <MenuItem onClick={handleClose} >
-                    <Settings fontSize="small" />
-                    <p >Sign Out</p>
-                  </MenuItem>
-                </Menu>
-              </React.Fragment>
-              <Menu
-                sx={{ mt: '45px' }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu} sx={{ borderBottom: '1px solid ' }}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
+          ) : (
+            <Box> 
+              <Button variant='contained' sx={{ color: 'black', background: 'white',fontSize:'11px', mx:1 }}>sign in</Button>
+              <Button variant='contained' sx={{fontSize:'11px', mx:1}}>sign up</Button>
             </Box>
-
-          </Box>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

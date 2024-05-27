@@ -2,39 +2,23 @@ import { Box, Container, createTheme, CssBaseline, ThemeProvider } from '@mui/ma
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import Sidebar from './SideBar';
+import Banner from './Banner';
 
 const lightTheme = createTheme({
-  // palette: {
-  //   mode: 'light',
-  //   primary: {
-  //     main: '#fff',
-  //   },
-  //   secondary: {
-  //     main: '#fff',
-  //   },
-  //   success: {
-  //     main: '#fff',
-  //   },
-  //   background: {
-  //     default: '#fff',
-  //     paper: '#fff',
-  //   },
-  //   text: {
-  //     primary: '#222',
-  //     secondary: '#222',
-  //   },
-  //   action: {
-  //     active: '#000',
-  //     hover: '#ddd',
-  //     selected: '#222',
-  //   },
-  //   divider: '#fdffff1f',
-  // },
+  // palette settings if needed
 });
-
 
 const MainWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [open, setOpen] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+  const handleLogin = () => {
+    // login logic
+  };
+
+  const toggleLogin = () => {
+    setIsLoggedIn((prev) => !prev);
+  };
 
   const toggleDrawer = () => {
     setOpen(!open);
@@ -49,10 +33,15 @@ const MainWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <ThemeProvider theme={lightTheme}>
-      <Box sx={{ display: 'flex', height: '100vh' }}>
+      <Box sx={{ display: 'flex', flexDirection: isLoggedIn ? 'row': 'column', height: '100vh' }}>
         <CssBaseline />
-          <Header open={open} toggleDrawer={toggleDrawer} />
-        <Sidebar />
+        <Header open={open} toggleDrawer={toggleDrawer} isLoggedIn={isLoggedIn} />
+        <Box sx={{ display: 'flex', flexGrow: 1 }}>
+          {/* <Sidebar open={open} /> */}
+          {/* <Banner /> */}
+          {isLoggedIn ? <Sidebar open={false} /> : <Banner />}
+
+        </Box>
         <Box
           component="main"
           sx={{

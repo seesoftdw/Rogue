@@ -2,16 +2,15 @@
 import React, { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from './components/layout';
+import ArtistProfile from './pages/Profile/ArtistProfile';
 
 const Playlist = lazy(() => import('./pages/ArtistPage'));
 const Home = lazy(() => import('./pages/Home'));
-const ReleasesPage = lazy(() => import('./pages/ReleasesPage'));
-const PlaylistPage = lazy(() => import('./pages/PlaylistPage'));
 
 const AppRouter = createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: <Layout />, 
     children: [
       {
         index: true,
@@ -24,16 +23,12 @@ const AppRouter = createBrowserRouter([
             index: true,
             element: <Playlist />,
           },
+          {
+            path:'/Artists/Profile',
+            element:<ArtistProfile />
+          }
         ],
       },
-      {
-        path: 'All-Releases',
-        element: <ReleasesPage />
-      },
-      {
-        path: 'All-Playlists',
-        element: <PlaylistPage />
-      }
     ],
   },
 ]);

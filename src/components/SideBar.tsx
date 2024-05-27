@@ -18,16 +18,14 @@ import { GiGrandPiano } from "react-icons/gi";
 import { FaHome } from "react-icons/fa";
 
 
-
-
-
 const drawerWidth = 240;
 
-interface Props {
+interface SidebarProps {
   window?: () => Window;
+  open: boolean;
 }
 
-export default function Sidebar(props: Props) {
+export default function Sidebar(props: SidebarProps) {
   const { window } = props;
 
   const theme: Theme = createTheme({});
