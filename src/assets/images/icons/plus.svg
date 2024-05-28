@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon / plus</title>
-    <g id="icon-/-plus" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M448,208 L304,208 L304,64 C304,46.33 289.67,32 272,32 L240,32 C222.33,32 208,46.33 208,64 L208,208 L64,208 C46.33,208 32,222.33 32,240 L32,272 C32,289.67 46.33,304 64,304 L208,304 L208,448 C208,465.67 222.33,480 240,480 L272,480 C289.67,480 304,465.67 304,448 L304,304 L448,304 C465.67,304 480,289.67 480,272 L480,240 C480,222.33 465.67,208 448,208 Z" id="Path" fill="#000000" fill-rule="nonzero"></path>
-    </g>
-</svg>

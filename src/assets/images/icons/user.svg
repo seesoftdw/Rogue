@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon / user</title>
-    <g id="icon-/-user" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M256,256 C326.7,256 384,198.7 384,128 C384,57.3 326.7,0 256,0 C185.3,0 128,57.3 128,128 C128,198.7 185.3,256 256,256 Z M345.6,288 L328.9,288 C306.7,298.2 282,304 256,304 C230,304 205.4,298.2 183.1,288 L166.4,288 C92.2,288 32,348.2 32,422.4 L32,464 C32,490.5 53.5,512 80,512 L432,512 C458.5,512 480,490.5 480,464 L480,422.4 C480,348.2 419.8,288 345.6,288 Z" id="Shape" fill="#000000" fill-rule="nonzero"></path>
-    </g>
-</svg>

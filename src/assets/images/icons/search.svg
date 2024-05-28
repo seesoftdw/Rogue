@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon / search</title>
-    <g id="icon-/-search" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="search" transform="translate(0, 0)" fill="#000000" fill-rule="nonzero">
-            <path d="M505,442.7 L405.3,343 C400.8,338.5 394.7,336 388.3,336 L372,336 C399.6,300.7 416,256.3 416,208 C416,93.1 322.9,0 208,0 C93.1,0 0,93.1 0,208 C0,322.9 93.1,416 208,416 C256.3,416 300.7,399.6 336,372 L336,388.3 C336,394.7 338.5,400.8 343,405.3 L442.7,505 C452.1,514.4 467.3,514.4 476.6,505 L504.9,476.7 C514.3,467.3 514.3,452.1 505,442.7 Z M208,336 C137.3,336 80,278.8 80,208 C80,137.3 137.2,80 208,80 C278.7,80 336,137.2 336,208 C336,278.7 278.8,336 208,336 Z" id="Shape"></path>
-        </g>
-    </g>
-</svg>

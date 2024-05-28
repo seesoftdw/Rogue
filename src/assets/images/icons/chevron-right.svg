@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon / chevron-right</title>
-    <g id="icon-/-chevron-right" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="chevron-right" transform="translate(123, 38)" fill="#000000" fill-rule="nonzero">
-            <path d="M257.981517,235.31375 L63.6375169,429.65675 C54.2645169,439.02975 39.0685169,439.02975 29.6965169,429.65675 L7.02951687,406.98975 C-2.32748313,397.63275 -2.34548313,382.46775 6.98951687,373.08875 L161.010517,218.34275 L6.98951687,63.59775 C-2.34548313,54.21875 -2.32748313,39.05375 7.02951687,29.69675 L29.6965169,7.02975 C39.0695169,-2.34325 54.2655169,-2.34325 63.6375169,7.02975 L257.980517,201.37275 C267.353517,210.74475 267.353517,225.94075 257.981517,235.31375 Z" id="Path"></path>
-        </g>
-    </g>
-</svg>
