@@ -54,7 +54,7 @@ const Home: React.FC = () => {
         </section>
         <hr></hr>
         <section style={{ marginTop: '40px' }}>
-          <Link to =  'All-Releases' style={{ textDecoration: 'none' }} ><Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1 ,  color : 'black'  }} variant="h4" gutterBottom>{'Releases '} <MdKeyboardArrowRight style={{ height: '11.66px' , width: '15.28px;' }} /></Typography></Link>
+          <Link to = 'Releases' style={{ textDecoration: 'none' }} ><Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1 ,  color : 'black'  }} variant="h4" gutterBottom>{'Releases '} <MdKeyboardArrowRight style={{ height: '11.66px' , width: '15.28px;' }} /></Typography></Link>
           <Grid container spacing={2}>
             {releases.map((release, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
@@ -65,7 +65,7 @@ const Home: React.FC = () => {
         </section>
         <hr />
         <section style={{ marginTop: '40px' }}>
-          <Link to='All-Playlists' style={{ textDecoration: 'none' }} ><Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1 , color : 'black'  }} variant="h4" gutterBottom>{'Playlists'}<MdKeyboardArrowRight  style={{ height: '11.66px' , width: '15.28px;' }} /></Typography></Link>
+          <Link to='Playlists' style={{ textDecoration: 'none' }} ><Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1 , color : 'black'  }} variant="h4" gutterBottom>{'Playlists'}<MdKeyboardArrowRight  style={{ height: '11.66px' , width: '15.28px;' }} /></Typography></Link>
           <Grid container spacing={2}>
             {playlists.map((playlist, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>

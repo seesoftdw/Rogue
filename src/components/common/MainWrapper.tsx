@@ -11,7 +11,7 @@ const lightTheme = createTheme({
 
 const MainWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [open, setOpen] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
 
   const handleLogin = () => {
@@ -42,7 +42,7 @@ const MainWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <Box sx={{ display: 'flex', flexDirection: isLoggedIn ? 'row' : 'column', height: '100vh' }}>
         <CssBaseline />
         <Header open={open} toggleDrawer={toggleDrawer} isLoggedIn={isLoggedIn} />
-        <Box sx={{ display: 'flex', flexGrow: 1 }}>
+        <Box sx={{ display: 'flex'}}>
           {isLoggedIn ? <Sidebar open={false} /> : shouldShowBanner && !shouldHideBanner && <Banner />}
         </Box>
         <Box
