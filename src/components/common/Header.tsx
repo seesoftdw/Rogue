@@ -15,7 +15,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import { Avatar, Button } from '@mui/material';
-import Profile from '../assets/images/avatar-artist.jpg'
+import Profile from '../../assets/images/avatar-artist.jpg'
 import Divider from '@mui/material/Divider';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';

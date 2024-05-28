@@ -1,14 +1,14 @@
 import React from 'react'
-import artist1 from '../../src/assets/images/artist-1.jpg'
-import artist2 from '../../src/assets/images/artist-2.jpg'
-import artist3 from '../../src/assets/images/artist-3.jpg'
-import artist4 from '../../src/assets/images/artist-4.jpg'
-import artist5 from '../../src/assets/images/artist-5.jpg'
-import artist6 from '../../src/assets/images/artist-6.jpg'
+import artist1 from '../../../src/assets/images/artist-1.jpg'
+import artist2 from '../../../src/assets/images/artist-2.jpg'
+import artist3 from '../../../src/assets/images/artist-3.jpg'
+import artist4 from '../../../src/assets/images/artist-4.jpg'
+import artist5 from '../../../src/assets/images/artist-5.jpg'
+import artist6 from '../../../src/assets/images/artist-6.jpg'
 import { Box, Grid, Typography } from '@mui/material'
-import MainWrapper from '../components/MainWrapper'
-import Artists from '../components/Artists'
-import CustomBreadcrumbs from '../components/Breadcrumbs'
+import MainWrapper from '../../components/common/MainWrapper'
+import Artists from '../../components/auth/Artists'
+import CustomBreadcrumbs from '../../components/common/Breadcrumbs'
 
 interface ArtistsPageProps {
     title: string;

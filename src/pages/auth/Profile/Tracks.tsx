@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box, Grid, Card, CardContent, CardMedia, Typography } from '@mui/material';
-import track1 from '../../assets/images/coverart-track-1.jpg'
-import track2 from '../../assets/images/coverart-track-2.jpg'
-import track3 from '../../assets/images/coverart-track-3.jpg'
-import track4 from '../../assets/images/coverart-track-4.jpg'
-import track5 from '../../assets/images/coverart-track-5.jpg'
-import track6 from '../../assets/images/coverart-track-6.jpg'
-import track7 from '../../assets/images/coverart-track-7.jpg'
+import track1 from '../../../assets/images/coverart-track-1.jpg'
+import track2 from '../../../assets/images/coverart-track-2.jpg'
+import track3 from '../../../assets/images/coverart-track-3.jpg'
+import track4 from '../../../assets/images/coverart-track-4.jpg'
+import track5 from '../../../assets/images/coverart-track-5.jpg'
+import track6 from '../../../assets/images/coverart-track-6.jpg'
+import track7 from '../../../assets/images/coverart-track-7.jpg'
 
 const tracks = [
   { title: 'Mellow Silhouette Rhapsody', image: track1 },

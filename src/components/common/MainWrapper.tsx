@@ -2,7 +2,7 @@ import { Box, Container, createTheme, CssBaseline, ThemeProvider } from '@mui/ma
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import Sidebar from './SideBar';
-import Banner from './Banner';
+import Banner from '../un_auth/Banner';
 
 const lightTheme = createTheme({
   // palette settings if needed

@@ -2,8 +2,8 @@ import { Box, Container, Tab, Tabs } from '@mui/material';
 import React from 'react'
 import Header from './ArtistProfileHeader';
 import Tracks from './Tracks';
-import MainWrapper from '../../components/MainWrapper';
-import CustomBreadcrumbs from '../../components/Breadcrumbs';
+import MainWrapper from '../../../components/common/MainWrapper';
+import CustomBreadcrumbs from '../../../components/common/Breadcrumbs';
 
 type Props = {}
 

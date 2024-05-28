@@ -2,20 +2,20 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
-import Artist from '../components/Artists';
-import Release from '../components/Release';
-import artist1 from '../../src/assets/images/artist-1.jpg'
-import artist2 from '../../src/assets/images/artist-2.jpg'
-import artist3 from '../../src/assets/images/artist-3.jpg'
-import artist4 from '../../src/assets/images/artist-4.jpg'
-import Release1 from '../../src/assets/images/coverart-track-6.jpg'
-import Release2 from '../../src/assets/images/coverart-track-7.jpg'
-import Release3 from '../../src/assets/images/coverart-track-3.jpg'
-import Release4 from '../../src/assets/images/coverart-track-5.jpg'
-import MainWrapper from '../components/MainWrapper';
-import Playlist1 from '../assets/images/playlist1.png'
-import Playlist2 from '../assets/images/playlist2.png'
-import Playlist3 from '../assets/images/playlist3.png'
+import Artist from '../../components/auth/Artists';
+import Release from '../../components/auth/Release';
+import artist1 from '../../../src/assets/images/artist-1.jpg'
+import artist2 from '../../../src/assets/images/artist-2.jpg'
+import artist3 from '../../../src/assets/images/artist-3.jpg'
+import artist4 from '../../../src/assets/images/artist-4.jpg'
+import Release1 from '../../../src/assets/images/coverart-track-6.jpg'
+import Release2 from '../../../src/assets/images/coverart-track-7.jpg'
+import Release3 from '../../../src/assets/images/coverart-track-3.jpg'
+import Release4 from '../../../src/assets/images/coverart-track-5.jpg'
+import MainWrapper from '../../components/common/MainWrapper';
+import Playlist1 from '../../assets/images/playlist1.png'
+import Playlist2 from '../../assets/images/playlist2.png'
+import Playlist3 from '../../assets/images/playlist3.png'
 import { MdKeyboardArrowRight } from "react-icons/md";
 
 

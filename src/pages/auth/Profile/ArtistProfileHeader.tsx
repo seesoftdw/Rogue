@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography, Avatar, Container } from '@mui/material';
-import profileBG from '../../assets/images/profile-header-artist.jpg'
-import avatar1 from '../../assets/images/artist-1.jpg'
+import profileBG from '../../../assets/images/profile-header-artist.jpg'
+import avatar1 from '../../../assets/images/artist-1.jpg'
 
 
 const Header: React.FC = () => {

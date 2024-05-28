@@ -1,11 +1,11 @@
 // src/router.tsx
 import React, { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import Layout from './components/layout';
-import ArtistProfile from './pages/Profile/ArtistProfile';
+import Layout from '../components/common/layout';
+import ArtistProfile from '../pages/auth/Profile/ArtistProfile';
 
-const Playlist = lazy(() => import('./pages/ArtistPage'));
-const Home = lazy(() => import('./pages/Home'));
+const Playlist = lazy(() => import('../pages/auth/ArtistPage'));
+const Home = lazy(() => import('../pages/auth/Home'));
 
 const AppRouter = createBrowserRouter([
   {
