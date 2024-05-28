@@ -8,7 +8,7 @@ interface ReleaseProps {
   imgSrc: string;
 }
 
-const Release: React.FC<ReleaseProps> = ({ title, artist, imgSrc }) => {
+const Playlists: React.FC<ReleaseProps> = ({ title, artist, imgSrc }) => {
   return (
     <Card sx={{boxShadow:'none',border:'none'}}>
       <CardMedia
@@ -29,4 +29,4 @@ const Release: React.FC<ReleaseProps> = ({ title, artist, imgSrc }) => {
   );
 };
 
-export default Release;
+export default Playlists;
