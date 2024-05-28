@@ -1,12 +1,11 @@
 import React from 'react'
 import { Box, Grid, Typography } from '@mui/material'
-import MainWrapper from '../components/common/MainWrapper'
-import Artists from '../components/auth/Artists'
-import CustomBreadcrumbs from '../components/common/Breadcrumbs'
-import Release from '../components/auth/Release'
-import Playlist1 from '../assets/images/playlist1.png'
-import Playlist2 from '../assets/images/playlist2.png'
-import Playlist3 from '../assets/images/playlist3.png'
+import MainWrapper from '../../components/common/MainWrapper'
+import CustomBreadcrumbs from '../../components/common/Breadcrumbs'
+import Release from '../../components/auth/Release'
+import Playlist1 from '../../assets/images/playlist1.png'
+import Playlist2 from '../../assets/images/playlist2.png'
+import Playlist3 from '../../assets/images/playlist3.png'
 
 interface ArtistsPageProps {
     title: string;
@@ -23,8 +22,8 @@ const playlists = [
 const ArtistsPage: React.FC = () => {
     return (
         <MainWrapper>
-            <Box>
-                <Box sx={{ mb: 2 }}>
+            <Box > 
+                <Box sx={{ mb: 2 ,flexGrow:0}}>
                     <CustomBreadcrumbs />
                 </Box>
 

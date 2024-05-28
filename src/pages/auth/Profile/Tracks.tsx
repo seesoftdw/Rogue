@@ -28,7 +28,11 @@ const Tracks: React.FC = () => {
         {tracks.map((track) => (
           <Grid item xs={12} sm={6} md={4} key={track.title}>
             <Card>
-              <CardMedia component="img" height="140" image={track.image} alt={track.title} />
+              <CardMedia
+                component="img"
+                height="140"
+                image={track.image}
+              />
               <CardContent>
                 <Typography variant="h6">{track.title}</Typography>
               </CardContent>
@@ -41,3 +45,17 @@ const Tracks: React.FC = () => {
 };
 
 export default Tracks;
+
+{/* <Card sx={{ maxWidth: 345 }}>
+      <CardMedia
+        component="img"
+        height="140"
+        image="https://via.placeholder.com/345x140" // Replace with your image URL
+        alt="Album cover"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          Mellow Silhouette Rhapsody
+        </Typography>
+      </CardContent>
+    </Card> */}

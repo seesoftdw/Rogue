@@ -18,15 +18,11 @@ import Playlist2 from '../../assets/images/playlist2.png'
 import Playlist3 from '../../assets/images/playlist3.png'
 import { MdKeyboardArrowRight } from "react-icons/md";
 
-
-
-
 const artists = [
   { name: 'Royal Big Ben Orchestra', imgSrc: artist1 },
   { name: 'Theo Parker', imgSrc: artist2 },
   { name: 'Dahlia Cole', imgSrc: artist3 },
   { name: 'Urban Jazz Syndicate', imgSrc: artist4 },
-
 ];
 
 const releases = [
@@ -44,8 +40,7 @@ const playlists = [
 
 const Home: React.FC = () => {
   return (
-    <MainWrapper >
-      
+    <MainWrapper>
       <Box sx={{ padding: 0 }}>
         <section>
           <Link to='Artists'  style={{ textDecoration: 'none' }}><Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1 , color : 'black'  }} variant="h4" gutterBottom>{'Artists'} <MdKeyboardArrowRight  style={{ height: '11.66px' , width: '15.28px;' }}/></Typography></Link>
@@ -59,7 +54,7 @@ const Home: React.FC = () => {
         </section>
         <hr></hr>
         <section style={{ marginTop: '40px' }}>
-          <Link to =  'All-Releases' style={{ textDecoration: 'none' }} ><Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1 ,  color : 'black'  }} variant="h4" gutterBottom>{'Releases '} <MdKeyboardArrowRight style={{ height: '11.66px' , width: '15.28px;' }} /></Typography></Link>
+          <Link to = 'Releases' style={{ textDecoration: 'none' }} ><Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1 ,  color : 'black'  }} variant="h4" gutterBottom>{'Releases '} <MdKeyboardArrowRight style={{ height: '11.66px' , width: '15.28px;' }} /></Typography></Link>
           <Grid container spacing={2}>
             {releases.map((release, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
@@ -70,7 +65,7 @@ const Home: React.FC = () => {
         </section>
         <hr />
         <section style={{ marginTop: '40px' }}>
-          <Link to='All-Playlists' style={{ textDecoration: 'none' }} ><Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1 , color : 'black'  }} variant="h4" gutterBottom>{'Playlists'}<MdKeyboardArrowRight  style={{ height: '11.66px' , width: '15.28px;' }} /></Typography></Link>
+          <Link to='Playlists' style={{ textDecoration: 'none' }} ><Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1 , color : 'black'  }} variant="h4" gutterBottom>{'Playlists'}<MdKeyboardArrowRight  style={{ height: '11.66px' , width: '15.28px;' }} /></Typography></Link>
           <Grid container spacing={2}>
             {playlists.map((playlist, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>

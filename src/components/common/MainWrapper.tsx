@@ -1,16 +1,18 @@
 import { Box, Container, createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Sidebar from './SideBar';
 import Banner from '../un_auth/Banner';
 
 const lightTheme = createTheme({
-  // palette settings if needed
+
 });
 
 const MainWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [open, setOpen] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const location = useLocation();
 
   const handleLogin = () => {
     // login logic
@@ -31,16 +33,17 @@ const MainWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     };
   }, []);
 
+  const shouldShowBanner = location.pathname !== '/signin' && location.pathname !== '/signup';
+  const hideBannerRoutes = ['/termsofservices', '/resetyourpassword', '/resetpassword','/resetPasswordConfirmation','/Artists/Profile'];
+  const shouldHideBanner = hideBannerRoutes.includes(location.pathname);
+
   return (
     <ThemeProvider theme={lightTheme}>
-      <Box sx={{ display: 'flex', flexDirection: isLoggedIn ? 'row': 'column', height: '100vh' }}>
+      <Box sx={{ display: 'flex', flexDirection: isLoggedIn ? 'row' : 'column', height: '100vh' }}>
         <CssBaseline />
         <Header open={open} toggleDrawer={toggleDrawer} isLoggedIn={isLoggedIn} />
-        <Box sx={{ display: 'flex', flexGrow: 1 }}>
-          {/* <Sidebar open={open} /> */}
-          {/* <Banner /> */}
-          {isLoggedIn ? <Sidebar open={false} /> : <Banner />}
-
+        <Box sx={{ display: 'flex'}}>
+          {isLoggedIn ? <Sidebar open={false} /> : shouldShowBanner && !shouldHideBanner && <Banner />}
         </Box>
         <Box
           component="main"
