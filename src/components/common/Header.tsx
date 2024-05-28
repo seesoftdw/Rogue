@@ -240,7 +240,7 @@ const Header: React.FC<HeaderProps> = ({ toggleDrawer, isLoggedIn }) => {
             </Box>
           ) : (
             <Box> 
-              <Button variant='contained' sx={{ color: 'black', background: 'white',fontSize:'11px', mx:1 }}>sign in</Button>
+              <Button variant='contained' sx={{ color: 'black', background: 'white',fontSize:'11px', fontWeight : 'bold ' , mx:1 , border : ' 1px solid rgba(10, 32, 46, 0.4)'   }}>sign in</Button>
               <Button variant='contained' sx={{fontSize:'11px', mx:1}}>sign up</Button>
             </Box>
           )}

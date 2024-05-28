@@ -6,6 +6,11 @@ import ArtistProfile from '../pages/auth/Profile/ArtistProfile';
 
 const Playlist = lazy(() => import('../pages/auth/ArtistPage'));
 const Home = lazy(() => import('../pages/auth/Home'));
+const SigninPage = lazy(() => import('../pages/auth/Un_auth/SignInPage'));
+const CreateAnAccount = lazy (() =>import('../pages/auth/Un_auth/CreateAnAccount'));
+const TermsofServices = lazy (()=> import ('../pages/auth/Un_auth/TermsofServices'))
+const ResetYourPassword = lazy (() => import ('../pages/auth/Un_auth/ResetYourPassword'));
+const Resetpassword = lazy (() => import ('../pages/auth/Un_auth/ResetPassword'))
 
 const AppRouter = createBrowserRouter([
   {
@@ -29,6 +34,27 @@ const AppRouter = createBrowserRouter([
           }
         ],
       },
+      {
+        path: 'signIn',
+        element: <SigninPage />
+      },
+      {
+        path : 'createanaccount',
+        element : <CreateAnAccount/>
+      },
+      {
+        path : 'termsofservices',
+        element : <TermsofServices/>
+      },
+      {
+        path :'resetyourpassword',
+        element : <ResetYourPassword/>
+      },
+      {
+        path : 'resetpassword',
+        element : <Resetpassword/>
+      }
+
     ],
   },
 ]);
