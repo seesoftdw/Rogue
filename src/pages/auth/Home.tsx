@@ -18,15 +18,11 @@ import Playlist2 from '../../assets/images/playlist2.png'
 import Playlist3 from '../../assets/images/playlist3.png'
 import { MdKeyboardArrowRight } from "react-icons/md";
 
-
-
-
 const artists = [
   { name: 'Royal Big Ben Orchestra', imgSrc: artist1 },
   { name: 'Theo Parker', imgSrc: artist2 },
   { name: 'Dahlia Cole', imgSrc: artist3 },
   { name: 'Urban Jazz Syndicate', imgSrc: artist4 },
-
 ];
 
 const releases = [
@@ -44,8 +40,7 @@ const playlists = [
 
 const Home: React.FC = () => {
   return (
-    <MainWrapper >
-      
+    <MainWrapper>
       <Box sx={{ padding: 0 }}>
         <section>
           <Link to='Artists'  style={{ textDecoration: 'none' }}><Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1 , color : 'black'  }} variant="h4" gutterBottom>{'Artists'} <MdKeyboardArrowRight  style={{ height: '11.66px' , width: '15.28px;' }}/></Typography></Link>

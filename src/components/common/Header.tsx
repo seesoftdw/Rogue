@@ -19,6 +19,7 @@ import Profile from '../../assets/images/avatar-artist.jpg'
 import Divider from '@mui/material/Divider';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
+import { Link } from 'react-router-dom';
 
 
 
@@ -55,7 +56,7 @@ const itemData = [
   },
 ];
 
-const Header: React.FC<HeaderProps> = ({ toggleDrawer, isLoggedIn }) => {
+const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const settings = [' Manage Profile', 'Settings', 'Sign Out'];
@@ -63,15 +64,13 @@ const Header: React.FC<HeaderProps> = ({ toggleDrawer, isLoggedIn }) => {
 
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  // const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -132,18 +131,12 @@ const Header: React.FC<HeaderProps> = ({ toggleDrawer, isLoggedIn }) => {
           {isLoggedIn ? (
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', ml: 'auto', gap: 2, height: '100%' }}>
               <Box sx={{ display: { xs: 'none', sm: 'flex' }, fontSize: '27px', color: '#707070', alignItems: 'center' }}>
-
                 <Box sx={{ ml: { sm: '50%' }, fontSize: { lg: '27px', md: '27px', sm: '21px' } }}>
                   <IoCart />
                 </Box>
-
               </Box>
-
-
-
               <Box sx={{ flexGrow: 0 }}>
-
-                <React.Fragment >
+                <React.Fragment>
                   <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
                     <Tooltip title="Account settings">
                       <IconButton
@@ -161,7 +154,7 @@ const Header: React.FC<HeaderProps> = ({ toggleDrawer, isLoggedIn }) => {
                   <Menu
                     anchorEl={anchorEl}
                     id="account-menu"
-                    open={open}
+                    open={Boolean(anchorEl)}
                     onClose={handleClose}
                     onClick={handleClose}
                     PaperProps={{
@@ -171,7 +164,6 @@ const Header: React.FC<HeaderProps> = ({ toggleDrawer, isLoggedIn }) => {
                         filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
                         mt: 1.5,
                         height: '271px', width: '280px',
-
                         '& .MuiAvatar-root': {
                           width: 32,
                           height: 32,
@@ -195,53 +187,38 @@ const Header: React.FC<HeaderProps> = ({ toggleDrawer, isLoggedIn }) => {
                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                   >
-                    <MenuItem onClick={handleClose} >
+                    <MenuItem onClick={handleClose}>
                       <Avatar alt="Remy Sharp" src={Profile} /> Fred Smith
                     </MenuItem>
                     <Divider />
-                    <MenuItem onClick={handleClose} sx={{}}>
+                    <MenuItem onClick={handleClose}>
                       <PersonAdd fontSize="small" />
                       <p>Manage Profile</p>
                     </MenuItem>
-                    <MenuItem onClick={handleClose} sx={{}}>
+                    <MenuItem onClick={handleClose}>
                       <Settings fontSize="small" />
                       Settings
                     </MenuItem>
-                    <MenuItem onClick={handleClose} >
+                    <MenuItem onClick={handleClose}>
                       <Settings fontSize="small" />
-                      <p >Sign Out</p>
+                      <p>Sign Out</p>
                     </MenuItem>
                   </Menu>
                 </React.Fragment>
-                <Menu
-                  sx={{ mt: '45px' }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-                >
-                  {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu} sx={{ borderBottom: '1px solid ' }}>
-                      <Typography textAlign="center">{setting}</Typography>
-                    </MenuItem>
-                  ))}
-                </Menu>
               </Box>
-
             </Box>
           ) : (
-            <Box> 
-              <Button variant='contained' sx={{ color: 'black', background: 'white',fontSize:'11px', mx:1 }}>sign in</Button>
-              <Button variant='contained' sx={{fontSize:'11px', mx:1}}>sign up</Button>
+            <Box>
+              <Link to="/signin">
+                <Button variant="contained" sx={{ color: 'black', background: 'white', fontSize: '11px', mx: 1 }}>
+                  Sign In
+                </Button>
+              </Link>
+              <Link to="/signup">
+                <Button variant="contained" sx={{ fontSize: '11px', mx: 1 }}>
+                  Sign Up
+                </Button>
+              </Link>
             </Box>
           )}
         </Toolbar>
