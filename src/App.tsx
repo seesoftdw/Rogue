@@ -1,7 +1,7 @@
 // src/App.tsx
 import React, { Suspense } from 'react';
 import { RouterProvider } from 'react-router-dom';
-import AppRouter from './router';
+import AppRouter from './routes/router';
 import CircularProgress from '@mui/material/CircularProgress';
 
 const App: React.FC = () => {

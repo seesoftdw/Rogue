@@ -3,7 +3,7 @@ import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
-import musiccover from '../assets/images/coverart-track-1.jpg'
+import musiccover from '../../assets/images/coverart-track-1.jpg'
 import { IconButton } from "@mui/material";
 import { IoShuffle } from "react-icons/io5";
 import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from "react-icons/bs";
