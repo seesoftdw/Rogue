@@ -23,7 +23,7 @@ const ArtistsPage: React.FC = () => {
     return (
         <MainWrapper>
             <Box > 
-                <Box sx={{ mb: 2 ,flexGrow:0}}>
+                <Box sx={{ mb: 2 }}>
                     <CustomBreadcrumbs />
                 </Box>
 
