@@ -11,7 +11,7 @@ const lightTheme = createTheme({
 
 const MainWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [open, setOpen] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const location = useLocation();
 
   const handleLogin = () => {

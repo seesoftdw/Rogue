@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Paper, Box, Grid, Typography, createTheme, ThemeProvider } from '@mui/material';
+import { Button, CssBaseline, TextField, Paper, Box, Grid, Typography, createTheme, ThemeProvider } from '@mui/material';
 import MainWrapper from '../../components/common/MainWrapper';
-// import Header from '../components/Header'
+import { Link } from 'react-router-dom';
+
 const theme = createTheme();
 
 const SignIn = () => {
@@ -24,15 +25,14 @@ const SignIn = () => {
     return (
         <MainWrapper>
             <ThemeProvider theme={theme}>
-                {/* <Header open={open} toggleDrawer={toggleDrawer} /> */}
 
                 <Grid container component="main" sx={{ height: '100vh' }}>
                     <CssBaseline />
 
-                    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ ml: 50, boxShadow: 'none' }}>
+                    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ ml: 45, boxShadow: 'none' }}>
                         <Box
                             sx={{
-                                my: 8,
+                                my: 0,
                                 mx: 4,
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -55,22 +55,24 @@ const SignIn = () => {
                                     autoFocus
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    sx={{ backgroundColor: 'rgba(10, 32, 46, 0.05)' }}
+                                    sx={{ backgroundColor: 'rgba(10, 32, 46, 0.05)'  }}
                                 />
                                 <Box sx={{ fontSize: '14px', color: ' rgba(10, 32, 46, 0.7)' }}>Password</Box>
-                                <TextField
-                                    margin="normal"
-                                    required
-                                    fullWidth
-                                    name="password"
-                                    // label="Password"
-                                    type="password"
-                                    id="password"
-                                    autoComplete="current-password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    sx={{ backgroundColor: 'rgba(10, 32, 46, 0.05)' }}
-                                />
+                                
+                                    <TextField
+                                        margin="normal"
+                                        required
+                                        fullWidth
+                                        name="password"
+                                        // label="Password"
+                                        type="password"
+                                        id="password"
+                                        autoComplete="current-password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        sx={{ backgroundColor: 'rgba(10, 32, 46, 0.05)' }}
+                                    />
+
 
                                 <Button
                                     type="submit"
@@ -81,8 +83,8 @@ const SignIn = () => {
                                 </Button>
                                 <Grid container>
                                     <Grid item xs>
-                                        <Link href="#" variant="body2" >
-                                            <Box sx={{ textAlign: 'center', paddingTop: '4%', fontSize: '16px', color: ' rgb(0, 154, 255)' }}>Forgot password?</Box>
+                                        <Link to="#" >
+                                            <Box sx={{ textAlign: 'center', paddingTop: '4%', fontSize: '16px', color: ' rgb(0, 154, 255)' }}><Link to = '/resetyourpassword'>Forgot password?</Link></Box>
                                         </Link>
                                     </Grid>
                                     <Grid item>
@@ -114,8 +116,8 @@ const SignIn = () => {
                                     <Box sx={{ color: 'gray', fontWeight: 'bold' }}>SIGN IN WITH FACEBOOK</Box>
                                 </Button>
 
-                                <Link href="#" variant="body2">
-                                    <Box sx={{ color: 'black', fontSize: '16px', textAlign: 'center', pt: 4, textDecoration: 'none' }}>{"Don't have an account? Sign Up here"}</Box>
+                                <Link to="/signup" >
+                                    <Box sx={{ color: 'black', fontSize: '16px', textAlign: 'center', pt: 4, textDecoration: 'none', pb: 5 }}>{"Don't have an account? Sign Up here"}</Box>
                                 </Link>
 
                             </Box>

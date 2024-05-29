@@ -23,17 +23,14 @@ const Resetpasswordd = () => {
     return (
         <MainWrapper>
             <ThemeProvider theme={theme}>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
+
                 <Grid container component="main" sx={{ height: '100vh' }}>
                     <CssBaseline />
 
-                    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ ml: 50, boxShadow: 'none' }}>
+                    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ ml: 45, boxShadow: 'none' }}>
                         <Box
                             sx={{
-                                my: 8,
+                                my: 0,
                                 mx: 4,
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -43,8 +40,8 @@ const Resetpasswordd = () => {
                             <Typography component="h1" variant="h5">
                                 <Box sx={{ fontSize: '36px', fontWeight: 'bold' }}>Reset your password</Box>
                             </Typography>
-                            <Typography sx={{ fontSize: '11px', letterSpacing: '0.5px', pt: 3 }}>Enter your email below and we will send you instructions to reset your password.</Typography>
-                            <Typography sx={{ fontSize: '11px', letterSpacing: '0.5px' }}> instructions to reset your password.</Typography>
+                            <Typography sx={{ fontSize: '11px', letterSpacing: '0.5px', pt: 3 }}>Password reset instructions sent.</Typography>
+                            <Typography sx={{ fontSize: '11px', letterSpacing: '0.5px' }}>Please check your email.</Typography>
                             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                                 <Grid container>
                                     <Grid item xs>

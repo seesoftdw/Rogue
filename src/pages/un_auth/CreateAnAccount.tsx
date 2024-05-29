@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Paper, Box, Grid, Typography, createTheme, ThemeProvider } from '@mui/material';
-import Header from '../../components/common/Header'
+import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Paper, Box, Grid, Typography, createTheme, ThemeProvider } from '@mui/material';
+import { Link } from 'react-router-dom';
+
 import MainWrapper from '../../components/common/MainWrapper';
 
 const theme = createTheme();
@@ -26,10 +27,10 @@ const SignIn = () => {
                 <Grid container component="main" sx={{ height: '100vh' }}>
                     <CssBaseline />
 
-                    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ ml: 50, boxShadow: 'none' }}>
+                    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ ml: 45, boxShadow: 'none' }}>
                         <Box
                             sx={{
-                                my: 8,
+                                my: 0,
                                 mx: 4,
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -78,7 +79,7 @@ const SignIn = () => {
                                 </Button>
                                 <Grid container>
                                     <Grid item xs>
-                                        <Link href="#" variant="body2">
+                                        <Link to ='#'>
                                             <Box sx={{ color: 'black', fontSize: '12px', textAlign: 'center', pt: 4, textDecoration: 'none' }}>{"By creating an account, you are agreeing to our Terms of Service."}</Box>
                                         </Link>
                                     </Grid>
@@ -111,8 +112,8 @@ const SignIn = () => {
                                     <Box sx={{ color: 'gray', fontWeight: 'bold' }}>SIGN IN WITH FACEBOOK</Box>
                                 </Button>
 
-                                <Link href="#" variant="body2">
-                                    <Box sx={{ color: 'black', fontSize: '16px', textAlign: 'center', pt: 4, textDecoration: 'none' }}>{"Already have an account? Sign in here"}</Box>
+                                <Link to="/signin">
+                                    <Box sx={{ color: 'black', fontSize: '16px', textAlign: 'center', pt: 4, textDecoration: 'none'  , pb : 5 }}>{"Already have an account? Sign in here"}</Box>
                                 </Link>
 
                             </Box>
