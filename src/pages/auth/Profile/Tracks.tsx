@@ -5,8 +5,6 @@ import track2 from '../../../assets/images/coverart-track-2.jpg'
 import track3 from '../../../assets/images/coverart-track-3.jpg'
 import track4 from '../../../assets/images/coverart-track-4.jpg'
 import track5 from '../../../assets/images/coverart-track-5.jpg'
-import track6 from '../../../assets/images/coverart-track-6.jpg'
-import track7 from '../../../assets/images/coverart-track-7.jpg'
 
 const tracks = [
   { title: 'Mellow Silhouette Rhapsody', image: track1 },
@@ -14,8 +12,6 @@ const tracks = [
   { title: 'Sultry City Nights', image: track3 },
   { title: 'Silent Night\'s Serenade for the Lonely', image: track4 },
   { title: 'Silent Silhouette Affair', image: track5 },
-  { title: 'Silent Silhouette Affair', image: track6 },
-  { title: 'Silent Silhouette Affair', image: track7 },
 ];
 
 const Tracks: React.FC = () => {
@@ -27,15 +23,20 @@ const Tracks: React.FC = () => {
       <Grid container spacing={4}>
         {tracks.map((track) => (
           <Grid item xs={12} sm={6} md={4} key={track.title}>
-            <Card>
-              <CardMedia
-                component="img"
-                height="140"
-                image={track.image}
-              />
-              <CardContent>
-                <Typography variant="h6">{track.title}</Typography>
-              </CardContent>
+            <Card sx={{ display: 'flex',boxShadow:'none' }}>
+              <Box>
+                <CardMedia
+                  component="img"
+                  height="71px"
+                  width="71px"
+                  image={track.image}
+                />
+              </Box>
+              <Box height={'40px'} width={'166px'} sx={{boxShadow:'none',border:'none'}}>
+                <CardContent sx={{boxShadow:'none',border:'none'}}>
+                  <Typography fontSize={'16px'} fontWeight={'500'} variant="h6" p={0}>{track.title}</Typography>
+                </CardContent>
+              </Box>
             </Card>
           </Grid>
         ))}

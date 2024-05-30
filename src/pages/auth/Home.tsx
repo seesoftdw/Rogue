@@ -1,6 +1,6 @@
 // MusicDashboard.tsx
 import { Link } from 'react-router-dom';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 import Artist from '../../components/auth/Artists';
 import Release from '../../components/auth/Release';
@@ -17,6 +17,8 @@ import Playlist1 from '../../assets/images/playlist1.png'
 import Playlist2 from '../../assets/images/playlist2.png'
 import Playlist3 from '../../assets/images/playlist3.png'
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { useAppDispatch } from '../../store';
+import { addUser, getUser } from '../../services/authService';
 
 const artists = [
   { name: 'Royal Big Ben Orchestra', imgSrc: artist1 },
@@ -39,6 +41,29 @@ const playlists = [
 ];
 
 const Home: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const data: {
+      email: string;
+      password: string;
+  } = {
+      email: '',
+      password: ''
+  };
+  useEffect(() => {
+    dispatch(getUser());
+
+    
+    const action = addUser(data);
+
+    dispatch(action)
+      .unwrap()
+      .then((response) => {
+        console.log('response', response)
+      })
+      .catch((error) => {
+      });
+  }, [dispatch]);
+
   return (
     <MainWrapper>
       <Box sx={{ padding: 0 }}>
