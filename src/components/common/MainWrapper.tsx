@@ -11,12 +11,12 @@ const lightTheme = createTheme({
 
 const MainWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [open, setOpen] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
 
   const handleLogin = () => {
     // login logic
-  };
+  };  
 
   const toggleLogin = () => {
     setIsLoggedIn((prev) => !prev);
@@ -34,7 +34,7 @@ const MainWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   }, []);
 
   const shouldShowBanner = location.pathname !== '/signin' && location.pathname !== '/signup';
-  const hideBannerRoutes = ['/termsofservices', '/resetyourpassword', '/resetpassword','/resetPasswordConfirmation','/Artists/Profile'];
+  const hideBannerRoutes = ['/termsofservices', '/resetyourpassword', '/resetpassword','/resetPasswordConfirmation','/Artists/profile'];
   const shouldHideBanner = hideBannerRoutes.includes(location.pathname);
 
   return (

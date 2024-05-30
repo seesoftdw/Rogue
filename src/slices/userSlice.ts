@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { addUser, getUser } from '../services/authService';
+import { addUser, getUser } from '../services/userService';
 
 interface UserState {
     list: {
@@ -11,6 +11,9 @@ interface UserState {
         isSaving: boolean;
         isDeleting: boolean;
     };
+    authState :{
+        isLoggedIn : boolean;
+    }
 }
 
 const initialState: UserState = {
@@ -23,6 +26,9 @@ const initialState: UserState = {
         isSaving: false,
         isDeleting: false,
     },
+    authState:{
+        isLoggedIn:false,
+    }
 };
 
 export const userSlice = createSlice({

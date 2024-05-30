@@ -11,12 +11,16 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import { Link } from 'react-router-dom';
 import britSchoolimg from '../../../assets/images/britSchool.png'
 import ArtistsPlaylist from './ArtistsPlaylist';
-import { Padding } from '@mui/icons-material';
-
-import Release from '../../../components/auth/Release'
 import Playlist1 from '../../../assets/images/playlist1.png'
 import Playlist2 from '../../../assets/images/playlist2.png'
 import Playlist3 from '../../../assets/images/playlist3.png'
+import Release from '../../../components/auth/Release';
+import Release1 from '../../../assets/images/coverart-track-1.jpg'
+import Release2 from '../../../assets/images/coverart-track-2.jpg'
+import Release3 from '../../../assets/images/coverart-track-3.jpg'
+import Release4 from '../../../assets/images/coverart-track-4.jpg'
+import { MdKeyboardArrowRight } from 'react-icons/md';
+
 
 
 type Props = {}
@@ -47,6 +51,13 @@ const ArtistProfile = (props: Props) => {
         { title: 'Dreamy Future Sounds', artist: 'Royal Big Ben Orchestra', imgSrc: Playlist1 },
         { title: 'Moonlight Symphony', artist: 'Royal Big Ben Orchestra', imgSrc: Playlist2 },
         { title: 'Latin Jazz Fiesta', artist: 'Royal Big Ben Orchestra', imgSrc: Playlist3 }
+    ];
+
+    const releases = [
+        { title: 'Soho After Dark', artist: 'Royal Big Ben Orchestra', imgSrc: Release1 },
+        { title: 'Rhythms of the Underground', artist: 'Royal Big Ben Orchestra', imgSrc: Release2 },
+        { title: 'Sultry City Nights', artist: 'Royal Big Ben Orchestra', imgSrc: Release3 },
+        { title: 'Silent Night\'s Serenade for the Lonely', artist: 'Royal Big Ben Orchestra', imgSrc: Release4 },
     ];
 
     return (
@@ -133,7 +144,17 @@ const ArtistProfile = (props: Props) => {
                     </Box>
                 }
 
-                {tabValue === 1 && <Tracks />}
+                {tabValue === 1 && <section>
+                    <Box py={4}>
+                        <Grid container spacing={2} >
+                            {releases.map((release, index) => (
+                                <Grid item xs={12} sm={6} md={3} key={index}>
+                                    <Release title={release.title} artist={release.artist} imgSrc={release.imgSrc} />
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Box>
+                </section>}
                 {tabValue === 2 && < ArtistsPlaylist />}
                 {/* <Footer /> */}
 

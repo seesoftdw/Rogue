@@ -18,7 +18,7 @@ import Playlist2 from '../../assets/images/playlist2.png'
 import Playlist3 from '../../assets/images/playlist3.png'
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { useAppDispatch } from '../../store';
-import { addUser, getUser } from '../../services/authService';
+import { addUser, getUser } from '../../services/userService';
 
 const artists = [
   { name: 'Royal Big Ben Orchestra', imgSrc: artist1 },
