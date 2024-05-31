@@ -22,11 +22,11 @@ const Banner: React.FC = () => {
                 top: 0,
             }}
         >
-            <Typography variant="h5" mt={20} sx={{ fontWeight: 'bold', color: 'white', letterSpacing: 2 }}>Sounds Of Success<br />
+            <Typography variant="h5" mt={13} sx={{ fontWeight: 'bold', color: 'white', letterSpacing: 2 ,fontSize : '42px' }}>Sounds Of Success<br />
                 Where Fans Fuel The Music</Typography>
             <Box gap={8} mt={2}>
-                <Link to='/signin'><Button sx={{ color: 'black', background: 'white', mx: 2 }} variant="contained">Sign In</Button></Link>
-                <Link to='/signup'><Button sx={{ mx: 2 }} variant="contained">Sign Up</Button></Link>
+                <Link to='/signin'><Button sx={{ color: 'black', background: 'white', mx: 2  , height :'40px' ,width : '212px'}} variant="contained">Sign In</Button></Link>
+                <Link to='/signup'><Button sx={{ mx: 2  , height :'40px' ,width : '212px' }} variant="contained">Sign Up</Button></Link>
             </Box>
         </Box>
     );

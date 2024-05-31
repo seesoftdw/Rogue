@@ -16,6 +16,8 @@ import AddIcon from '@mui/icons-material/Add';
 import { FaMusic } from "react-icons/fa";
 import { GiGrandPiano } from "react-icons/gi";
 import { FaHome } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+
 
 
 const drawerWidth = 240;
@@ -54,20 +56,27 @@ export default function Sidebar(props: SidebarProps) {
   const sidebarContent = (
     <div>
       <List>
-        <ListItem button key="Home" selected={activeTab === 'Home'} onClick={() => handleTabClick('Home')}>
-          <ListItemIcon style={activeTab === 'Home' ? activeLinkStyles : undefined}><FaHome /></ListItemIcon>
-          <ListItemText primary="Home" />
-        </ListItem>
-        <ListItem button key="New Releases" selected={activeTab === 'New Releases'} onClick={() => handleTabClick('New Releases')}>
-          <ListItemIcon style={activeTab === 'New Releases' ? activeLinkStyles : undefined}><GiGrandPiano /></ListItemIcon>
-          <ListItemText primary="New Releases" />
-        </ListItem>
-        <ListItem button key="My Library" selected={activeTab === 'My Library'} onClick={() => handleTabClick('My Library')}>
-          <ListItemIcon style={activeTab === 'My Library' ? activeLinkStyles : undefined}><FaMusic /></ListItemIcon>
-          <ListItemText primary="My Library" />
-        </ListItem>
+        <Link to='/' className='text-decoration-none'>
+          <ListItem button key="Home" selected={activeTab === 'Home'} onClick={() => handleTabClick('Home')}>
+            <ListItemIcon style={activeTab === 'Home' ? activeLinkStyles : undefined}><FaHome /></ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItem>
+        </Link>
+
+        <Link to='/Releases' className='text-decoration-none' >
+          <ListItem button key="New Releases" selected={activeTab === 'New Releases'} onClick={() => handleTabClick('New Releases')}>
+            <ListItemIcon style={activeTab === 'New Releases' ? activeLinkStyles : undefined}><GiGrandPiano /></ListItemIcon>
+            <ListItemText primary="New Releases" />
+          </ListItem>
+        </Link>
+        <Link to='/Playlists' className='text-decoration-none' >
+          <ListItem button key="My Library" selected={activeTab === 'My Library'} onClick={() => handleTabClick('My Library')}>
+            <ListItemIcon style={activeTab === 'My Library' ? activeLinkStyles : undefined}><FaMusic /></ListItemIcon>
+            <ListItemText primary="My Library" />
+          </ListItem>
+        </Link>
       </List>
-      <Typography variant="subtitle1" sx={{ padding: theme.spacing(2), fontSize: '14px', fontWeight: 'bold', color: 'gray', letterSpacing: '1px', textTransform: 'uppercase' }}>Playlists < AddIcon sx={{ ml: 10 , pt : 3 , height : '40px' }} /> </Typography>
+      <Typography variant="subtitle1" sx={{ padding: theme.spacing(2), fontSize: '14px', fontWeight: 'bold', color: 'gray', letterSpacing: '1px', textTransform: 'uppercase' }}>Playlists < AddIcon sx={{ ml: 10, pt: 3, height: '40px' }} /> </Typography>
       <List>
         {['Vintage Jazz Vibes', 'Blue Note Odyssey', 'Latin Jazz Fiesta', 'Groovy Fusion', 'Funky Fusion', 'Cool Chronicles'].map((text, index) => (
           <ListItem button key={text} selected={activeTab === text} onClick={() => handleTabClick(text)}>
@@ -83,51 +92,22 @@ export default function Sidebar(props: SidebarProps) {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-        }}
-      >
-      </AppBar>
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
         className='sidebar'
       >
-        {isMobile ? (
-          <>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              onClick={toggleDrawer(true)}
-            >
-              {/* <Menu /> */}
-            </IconButton>
-            <Drawer
-              anchor="left"
-              open={open}
-              onClose={toggleDrawer(false)}
-            >
-              {sidebarContent}
-            </Drawer>
-          </>
-        ) : (
-          <Drawer
-            variant="permanent"
-            anchor="left"
-            open
-            sx={{
-              '& .MuiDrawer-paper': { width: 240, boxSizing: 'border-box' },
-            }}
-          >
-            {sidebarContent}
-          </Drawer>
-        )}
+        <Drawer
+          variant="permanent"
+          anchor="left"
+          open
+          sx={{
+            '& .MuiDrawer-paper': { width: 240, boxSizing: 'border-box' },
+          }}
+        >
+          {sidebarContent}
+        </Drawer>
       </Box>
     </Box>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Paper, Box, Grid, Typography, createTheme, ThemeProvider } from '@mui/material';
-import Header from '../../components/common/Header'
+import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Paper, Box, Grid, Typography, createTheme, ThemeProvider } from '@mui/material';
+import { Link } from 'react-router-dom';
+
 import MainWrapper from '../../components/common/MainWrapper';
 
 const theme = createTheme();
@@ -26,10 +27,10 @@ const SignIn = () => {
                 <Grid container component="main" sx={{ height: '100vh' }}>
                     <CssBaseline />
 
-                    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ ml: 50, boxShadow: 'none' }}>
+                    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ ml: 45, boxShadow: 'none' }}>
                         <Box
                             sx={{
-                                my: 8,
+                                my: 0,
                                 mx: 4,
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -52,7 +53,7 @@ const SignIn = () => {
                                     autoFocus
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    sx={{ backgroundColor: 'rgba(10, 32, 46, 0.05)' }}
+                                    sx={{ '& .MuiInputBase-root': { height: '2.5em' } }}
                                 />
                                 <Box sx={{ fontSize: '14px', color: ' rgba(10, 32, 46, 0.7)' }}>Password</Box>
                                 <TextField
@@ -66,20 +67,20 @@ const SignIn = () => {
                                     autoComplete="current-password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    sx={{ backgroundColor: 'rgba(10, 32, 46, 0.05)' }}
+                                    sx={{ '& .MuiInputBase-root': { height: '2.5em' } }}
                                 />
 
                                 <Button
                                     type="submit"
                                     fullWidth
-                                    sx={{ mt: 3, mb: 2, background: ' linear-gradient(-180deg, rgb(0, 202, 255) 0%, rgb(0, 154, 255) 100%)' }}
+                                    sx={{ mt: 1, mb: 1, background: ' linear-gradient(-180deg, rgb(0, 202, 255) 0%, rgb(0, 154, 255) 100%)' }}
                                 >
                                     <Box sx={{ color: 'white' }}>SIGN UP</Box>
                                 </Button>
                                 <Grid container>
                                     <Grid item xs>
-                                        <Link href="#" variant="body2">
-                                            <Box sx={{ color: 'black', fontSize: '12px', textAlign: 'center', pt: 4, textDecoration: 'none' }}>{"By creating an account, you are agreeing to our Terms of Service."}</Box>
+                                        <Link to ='#'>
+                                            <Box sx={{ color: 'rgba(10, 32, 46, 0.7)', fontSize: '12px', textAlign: 'center', pt: 4}}>{"By creating an account, you are agreeing to our Terms of Service."}</Box>
                                         </Link>
                                     </Grid>
                                     <Grid item>
@@ -90,7 +91,7 @@ const SignIn = () => {
                                 <Button
                                     type="submit"
                                     fullWidth
-                                    sx={{ mt: 3, mb: 2, backgroundColor: 'white', border: '2px solid  rgba(10, 32, 46, 0.4)' }}
+                                    sx={{ mt: 1, mb: 1, backgroundColor: 'white', border: '2px solid  rgba(10, 32, 46, 0.4)' }}
                                 >
                                     <Box sx={{ color: 'gray', fontWeight: 'bold' }}>SIGN IN WITH GOOGLE</Box>
                                 </Button>
@@ -98,7 +99,7 @@ const SignIn = () => {
                                 <Button
                                     type="submit"
                                     fullWidth
-                                    sx={{ mt: 2, mb: 2, backgroundColor: 'white', border: '2px solid  rgba(10, 32, 46, 0.4)' }}
+                                    sx={{ mt: 1, mb: 1, backgroundColor: 'white', border: '2px solid  rgba(10, 32, 46, 0.4)' }}
                                 >
                                     <Box sx={{ color: 'gray', fontWeight: 'bold' }}>SIGN IN WITH APPLE</Box>
                                 </Button>
@@ -106,13 +107,27 @@ const SignIn = () => {
                                 <Button
                                     type="submit"
                                     fullWidth
-                                    sx={{ mt: 2, mb: 2, backgroundColor: 'white', border: '2px solid  rgba(10, 32, 46, 0.4)' }}
+                                    sx={{ mt: 1, mb: 1, backgroundColor: 'white', border: '2px solid  rgba(10, 32, 46, 0.4)' }}
                                 >
                                     <Box sx={{ color: 'gray', fontWeight: 'bold' }}>SIGN IN WITH FACEBOOK</Box>
                                 </Button>
 
-                                <Link href="#" variant="body2">
-                                    <Box sx={{ color: 'black', fontSize: '16px', textAlign: 'center', pt: 4, textDecoration: 'none' }}>{"Already have an account? Sign in here"}</Box>
+
+                                <Link to="/signin" className='links'>
+                                    <Box sx={{ width: '100%'  ,}}>
+                                        <Grid container spacing={2} sx = {{ justifyContent : 'center'}}>
+                                            <Grid item xs={12} sm={7}>
+                                                <Typography  textAlign="center" sx = {{pl : 3.5 , color : 'black',textDecoration : 'none'}}>
+                                                Already have an account?
+                                                </Typography>
+                                            </Grid>
+                                            <Grid item xs={12} sm={4}>
+                                                <Typography variant="body1" textAlign="center" sx={{ color: 'rgb(0, 154, 255)', textDecoration: 'none' ,pr : 4 }}>
+                                                Sign in here
+                                                </Typography>
+                                            </Grid>
+                                        </Grid>
+                                    </Box>                            
                                 </Link>
 
                             </Box>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Paper, Box, Grid, Typography, createTheme, ThemeProvider } from '@mui/material';
+import { Avatar, Button, CssBaseline, TextField, Paper, Box, Grid, Typography, createTheme, ThemeProvider } from '@mui/material';
 import MainWrapper from '../../components/common/MainWrapper';
-// import Header from '../components/Header'
+import { Link } from 'react-router-dom';
 const theme = createTheme();
 
 const Resetpassword = () => {
@@ -32,10 +32,10 @@ const Resetpassword = () => {
                 <Grid container component="main" sx={{ height: '100vh' }}>
                     <CssBaseline />
 
-                    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ ml: 50, boxShadow: 'none' }}>
+                    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ ml: 45, boxShadow: 'none' }}>
                         <Box
                             sx={{
-                                my: 8,
+                                my: 0,
                                 mx: 4,
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -45,8 +45,8 @@ const Resetpassword = () => {
                             <Typography component="h1" variant="h5">
                                 <Box sx={{ fontSize: '36px', fontWeight: 'bold' }}>Reset your password</Box>
                             </Typography>
-                            <Typography sx={{ fontSize: '11px', letterSpacing: '0.5px', pt: 3 }}>Enter your email below and we will send you instructions to reset your password.</Typography>
-                            <Typography sx={{ fontSize: '11px', letterSpacing: '0.5px' }}> instructions to reset your password.</Typography>
+                            <Typography sx={{ fontSize: '11px', letterSpacing: '0.5px', pt: 3 }}>Password reset instructions sent.</Typography>
+                            <Typography sx={{ fontSize: '11px', letterSpacing: '0.5px' }}> Please check your email.</Typography>
                             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                                 <Box sx={{ fontSize: '14px', color: ' rgba(10, 32, 46, 0.7)' }}>Email Address</Box>
                                 <TextField
@@ -72,7 +72,7 @@ const Resetpassword = () => {
                                 </Button>
                                 <Grid container>
                                     <Grid item xs>
-                                        <Link href="#" variant="body2" >
+                                        <Link to ="/signin"  className='links'>
                                             <Box sx={{ textAlign: 'center', paddingTop: '4%', fontSize: '16px' }}>Return to log in</Box>
                                         </Link>
                                     </Grid>

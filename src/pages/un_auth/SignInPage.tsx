@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Paper, Box, Grid, Typography, createTheme, ThemeProvider } from '@mui/material';
+import { Button, CssBaseline, TextField, Paper, Box, Grid, Typography, createTheme, ThemeProvider } from '@mui/material';
 import MainWrapper from '../../components/common/MainWrapper';
-// import Header from '../components/Header'
+import { Link } from 'react-router-dom';
+
 const theme = createTheme();
 
 const SignIn = () => {
@@ -24,19 +25,19 @@ const SignIn = () => {
     return (
         <MainWrapper>
             <ThemeProvider theme={theme}>
-                {/* <Header open={open} toggleDrawer={toggleDrawer} /> */}
 
                 <Grid container component="main" sx={{ height: '100vh' }}>
                     <CssBaseline />
 
-                    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ ml: 50, boxShadow: 'none' }}>
+                    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ ml: 45, boxShadow: 'none' }}>
                         <Box
                             sx={{
-                                my: 8,
+                                my: 0,
                                 mx: 4,
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'center',
+
                             }}
                         >
                             <Typography component="h1" variant="h5">
@@ -44,7 +45,7 @@ const SignIn = () => {
                             </Typography>
                             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                                 <Box sx={{ fontSize: '14px', color: ' rgba(10, 32, 46, 0.7)' }}>Email Address</Box>
-                                <TextField
+                                <TextField className='textfileld'
                                     margin="normal"
                                     required
                                     fullWidth
@@ -55,9 +56,11 @@ const SignIn = () => {
                                     autoFocus
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    sx={{ backgroundColor: 'rgba(10, 32, 46, 0.05)' }}
+                                    sx={{ '& .MuiInputBase-root': { height: '2.5em' } }}
+
                                 />
-                                <Box sx={{ fontSize: '14px', color: ' rgba(10, 32, 46, 0.7)' }}>Password</Box>
+                                <Box sx={{ fontSize: '14px', color: ' rgba(10, 32, 46, 0.7)', pt: 3 }}>Password</Box>
+
                                 <TextField
                                     margin="normal"
                                     required
@@ -69,31 +72,33 @@ const SignIn = () => {
                                     autoComplete="current-password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    sx={{ backgroundColor: 'rgba(10, 32, 46, 0.05)' }}
+                                    // backgroundColor: 'rgba(10, 32, 46, 0.05)'
+                                    sx={{ '& .MuiInputBase-root': { height: '2.5em' } }}
                                 />
+
 
                                 <Button
                                     type="submit"
                                     fullWidth
-                                    sx={{ mt: 3, mb: 2, background: ' linear-gradient(-180deg, rgb(0, 202, 255) 0%, rgb(0, 154, 255) 100%)' }}
+                                    sx={{ mt: 1, mb: 1, background: ' linear-gradient(-180deg, rgb(0, 202, 255) 0%, rgb(0, 154, 255) 100%)' }}
                                 >
                                     <Box sx={{ color: 'white' }}>Sign In</Box>
                                 </Button>
                                 <Grid container>
                                     <Grid item xs>
-                                        <Link href="#" variant="body2" >
-                                            <Box sx={{ textAlign: 'center', paddingTop: '4%', fontSize: '16px', color: ' rgb(0, 154, 255)' }}>Forgot password?</Box>
+                                        <Link to="#" >
+                                            <Box sx={{ textAlign: 'center', fontSize: '16px', color: ' rgb(0, 154, 255)' }}><Link to='/resetyourpassword' className='links'>Forgot password?</Link></Box>
                                         </Link>
                                     </Grid>
                                     <Grid item>
                                     </Grid>
                                 </Grid>
-                                <Box sx={{ textAlign: 'center', fontSize: '16px', paddingTop: '4%' }}>OR</Box>
+                                <Box sx={{ textAlign: 'center', fontSize: '16px', paddingTop: '2%' , color : 'rgba(10, 32, 46, 0.7)' }}>OR</Box>
 
                                 <Button
                                     type="submit"
                                     fullWidth
-                                    sx={{ mt: 3, mb: 2, backgroundColor: 'white', border: '2px solid  rgba(10, 32, 46, 0.4)' }}
+                                    sx={{ mt: 1, mb: 1, backgroundColor: 'white', border: '2px solid  rgba(10, 32, 46, 0.4)' }}
                                 >
                                     <Box sx={{ color: 'gray', fontWeight: 'bold' }}>SIGN IN WITH GOOGLE</Box>
                                 </Button>
@@ -101,7 +106,7 @@ const SignIn = () => {
                                 <Button
                                     type="submit"
                                     fullWidth
-                                    sx={{ mt: 2, mb: 2, backgroundColor: 'white', border: '2px solid  rgba(10, 32, 46, 0.4)' }}
+                                    sx={{ mt: 1, mb: 1, backgroundColor: 'white', border: '2px solid  rgba(10, 32, 46, 0.4)' }}
                                 >
                                     <Box sx={{ color: 'gray', fontWeight: 'bold' }}>SIGN IN WITH APPLE</Box>
                                 </Button>
@@ -109,15 +114,27 @@ const SignIn = () => {
                                 <Button
                                     type="submit"
                                     fullWidth
-                                    sx={{ mt: 2, mb: 2, backgroundColor: 'white', border: '2px solid  rgba(10, 32, 46, 0.4)' }}
+                                    sx={{ mt: 1, mb: 1, backgroundColor: 'white', border: '2px solid  rgba(10, 32, 46, 0.4)' }}
                                 >
                                     <Box sx={{ color: 'gray', fontWeight: 'bold' }}>SIGN IN WITH FACEBOOK</Box>
                                 </Button>
 
-                                <Link href="#" variant="body2">
-                                    <Box sx={{ color: 'black', fontSize: '16px', textAlign: 'center', pt: 4, textDecoration: 'none' }}>{"Don't have an account? Sign Up here"}</Box>
+                                <Link to="/signup" className='links'>
+                                    <Box sx={{ width: '100%'  ,}}>
+                                        <Grid container spacing={2} sx = {{ justifyContent : 'center'}}>
+                                            <Grid item xs={12} sm={6}>
+                                                <Typography  textAlign="center" sx = {{pl : 3.5 , color : 'black',textDecoration : 'none'}}>
+                                                    Don't have an account?
+                                                </Typography>
+                                            </Grid>
+                                            <Grid item xs={12} sm={4}>
+                                                <Typography variant="body1" textAlign="center" sx={{ color: 'rgb(0, 154, 255)', textDecoration: 'none' ,pr : 4 }}>
+                                                    Sign Up here
+                                                </Typography>
+                                            </Grid>
+                                        </Grid>
+                                    </Box>                            
                                 </Link>
-
                             </Box>
                         </Box>
                     </Grid>

@@ -17,12 +17,12 @@ interface ArtistsPageProps {
 }
 
 const artists = [
-    { name: 'Royal Big Ben Orchestra', imgSrc: artist1 },
-    { name: 'Theo Parker', imgSrc: artist2 },
-    { name: 'Dahlia Cole', imgSrc: artist3 },
-    { name: 'Urban Jazz Syndicate', imgSrc: artist4 },
-    { name: 'Finnley Calloway', imgSrc: artist5 },
-    { name: 'Celeste Holiday', imgSrc: artist6 },
+    { name: 'Royal Big Ben Orchestra', imgSrc: artist1 ,link:'/Artists/profile'},
+    { name: 'Theo Parker', imgSrc: artist2 ,link:'/Artists/profile'},
+    { name: 'Dahlia Cole', imgSrc: artist3 ,link:'/Artists/profile'},
+    { name: 'Urban Jazz Syndicate', imgSrc: artist4 ,link:'/Artists/profile'},
+    { name: 'Finnley Calloway', imgSrc: artist5 ,link:'/Artists/profile'},
+    { name: 'Celeste Holiday', imgSrc: artist6 ,link:'/Artists/profile'},
 ];
 
 const ArtistsPage: React.FC = () => {
@@ -38,7 +38,7 @@ const ArtistsPage: React.FC = () => {
                     <Grid container spacing={2}>
                         {artists.map((artist, index) => (
                             <Grid item xs={12} sm={6} md={3} key={index}>
-                                <Artists name={artist.name} imgSrc={artist.imgSrc} />
+                                <Artists name={artist.name} imgSrc={artist.imgSrc} link={artist.link}/>
                             </Grid>
                         ))}
                     </Grid>
