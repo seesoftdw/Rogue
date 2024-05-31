@@ -23,12 +23,12 @@ const ArtistsPage: React.FC = () => {
     return (
         <MainWrapper>
             <Box > 
-                <Box sx={{ mb: 2 }}>
+                <Box sx={{ mb: 2 ,flexGrow:0}}>
                     <CustomBreadcrumbs />
                 </Box>
 
                 <section>
-                    <Typography sx={{ fontSize: '36px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1 , color: 'Black' }} variant="h4" gutterBottom> {'PlaylistsPage'}</Typography>
+                    <Typography sx={{ fontSize: '36px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1 , color: 'Black' }} variant="h4" gutterBottom> {'Playlists'}</Typography>
                     <Grid container spacing={2}>
                         {playlists.map((playlist, index) => (
                             <Grid item xs={12} sm={6} md={3} key={index}>

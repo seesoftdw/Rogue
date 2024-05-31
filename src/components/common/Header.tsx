@@ -114,9 +114,11 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', height: '100%' }}>
             <ImageList sx={{ width: '65px', height: '65px', mt: 6 }} rowHeight={1}>
               {itemData.map((item) => (
-                <ImageListItem key={item.img}>
+                <Link to='/'>
+                  <ImageListItem key={item.img}>
                   <img src={item.img} alt={item.title} />
                 </ImageListItem>
+                </Link>
               ))}
             </ImageList>
           </Box>
@@ -208,9 +210,9 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
               </Box>
             </Box>
           ) : (
-            <Box>
+            <Box >
               <Link to="/signin">
-                <Button variant="contained" sx={{ color: 'black', background: 'white', fontSize: '11px', mx: 1 }}>
+                <Button variant="contained" sx={{ color: 'black', background: 'white', fontSize: '10px', mx: 1 }}>
                   Sign In
                 </Button>
               </Link>

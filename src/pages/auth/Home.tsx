@@ -1,6 +1,6 @@
 // MusicDashboard.tsx
 import { Link } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 import Artist from '../../components/auth/Artists';
 import Release from '../../components/auth/Release';
@@ -17,14 +17,13 @@ import Playlist1 from '../../assets/images/playlist1.png'
 import Playlist2 from '../../assets/images/playlist2.png'
 import Playlist3 from '../../assets/images/playlist3.png'
 import { MdKeyboardArrowRight } from "react-icons/md";
-import { useAppDispatch } from '../../store';
-import { addUser, getUser } from '../../services/userService';
+import { link } from 'fs';
 
 const artists = [
-  { name: 'Royal Big Ben Orchestra', imgSrc: artist1 },
-  { name: 'Theo Parker', imgSrc: artist2 },
-  { name: 'Dahlia Cole', imgSrc: artist3 },
-  { name: 'Urban Jazz Syndicate', imgSrc: artist4 },
+  { name: 'Royal Big Ben Orchestra', imgSrc: artist1 , link:'/Artists/profile'},
+  { name: 'Theo Parker', imgSrc: artist2 , link:'/Artists/profile'},
+  { name: 'Dahlia Cole', imgSrc: artist3 , link:'/Artists/profile'},
+  { name: 'Urban Jazz Syndicate', imgSrc: artist4 , link:'/Artists/profile'},
 ];
 
 const releases = [
@@ -41,29 +40,6 @@ const playlists = [
 ];
 
 const Home: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const data: {
-      email: string;
-      password: string;
-  } = {
-      email: '',
-      password: ''
-  };
-  useEffect(() => {
-    dispatch(getUser());
-
-    
-    const action = addUser(data);
-
-    dispatch(action)
-      .unwrap()
-      .then((response) => {
-        console.log('response', response)
-      })
-      .catch((error) => {
-      });
-  }, [dispatch]);
-
   return (
     <MainWrapper>
       <Box sx={{ padding: 0 }}>
@@ -72,7 +48,7 @@ const Home: React.FC = () => {
           <Grid container spacing={2} >
             {artists.map((artist, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
-                <Artist name={artist.name} imgSrc={artist.imgSrc} />
+                <Artist name={artist.name} imgSrc={artist.imgSrc} link={artist.link}/>
               </Grid>
             ))}
           </Grid>

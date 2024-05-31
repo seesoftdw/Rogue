@@ -5,6 +5,8 @@ import track2 from '../../../assets/images/coverart-track-2.jpg'
 import track3 from '../../../assets/images/coverart-track-3.jpg'
 import track4 from '../../../assets/images/coverart-track-4.jpg'
 import track5 from '../../../assets/images/coverart-track-5.jpg'
+import { MdKeyboardArrowRight } from 'react-icons/md';
+
 
 const tracks = [
   { title: 'Mellow Silhouette Rhapsody', image: track1 },
@@ -17,12 +19,12 @@ const tracks = [
 const Tracks: React.FC = () => {
   return (
     <Box my={4}>
-      <Typography variant="h5" component="h2" gutterBottom>
-        Tracks
-      </Typography>
+     <Typography sx={{ fontSize: '18px' }} variant="h5" component="h2" gutterBottom>
+    Tracks <MdKeyboardArrowRight style={{ height: '11.66px', width: '15.28px' }} /> {/* Rendering the MdKeyboardArrowRight icon */}
+</Typography>
       <Grid container spacing={4}>
         {tracks.map((track) => (
-          <Grid item xs={12} sm={6} md={4} key={track.title}>
+          <Grid sx = {{fontSize : '16px' , fontWeight : 600}} item xs={12} sm={6} md={4} key={track.title}>
             <Card sx={{ display: 'flex',boxShadow:'none' }}>
               <Box>
                 <CardMedia

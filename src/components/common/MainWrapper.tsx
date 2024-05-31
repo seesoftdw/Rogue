@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Sidebar from './SideBar';
 import Banner from '../un_auth/Banner';
+import { truncate } from 'fs';
 
 const lightTheme = createTheme({
 
@@ -16,7 +17,7 @@ const MainWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   const handleLogin = () => {
     // login logic
-  };  
+  };
 
   const toggleLogin = () => {
     setIsLoggedIn((prev) => !prev);
@@ -42,16 +43,15 @@ const MainWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <Box sx={{ display: 'flex', flexDirection: isLoggedIn ? 'row' : 'column', height: '100vh' }}>
         <CssBaseline />
         <Header open={open} toggleDrawer={toggleDrawer} isLoggedIn={isLoggedIn} />
-        <Box sx={{ display: 'flex'}}>
+        <Box sx={{ display: 'flex',background:'rgba(10, 32, 46, 0.02)'}}>
           {isLoggedIn ? <Sidebar open={false} /> : shouldShowBanner && !shouldHideBanner && <Banner />}
         </Box>
         <Box
           component="main"
           sx={{
-            flexGrow: 1,
             height: '100vh',
             overflow: 'visible',
-            mt: 6,
+            mt: 3,
           }}
         >
           <Container maxWidth="lg" sx={{ mt: 5, mb: 4 }}>

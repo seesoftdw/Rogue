@@ -72,7 +72,7 @@ const Resetpassword = () => {
                                 </Button>
                                 <Grid container>
                                     <Grid item xs>
-                                        <Link to ="/signin" >
+                                        <Link to ="/signin"  className='links'>
                                             <Box sx={{ textAlign: 'center', paddingTop: '4%', fontSize: '16px' }}>Return to log in</Box>
                                         </Link>
                                     </Grid>

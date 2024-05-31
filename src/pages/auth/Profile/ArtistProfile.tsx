@@ -1,4 +1,4 @@
-import { Box, Container, Divider, List, ListItem, ListItemIcon, ListItemText, Tab, Tabs, Typography, Grid } from '@mui/material';
+import { Box, Container, Divider, List, ListItem, ListItemIcon, ListItemText, Tab, Tabs, Typography, Grid, createTheme, ThemeProvider } from '@mui/material';
 import React from 'react'
 import Header from './ArtistProfileHeader';
 import Tracks from './Tracks';
@@ -19,7 +19,8 @@ import Release1 from '../../../assets/images/coverart-track-1.jpg'
 import Release2 from '../../../assets/images/coverart-track-2.jpg'
 import Release3 from '../../../assets/images/coverart-track-3.jpg'
 import Release4 from '../../../assets/images/coverart-track-4.jpg'
-import { MdKeyboardArrowRight } from 'react-icons/md';
+import Release5 from '../../../assets/images/coverart-track-5.jpg'
+import { Facebook } from '@mui/icons-material';
 
 
 
@@ -58,123 +59,174 @@ const ArtistProfile = (props: Props) => {
         { title: 'Rhythms of the Underground', artist: 'Royal Big Ben Orchestra', imgSrc: Release2 },
         { title: 'Sultry City Nights', artist: 'Royal Big Ben Orchestra', imgSrc: Release3 },
         { title: 'Silent Night\'s Serenade for the Lonely', artist: 'Royal Big Ben Orchestra', imgSrc: Release4 },
+        { title: 'Silent Night\'s Serenade for the Lonely', artist: 'Royal Big Ben Orchestra', imgSrc: Release5 },
     ];
 
+    const SideSection = () => {
+        return (
+            <Box>
+                <Box>
+                    <Typography my={3} sx={{ fontSize: '14px', color: 'rgb(10, 32, 46)', lineHight: '22px' }}>
+                        The “Royal Big Ben Orchestra,” hailing from the heart of London, United Kingdom, embodis the rich musical heritage and vibrant culture of its historic city. Formed under the shadow of the  iconic Big Ben, this ensemble of  seasoned jazz musicians brings together a unique blend of classic jazz melodies, innovative arrangements, and a distinctly British flair.
+                    </Typography>
+                </Box>
+                <Divider />
+                <Box>
+                    <List>
+                        <Link to='#'>
+                            <ListItem sx={{ px: 0 }}>
+                                <ListItemIcon>
+                                    <InstagramIcon />
+                                </ListItemIcon>
+                                <ListItemText sx={{ color: 'rgb(0, 154, 255)' }} primary="Instagram" />
+                            </ListItem>
+                        </Link>
+                        <Link to='#'>
+                            <ListItem sx={{ px: 0 }}>
+                                <ListItemIcon sx={{ fontSize: '1.5rem' }}>
+                                    <FaFacebook />
+                                </ListItemIcon>
+                                <ListItemText sx={{ color: 'rgb(0, 154, 255)' }} primary="Facebook" />
+                            </ListItem>
+                        </Link>
+                        <Link to='#'>
+                            <ListItem sx={{ px: 0 }}>
+                                <ListItemIcon>
+                                    <YouTubeIcon />
+                                </ListItemIcon>
+                                <ListItemText sx={{ color: 'rgb(0, 154, 255)' }} primary="Youtube" />
+                            </ListItem>
+                        </Link>
+                        <Link to='#'>
+                            <ListItem sx={{ px: 0 }}>
+                                <ListItemIcon>
+                                    <LanguageIcon />
+                                </ListItemIcon>
+                                <ListItemText sx={{ color: 'rgb(0, 154, 255)', fontSize: '16px' }} primary="Website" />
+                            </ListItem>
+                        </Link>
+                    </List>
+                </Box>
+                <Divider />
+                <Box>
+                    <ListItem sx={{ py: 3, px: 0 }}>
+                        <ListItemIcon>
+                            <BritSchoolIcon src={britSchoolimg} alt='brit-school-artist' />
+                        </ListItemIcon>
+                        <Typography sx={{ fontSize: '16px', fontWeight: 600, color: 'rgba(10, 32, 46, 0.9)' }} >The Brit School</Typography>
+                        {/* <ListItemText  sx ={{ fontSize : '16px' , fontWeight  : 600  , color :'rgba(10, 32, 46, 0.9)'}} primary="The Brit School" /> */}
+                    </ListItem>
+                </Box>
+            </Box>
+        )
+    }
+
+    const theme = createTheme({
+        components: {
+            MuiTab: {
+                styleOverrides: {
+                    root: {
+                        borderBottom: 'none',
+                    },
+                },
+            },
+        },
+    });
+
+    const tabStyle = {
+        'margin': '5% 0 0 1%',
+    }
+
+    const activeTabStyle = {
+        'background': 'white',
+        'border-bottom': 'none',
+        'margin': '5% 0 0 1%',
+        'border-top-left-radius': '7px',
+        'border-top-right-radius': '7px',
+        'text-decoration': 'none',
+        'color': 'black'
+    }
+
+    const profileIconStyle = {
+        'height': 27,
+        'width': 27,
+        'marginLeft':'5px',
+        'marginRight':'5px',
+    }
+
     return (
-        <MainWrapper>
-            <Box >
-                <Box>
-                    <CustomBreadcrumbs />
-                </Box>
-                <Box>
-                    <Header />
-                </Box>
-                <Tabs value={tabValue} onChange={handleChange}>
-                    <Tab label="All" />
-                    <Tab label="Tracks" />
-                    <Tab label="Playlists" />
-                </Tabs>
-                {tabValue === 0 &&
+        <Box>
+            <MainWrapper>
+                <Box width="100%" className='bg-grad-gray'>
                     <Box>
-                        <Box display={'flex'}>
-                            <Box flex={4}>
-                                <Box>
-                                    <Tracks />
-                                </Box>
+                        <CustomBreadcrumbs />
+                    </Box>
 
-                                <ArtistsPlaylist />
-
-                            </Box>
-                            <Box flex={1} py={5}>
-                                <Box>
-                                    <Typography my={3} sx={{ fontSize: '14px', color: 'rgb(10, 32, 46)', lineHight: '22px' }}>
-                                        The “Royal Big Ben Orchestra,” hailing from the heart of London, United Kingdom, embodis the rich musical heritage and vibrant culture of its historic city. Formed under the shadow of the  iconic Big Ben, this ensemble of  seasoned jazz musicians brings together a unique blend of classic jazz melodies, innovative arrangements, and a distinctly British flair.
-                                    </Typography>
-                                </Box>
-                                <Divider />
-                                <Box>
-                                    <List>
-                                        <Link to='#'>
-                                            <ListItem sx={{ px: 0 }}>
-                                                <ListItemIcon>
-                                                    <InstagramIcon />
-                                                </ListItemIcon>
-                                                <ListItemText sx={{ color: 'rgb(0, 154, 255)' }} primary="Instagram" />
-                                            </ListItem>
-                                        </Link>
-                                        <Link to='#'>
-                                            <ListItem sx={{ px: 0 }}>
-                                                <ListItemIcon>
-                                                    <FaFacebook />
-                                                </ListItemIcon>
-                                                <ListItemText sx={{ color: 'rgb(0, 154, 255)' }} primary="Facebook" />
-                                            </ListItem>
-                                        </Link>
-                                        <Link to='#'>
-                                            <ListItem sx={{ px: 0 }}>
-                                                <ListItemIcon>
-                                                    <YouTubeIcon />
-                                                </ListItemIcon>
-                                                <ListItemText sx={{ color: 'rgb(0, 154, 255)' }} primary="Youtube" />
-                                            </ListItem>
-                                        </Link>
-                                        <Link to='#'>
-                                            <ListItem sx={{ px: 0 }}>
-                                                <ListItemIcon>
-                                                    <LanguageIcon />
-                                                </ListItemIcon>
-                                                <ListItemText sx={{ color: 'rgb(0, 154, 255)', fontSize: '16px' }} primary="Website" />
-                                            </ListItem>
-                                        </Link>
-                                    </List>
-                                </Box>
-                                <Divider />
-                                <Box>
-                                    <ListItem sx={{ py: 3, px: 0 }}>
-                                        <ListItemIcon>
-                                            <BritSchoolIcon src={britSchoolimg} alt='brit-school-artist' />
-                                        </ListItemIcon>
-                                        <Typography sx={{ fontSize: '16px', fontWeight: 600, color: 'rgba(10, 32, 46, 0.9)' }} >The Brit School</Typography>
-                                        {/* <ListItemText  sx ={{ fontSize : '16px' , fontWeight  : 600  , color :'rgba(10, 32, 46, 0.9)'}} primary="The Brit School" /> */}
-
-                                    </ListItem>
-                                </Box>
-                            </Box>
+                    <Header />
+                    <Box display={'flex'} justifyContent={'space-between'}>
+                        <Box>
+                            <ThemeProvider theme={theme}>
+                                <Tabs value={tabValue} onChange={handleChange} >
+                                    <Tab style={tabValue === 0 ? activeTabStyle : tabStyle} label="All" />
+                                    <Tab style={tabValue === 1 ? activeTabStyle : tabStyle} label="Tracks" />
+                                    <Tab style={tabValue === 2 ? activeTabStyle : tabStyle} label="Playlists" />
+                                </Tabs>
+                            </ThemeProvider>
+                        </Box>
+                        <Box p={1} color={'grey'} mt={'10px'}>
+                            <InstagramIcon style={profileIconStyle}  /> <Facebook  style={profileIconStyle} /> <YouTubeIcon  style={profileIconStyle} /> <LanguageIcon style={profileIconStyle} />
                         </Box>
                     </Box>
-                }
 
-                {tabValue === 1 && <section>
-                    <Box py={4}>
-                        <Grid container spacing={2} >
-                            {releases.map((release, index) => (
-                                <Grid item xs={12} sm={6} md={3} key={index}>
-                                    <Release title={release.title} artist={release.artist} imgSrc={release.imgSrc} />
-                                </Grid>
-                            ))}
-                        </Grid>
+                </Box>
+                {tabValue === 0 && (
+                    <Box display={'flex'} py={0}>
+                        <Box flex={4}>
+                            <Tracks />
+                            <Divider sx={{ width: '92%', marginBottom: '1%' }} />
+                            <ArtistsPlaylist />
+                        </Box>
+                        <Box flex={1} py={5}>
+                            <SideSection />
+                        </Box>
                     </Box>
-                </section>}
-                {tabValue === 2 && < ArtistsPlaylist />}
-                {/* <Footer /> */}
-
-                {/* <Box padding={0} margin={0}>
-                    <Typography sx={{ fontSize: '36px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1, color: 'Black' }} variant="h4" gutterBottom> {'Playlists'}</Typography>
-                    <Grid container alignContent={'flex-start'} spacing={2} >
-                        {playlists.map((playlist, index) => (
-                            <Grid item xs={12} sm={3} key={index} py={0} px={0}>
-                                <Release title={playlist.title} artist={playlist.artist} imgSrc={playlist.imgSrc} />
-                            </Grid>
-                        ))}
-                    </Grid>
-                </Box> */}
-
-            </Box>
-        </MainWrapper>
+                )}
+                {tabValue === 1 && (
+                    <Box display={'flex'}>
+                        <Box flex={4}>
+                            <section>
+                                <Link to='Artists' style={{ textDecoration: 'none' }}>
+                                    <Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1, color: 'black' }} variant="h4" gutterBottom></Typography>
+                                </Link>
+                                <Grid container spacing={2}>
+                                    {releases.map((release, index) => (
+                                        <Grid item xs={12} sm={6} md={4} key={index}>
+                                            <Release title={release.title} imgSrc={release.imgSrc} artist={release.artist} />
+                                        </Grid>
+                                    ))}
+                                </Grid>
+                            </section>
+                        </Box>
+                        <Box flex={1}>
+                            <SideSection />
+                        </Box>
+                    </Box>
+                )}
+                {tabValue === 2 && (
+                    <Box display={'flex'}>
+                        <Box flex={4}>
+                            <ArtistsPlaylist />
+                        </Box>
+                        <Box flex={1}>
+                            <SideSection />
+                        </Box>
+                    </Box>
+                )}
+            </MainWrapper>
+        </Box>
     )
 }
 
 export default ArtistProfile
-
 
 
