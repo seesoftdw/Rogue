@@ -1,19 +1,24 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { addUser, getUser } from '../services/userService';
+import { addUser, getUser, loginUser, updateUser, deleteUser, getUserById } from '../services/userService';
+import { createUser } from '../models/User';
 
 interface UserState {
     list: {
         isLoading: boolean;
         status: string;
         values: any[];
+        error: string | null;
     };
     save: {
         isSaving: boolean;
         isDeleting: boolean;
+        error: null;
     };
-    authState :{
-        isLoggedIn : boolean;
-    }
+    authState: {
+        isLoggedIn: boolean;
+        user?: any;
+        loginError?: string;
+    };
 }
 
 const initialState: UserState = {
@@ -21,14 +26,16 @@ const initialState: UserState = {
         isLoading: false,
         status: '',
         values: [],
+        error: null,
     },
     save: {
         isSaving: false,
         isDeleting: false,
+        error: null,
     },
-    authState:{
-        isLoggedIn:false,
-    }
+    authState: {
+        isLoggedIn: false,
+    },
 };
 
 export const userSlice = createSlice({
@@ -36,15 +43,22 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         clearSuccessMessage: (state) => {
-            // TODO: Update state to clear success message
             state.list.status = '';
         },
+        logout: (state) => {
+            state.authState.isLoggedIn = false;
+            state.authState.user = undefined;
+        },
+        toggleLoggedIn: (state) => {
+            state.authState.isLoggedIn = !state.authState.isLoggedIn;
+        }
+
     },
     extraReducers: (builder) => {
         builder
             .addCase(getUser.pending, (state) => {
                 state.list.status = 'pending';
-                state.list.isLoading = true;
+                state.list.isLoading = false;
             })
             .addCase(getUser.fulfilled, (state, action: PayloadAction<any[]>) => {
                 state.list.status = 'success';
@@ -54,18 +68,72 @@ export const userSlice = createSlice({
             .addCase(getUser.rejected, (state) => {
                 state.list.status = 'failed';
                 state.list.isLoading = false;
+                state.list.error = "failed to fetch user";
+            })
+            .addCase(getUserById.pending, (state) => {
+                state.list.status = 'pending';
+                state.list.isLoading = false;
+            })
+            .addCase(getUserById.fulfilled, (state, action: PayloadAction<any>) => {
+                state.list.status = 'success';
+                state.list.values = action.payload;
+                state.list.isLoading = false;
+            })
+            .addCase(getUserById.rejected, (state) => {
+                state.list.status = 'failed';
+                state.list.isLoading = false;
+                state.list.error = "failed to fetch user";
             })
             .addCase(addUser.pending, (state) => {
                 state.save.isSaving = true;
             })
             .addCase(addUser.fulfilled, (state) => {
-                state.save.isSaving = false;
+                state.save.isSaving = true;
+                state.authState.isLoggedIn = true;
             })
             .addCase(addUser.rejected, (state) => {
                 state.save.isSaving = false;
+                state.save.error = null;
+            })
+            .addCase(loginUser.pending, (state) => {
+                state.authState.loginError = undefined;
+            })
+            .addCase(loginUser.fulfilled, (state, action: PayloadAction<any>) => {
+                state.authState.isLoggedIn = true;
+                state.authState.user = action.payload;
+            })
+            .addCase(loginUser.rejected, (state, action) => {
+                state.authState.loginError = "Invalid email or password";
+            })
+
+            .addCase(updateUser.pending, (state) => {
+                state.list.isLoading = true;
+            })
+            .addCase(updateUser.fulfilled, (state, action: PayloadAction<createUser>) => {
+                state.save.isSaving = false;
+                const index = state.list.values.findIndex(user => user.id === action.payload.id);
+                if (index !== -1) {
+                    state.list.values[index] = action.payload;
+                }
+            })
+            .addCase(updateUser.rejected, (state, action: PayloadAction<any>) => {
+                state.list.isLoading = false;
+                state.save.error = action.payload;
+            })
+            .addCase(deleteUser.pending, (state) => {
+                state.save.isDeleting = true;
+                state.save.error = null;
+            })
+            .addCase(deleteUser.fulfilled, (state, action: PayloadAction<{ id: number }>) => {
+                state.save.isDeleting = false;
+                state.list.values = state.list.values.filter(user => user.id !== action.payload.id);
+            })
+            .addCase(deleteUser.rejected, (state, action: PayloadAction<any>) => {
+                state.save.isDeleting = false;
+                state.save.error = action.payload || 'Failed to delete user';
             });
     },
 });
 
-export const { clearSuccessMessage } = userSlice.actions;
+export const { clearSuccessMessage, logout, toggleLoggedIn } = userSlice.actions;
 export default userSlice.reducer;

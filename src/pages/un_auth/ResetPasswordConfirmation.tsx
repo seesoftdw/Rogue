@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Paper, Box, Grid, Typography, createTheme, ThemeProvider } from '@mui/material';
+import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Paper, Box, Grid, Typography, createTheme, ThemeProvider } from '@mui/material';
 import MainWrapper from '../../components/common/MainWrapper';
+import { Link } from 'react-router-dom';
 const theme = createTheme();
 
 const Resetpasswordd = () => {
@@ -38,14 +39,14 @@ const Resetpasswordd = () => {
                             }}
                         >
                             <Typography component="h1" variant="h5">
-                                <Box sx={{ fontSize: '36px', fontWeight: 'bold' }}>Reset your password</Box>
+                                <Box sx={{ fontSize: '36px', fontWeight: 'bold' , pt : 8 }}>Reset your password</Box>
                             </Typography>
                             <Typography sx={{ fontSize: '16px', letterSpacing: '0.5px', pt: 3 }}>Password reset instructions sent.</Typography>
                             <Typography sx={{ fontSize: '16px', letterSpacing: '0.5px' }}>Please check your email.</Typography>
                             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                                 <Grid container>
                                     <Grid item xs>
-                                        <Link href="#" variant="body2"  className='links'>
+                                        <Link to = '/signin'  className='links'>
                                             <Box sx={{ textAlign: 'center', paddingTop: '15%', fontSize: '16px',}}>Return to log in</Box>
                                         </Link>
                                     </Grid>

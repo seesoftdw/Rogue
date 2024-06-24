@@ -109,13 +109,15 @@ const ArtistProfile = (props: Props) => {
                 </Box>
                 <Divider />
                 <Box>
-                    <ListItem sx={{ py: 3, px: 0 }}>
-                        <ListItemIcon>
-                            <BritSchoolIcon src={britSchoolimg} alt='brit-school-artist' />
-                        </ListItemIcon>
-                        <Typography sx={{ fontSize: '16px', fontWeight: 600, color: 'rgba(10, 32, 46, 0.9)' }} >The Brit School</Typography>
-                        {/* <ListItemText  sx ={{ fontSize : '16px' , fontWeight  : 600  , color :'rgba(10, 32, 46, 0.9)'}} primary="The Brit School" /> */}
-                    </ListItem>
+
+                    <Link to = '/BritSchoolProfile'>
+                        <ListItem sx={{ py: 3, px: 0 }}>
+                            <ListItemIcon>
+                                <BritSchoolIcon src={britSchoolimg} alt='brit-school-artist' />
+                            </ListItemIcon>
+                            <Typography sx={{ fontSize: '16px', fontWeight: 600, color: 'rgba(10, 32, 46, 0.9)' }} >The Brit School</Typography>
+                        </ListItem>
+                    </Link>
                 </Box>
             </Box>
         )
@@ -127,6 +129,7 @@ const ArtistProfile = (props: Props) => {
                 styleOverrides: {
                     root: {
                         borderBottom: 'none',
+                        textDecorationLine: 'none'
                     },
                 },
             },
@@ -139,19 +142,19 @@ const ArtistProfile = (props: Props) => {
 
     const activeTabStyle = {
         'background': 'white',
-        'border-bottom': 'none',
+        'borderBottom': 'none',
         'margin': '5% 0 0 1%',
-        'border-top-left-radius': '7px',
-        'border-top-right-radius': '7px',
-        'text-decoration': 'none',
-        'color': 'black'
+        'borderTopLeftRadius': '7px',
+        'borderTopRightRadius': '7px',
+        'color': 'black',
+        'textDecorationLine': 'none'
     }
 
     const profileIconStyle = {
         'height': 27,
         'width': 27,
-        'marginLeft':'5px',
-        'marginRight':'5px',
+        'marginLeft': '5px',
+        'marginRight': '5px',
     }
 
     return (
@@ -166,15 +169,19 @@ const ArtistProfile = (props: Props) => {
                     <Box display={'flex'} justifyContent={'space-between'}>
                         <Box>
                             <ThemeProvider theme={theme}>
-                                <Tabs value={tabValue} onChange={handleChange} >
-                                    <Tab style={tabValue === 0 ? activeTabStyle : tabStyle} label="All" />
-                                    <Tab style={tabValue === 1 ? activeTabStyle : tabStyle} label="Tracks" />
-                                    <Tab style={tabValue === 2 ? activeTabStyle : tabStyle} label="Playlists" />
+                                <Tabs value={tabValue} onChange={handleChange} sx={{
+                                    '& .MuiTabs-indicator': {
+                                        display: 'none',
+                                    },
+                                }} >
+                                    <Tab className='artistsProfileTab' style={tabValue === 0 ? activeTabStyle : tabStyle} label="All" />
+                                    <Tab className='artistsProfileTab' style={tabValue === 1 ? activeTabStyle : tabStyle} label="Tracks" />
+                                    <Tab className='artistsProfileTab' style={tabValue === 2 ? activeTabStyle : tabStyle} label="Playlists" />
                                 </Tabs>
                             </ThemeProvider>
                         </Box>
                         <Box p={1} color={'grey'} mt={'10px'}>
-                            <InstagramIcon style={profileIconStyle}  /> <Facebook  style={profileIconStyle} /> <YouTubeIcon  style={profileIconStyle} /> <LanguageIcon style={profileIconStyle} />
+                            <InstagramIcon style={profileIconStyle} /> <Facebook style={profileIconStyle} /> <YouTubeIcon style={profileIconStyle} /> <LanguageIcon style={profileIconStyle} />
                         </Box>
                     </Box>
 

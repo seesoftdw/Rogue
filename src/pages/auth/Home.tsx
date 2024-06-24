@@ -17,13 +17,13 @@ import Playlist1 from '../../assets/images/playlist1.png'
 import Playlist2 from '../../assets/images/playlist2.png'
 import Playlist3 from '../../assets/images/playlist3.png'
 import { MdKeyboardArrowRight } from "react-icons/md";
-import { link } from 'fs';
+import Playlists from '../../components/auth/Playlists';
 
 const artists = [
-  { name: 'Royal Big Ben Orchestra', imgSrc: artist1 , link:'/Artists/profile'},
-  { name: 'Theo Parker', imgSrc: artist2 , link:'/Artists/profile'},
-  { name: 'Dahlia Cole', imgSrc: artist3 , link:'/Artists/profile'},
-  { name: 'Urban Jazz Syndicate', imgSrc: artist4 , link:'/Artists/profile'},
+  { name: 'Royal Big Ben Orchestra', imgSrc: artist1, link: '/Artists/Profile' },
+  { name: 'Theo Parker', imgSrc: artist2, link: '/Artists/Profile' },
+  { name: 'Dahlia Cole', imgSrc: artist3, link: '/Artists/Profile' },
+  { name: 'Urban Jazz Syndicate', imgSrc: artist4, link: '/Artists/Profile' },
 ];
 
 const releases = [
@@ -44,18 +44,18 @@ const Home: React.FC = () => {
     <MainWrapper>
       <Box sx={{ padding: 0 }}>
         <section>
-          <Link to='Artists'  style={{ textDecoration: 'none' }}><Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1 , color : 'black'  }} variant="h4" gutterBottom>{'Artists'} <MdKeyboardArrowRight  style={{ height: '11.66px' , width: '15.28px;' }}/></Typography></Link>
+          <Link to='Artists' style={{ textDecoration: 'none' }}><Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1, color: 'black' }} variant="h4" gutterBottom>{'Artists'} <MdKeyboardArrowRight style={{ height: '11.66px', width: '15.28px' }} /></Typography></Link>
           <Grid container spacing={2} >
             {artists.map((artist, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
-                <Artist name={artist.name} imgSrc={artist.imgSrc} link={artist.link}/>
+                <Artist name={artist.name} imgSrc={artist.imgSrc} link={artist.link} />
               </Grid>
             ))}
           </Grid>
         </section>
         <hr></hr>
         <section style={{ marginTop: '40px' }}>
-          <Link to = 'Releases' style={{ textDecoration: 'none' }} ><Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1 ,  color : 'black'  }} variant="h4" gutterBottom>{'Releases '} <MdKeyboardArrowRight style={{ height: '11.66px' , width: '15.28px;' }} /></Typography></Link>
+          <Link to='Releases' style={{ textDecoration: 'none' }} ><Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1, color: 'black' }} variant="h4" gutterBottom>{'Releases '} <MdKeyboardArrowRight style={{ height: '11.66px', width: '15.28px' }} /></Typography></Link>
           <Grid container spacing={2}>
             {releases.map((release, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
@@ -66,14 +66,16 @@ const Home: React.FC = () => {
         </section>
         <hr />
         <section style={{ marginTop: '40px' }}>
-          <Link to='Playlists' style={{ textDecoration: 'none' }} ><Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1 , color : 'black'  }} variant="h4" gutterBottom>{'Playlists'}<MdKeyboardArrowRight  style={{ height: '11.66px' , width: '15.28px;' }} /></Typography></Link>
-          <Grid container spacing={2}>
-            {playlists.map((playlist, index) => (
-              <Grid item xs={12} sm={6} md={3} key={index}>
-                <Release title={playlist.title} artist={playlist.artist} imgSrc={playlist.imgSrc} />
-              </Grid>
-            ))}
-          </Grid>
+          <Link to='Playlists' style={{ textDecoration: 'none' }} ><Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1, color: 'black' }} variant="h4" gutterBottom>{'Playlists'}<MdKeyboardArrowRight style={{ height: '11.66px', width: '15.28px' }} /></Typography></Link>
+          <Link to='/playlistprofilefirst'>
+            <Grid container spacing={2} >
+              {playlists.map((playlist, index) => (
+                <Grid item xs={12} sm={6} md={3} key={index}>
+                  <Playlists title={playlist.title} artist={playlist.artist} imgSrc={playlist.imgSrc} />
+                </Grid>
+              ))}
+            </Grid>
+          </Link>
         </section>
       </Box>
     </MainWrapper>

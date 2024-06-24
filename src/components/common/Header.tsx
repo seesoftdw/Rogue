@@ -13,13 +13,14 @@ import { Menu as MenuIcon } from '@mui/icons-material';
 import Tooltip from '@mui/material/Tooltip';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import Typography from '@mui/material/Typography';
-import { Avatar, Button } from '@mui/material';
-import Profile from '../../assets/images/avatar-artist.jpg'
+import { Avatar, Button, Typography } from '@mui/material';
+import Profile from '../../assets/images/attist.png'
+import Artist1 from '../../assets/images/artist-1.jpg'
+import BritSchool from '../../assets/images/britSchool.png'
 import Divider from '@mui/material/Divider';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 
 
@@ -60,9 +61,10 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const settings = [' Manage Profile', 'Settings', 'Sign Out'];
+  const location = useLocation();
 
-
-
+  const changedProfilePicture = ['/artistprofilehome', '/artisttrack', '/uploadtrackprofile', '/uploadtrackicon', '/artistprofileplaylist', '/artistplaylistsecondpage', '/artistplaylisticon', '/earnings'];
+  const britSchoolRoutes = ['/britschoolprofile', '/britschoolheader', '/britschoolartist', '/britprofilesecond' , '/BritSchoolProfile' , '/thebritschoolinnerprofile'];
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   // const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -86,7 +88,10 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
+  const linkDecorationStyle = {
+    textDecoration: 'none',
+    color: 'rgba(0,0,0,0.87)',
+  };
   return (
     <AppBar className="mainHeader" sx={{
       boxShadow: 'none',
@@ -114,10 +119,10 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', height: '100%' }}>
             <ImageList sx={{ width: '65px', height: '65px', mt: 6 }} rowHeight={1}>
               {itemData.map((item) => (
-                <Link to='/'>
+                <Link to='/' key={item.title}>
                   <ImageListItem key={item.img}>
-                  <img src={item.img} alt={item.title} />
-                </ImageListItem>
+                    <img src={item.img} alt={item.title} />
+                  </ImageListItem>
                 </Link>
               ))}
             </ImageList>
@@ -133,9 +138,11 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
           {isLoggedIn ? (
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', ml: 'auto', gap: 2, height: '100%' }}>
               <Box sx={{ display: { xs: 'none', sm: 'flex' }, fontSize: '27px', color: '#707070', alignItems: 'center' }}>
-                <Box sx={{ ml: { sm: '50%' }, fontSize: { lg: '27px', md: '27px', sm: '21px' } }}>
-                  <IoCart />
-                </Box>
+                <Link to='/cartprofile'>
+                  <Box sx={{ ml: { sm: '50%' }, fontSize: { lg: '27px', md: '27px', sm: '21px' } }}>
+                    <IoCart style={{ color: 'gray' }} />
+                  </Box>
+                </Link>
               </Box>
               <Box sx={{ flexGrow: 0 }}>
                 <React.Fragment>
@@ -149,7 +156,10 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                       >
-                        <Avatar alt="Remy Sharp" src={Profile} />
+
+                        {britSchoolRoutes.includes(location.pathname) ? <Avatar alt="" src={BritSchool} /> : changedProfilePicture.includes(location.pathname) ? <Avatar alt="" src={Artist1} /> : <Avatar alt="Remy Sharp" src={Profile} />}
+                        
+
                       </IconButton>
                     </Tooltip>
                   </Box>
@@ -165,7 +175,7 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
                         overflow: 'visible',
                         filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
                         mt: 1.5,
-                        height: '271px', width: '280px',
+                        height: '300px', width: '280px',
                         '& .MuiAvatar-root': {
                           width: 32,
                           height: 32,
@@ -189,18 +199,41 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                   >
-                    <MenuItem onClick={handleClose}>
-                      <Avatar alt="Remy Sharp" src={Profile} /> Fred Smith
-                    </MenuItem>
+                    <Link to='#' style={linkDecorationStyle} >
+                      <MenuItem onClick={handleClose}>
+                        <Avatar alt="Remy Sharp" src={Profile} />
+                        <Typography sx={{ pl: 1 }}>Fred Smith</Typography>
+                      </MenuItem>
+                    </Link>
+
+                    <Link to='/artistprofilehome' style={linkDecorationStyle} >
+                      <MenuItem onClick={handleClose}>
+                        <Avatar alt="Remy Sharp" src={Artist1} />
+                        <Typography sx={{ pl: 1 }}>Royal Big Ben Orchestra</Typography>
+                      </MenuItem>
+                    </Link>
+
+                    <Link to='/britprofilesecond' style={linkDecorationStyle} >
+                      <MenuItem onClick={handleClose}>
+                        <Avatar alt="Remy Sharp" src={BritSchool} />
+                        <Typography sx={{ pl: 1 }}>Brit School</Typography>
+                      </MenuItem>
+                    </Link>
+
                     <Divider />
-                    <MenuItem onClick={handleClose}>
-                      <PersonAdd fontSize="small" />
-                      <p>Manage Profile</p>
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>
-                      <Settings fontSize="small" />
-                      Settings
-                    </MenuItem>
+
+                    <Link to='/manage-profiles' style={linkDecorationStyle}>
+                      <MenuItem onClick={handleClose}>
+                        <PersonAdd fontSize="small" />
+                        <p>Manage Profile</p>
+                      </MenuItem>
+                    </Link>
+                    <Link to='/accountsettings' style={linkDecorationStyle}>
+                      <MenuItem onClick={handleClose}>
+                        <Settings fontSize="small" />
+                        Settings
+                      </MenuItem>
+                    </Link>
                     <MenuItem onClick={handleClose}>
                       <Settings fontSize="small" />
                       <p>Sign Out</p>
@@ -212,12 +245,12 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
           ) : (
             <Box >
               <Link to="/signin">
-                <Button variant="contained" sx={{ color: 'black', background: 'white', fontSize: '10px', mx: 1 }}>
+                <Button variant="contained" sx={{ color: 'black', background: 'linear-gradient(-180deg, rgba(10, 32, 46, 0.05) 0%, rgba(10, 32, 46, 0.1) 100%)', boxShadow: 'none', fontWeight: 'bold', border: '1px solid black', fontSize: '10px', mx: 1 }}>
                   Sign In
                 </Button>
               </Link>
               <Link to="/signup">
-                <Button variant="contained" sx={{ fontSize: '11px', mx: 1 }}>
+                <Button variant="contained" sx={{ fontSize: '10px', fontWeight: 'bold', border: '1px solid black', mx: 1, boxShadow: 'none' }}>
                   Sign Up
                 </Button>
               </Link>

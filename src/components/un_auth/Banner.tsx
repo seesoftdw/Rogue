@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import bannerBg from '../../assets/images/banner.png'
+import bannerBg from '../../assets/images/bannerimage.jpg'
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
@@ -22,11 +22,11 @@ const Banner: React.FC = () => {
                 top: 0,
             }}
         >
-            <Typography variant="h5" mt={13} sx={{ fontWeight: 'bold', color: 'white', letterSpacing: 2 ,fontSize : '42px' }}>Sounds Of Success<br />
+            <Typography variant="h5" mt={13} sx={{ fontWeight: 'bold', color: 'white', letterSpacing: 2 ,fontSize : '40px' }}>Sounds Of Success<br />
                 Where Fans Fuel The Music</Typography>
-            <Box gap={8} mt={2}>
-                <Link to='/signin'><Button sx={{ color: 'black', background: 'white', mx: 2  , height :'40px' ,width : '212px'}} variant="contained">Sign In</Button></Link>
-                <Link to='/signup'><Button sx={{ mx: 2  , height :'40px' ,width : '212px' }} variant="contained">Sign Up</Button></Link>
+            <Box gap={8} mt={4}>
+                <Link to='/signin'><Button sx={{ background: 'rgb(255, 255, 255)', mx: 2  , height :'40px' ,width : '210px'  , borderRadius : '6px'  , border : ' 1px solid rgba(10, 32, 46, 0.25)', fontSize : '16px' , fontWeight : 'bold' ,color : 'rgba(10, 32, 46, 0.6)'}} variant="contained">Sign In</Button></Link>
+                <Link to='/signup'><Button sx={{ mx: 2  , height :'40px' ,width : '210px' , background : ' linear-gradient(-180deg, rgb(0, 202, 255) 0%, rgb(0, 154, 255) 100%)' , borderRadius : '6px'  , border : ' 1px solid rgba(10, 32, 46, 0.25)', fontSize : '16px' , fontWeight : 'bold'}} variant="contained">Sign Up</Button></Link>
             </Box>
         </Box>
     );

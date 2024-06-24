@@ -1,12 +1,15 @@
+
+
 import axios from 'axios';
 
 const development = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 
-let baseURL = "https://basicemployeedirectorywebapi.azurewebsites.net/api"
-if (!development)
-    baseURL = "https://basicemployeedirectorywebapi.azurewebsites.net/api"
+const baseURL =
+    "https://xzqr97bby6.execute-api.us-west-2.amazonaws.com/Stage/";
 
 
-export default axios.create({
+const axiosInstance = axios.create({
     baseURL
 });
+
+export default axiosInstance;

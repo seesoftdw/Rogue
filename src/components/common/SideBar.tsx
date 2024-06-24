@@ -10,13 +10,16 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import { createTheme, Theme, useMediaQuery } from '@mui/material';
-import { Home, LibraryMusic, NewReleases, PlaylistPlay } from '@mui/icons-material';
 import QueueMusicIcon from '@mui/icons-material/QueueMusic';
 import AddIcon from '@mui/icons-material/Add';
 import { FaMusic } from "react-icons/fa";
 import { GiGrandPiano } from "react-icons/gi";
 import { FaHome } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { MdOutlineQueueMusic } from "react-icons/md";
+import { RiMoneyDollarCircleFill } from "react-icons/ri";
+import { IoPeople } from "react-icons/io5";
+
 
 
 
@@ -29,11 +32,12 @@ interface SidebarProps {
 
 export default function Sidebar(props: SidebarProps) {
   const { window } = props;
+  const location = useLocation();
 
   const theme: Theme = createTheme({});
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [open, setOpen] = React.useState(false);
-  const [activeTab, setActiveTab] = React.useState('Home'); // Initial active tab
+  const [activeTab, setActiveTab] = React.useState(location.pathname); // Use location.pathname to determine the initial active tab
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (
@@ -53,38 +57,129 @@ export default function Sidebar(props: SidebarProps) {
     color: '#379ad5',
   };
 
-  const sidebarContent = (
-    <div>
-      <List>
-        <Link to='/' className='text-decoration-none'>
-          <ListItem button key="Home" selected={activeTab === 'Home'} onClick={() => handleTabClick('Home')}>
-            <ListItemIcon style={activeTab === 'Home' ? activeLinkStyles : undefined}><FaHome /></ListItemIcon>
-            <ListItemText primary="Home" />
-          </ListItem>
-        </Link>
+  const linkDecorationStyle = {
+    textDecoration: 'none',
+    color: 'rgba(0,0,0,0.87)',
+  };
 
-        <Link to='/Releases' className='text-decoration-none' >
-          <ListItem button key="New Releases" selected={activeTab === 'New Releases'} onClick={() => handleTabClick('New Releases')}>
-            <ListItemIcon style={activeTab === 'New Releases' ? activeLinkStyles : undefined}><GiGrandPiano /></ListItemIcon>
-            <ListItemText primary="New Releases" />
-          </ListItem>
-        </Link>
-        <Link to='/Playlists' className='text-decoration-none' >
-          <ListItem button key="My Library" selected={activeTab === 'My Library'} onClick={() => handleTabClick('My Library')}>
-            <ListItemIcon style={activeTab === 'My Library' ? activeLinkStyles : undefined}><FaMusic /></ListItemIcon>
-            <ListItemText primary="My Library" />
-          </ListItem>
-        </Link>
-      </List>
-      <Typography variant="subtitle1" sx={{ padding: theme.spacing(2), fontSize: '14px', fontWeight: 'bold', color: 'gray', letterSpacing: '1px', textTransform: 'uppercase' }}>Playlists < AddIcon sx={{ ml: 10, pt: 3, height: '40px' }} /> </Typography>
-      <List>
-        {['Vintage Jazz Vibes', 'Blue Note Odyssey', 'Latin Jazz Fiesta', 'Groovy Fusion', 'Funky Fusion', 'Cool Chronicles'].map((text, index) => (
-          <ListItem button key={text} selected={activeTab === text} onClick={() => handleTabClick(text)}>
-            <ListItemIcon style={activeTab === text ? activeLinkStyles : undefined}><QueueMusicIcon /></ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+  const changedSidebarRoutes = ['/artistprofilehome', '/artisttrack', '/uploadtrackprofile', '/uploadtrackicon', '/artistprofileplaylist', '/artistplaylistsecondpage', '/artistplaylisticon', '/earnings',];
+  const britSchoolRoutes = ['/britprofilesecond', '/britschoolartistprofile', '/britschoolreleaseprofile', '/britschoolplaylistprofile' , '/britschoolearningprofile'];
+
+  const sidebarContent = (
+
+    <div>
+      {britSchoolRoutes.includes(location.pathname) ? (
+        <>
+          <List sx={{ pt: 5, pl: 2 }}>
+            <Link to="/britprofilesecond" className="text-decoration-none" style={linkDecorationStyle}>
+              <ListItem button key="Home" selected={activeTab === '/'} onClick={() => handleTabClick('/')}>
+                <ListItemIcon style={activeTab === '/' ? activeLinkStyles : undefined}>
+                  <FaHome style={{ height: '15.51px', width: '17.5px' }} />
+                </ListItemIcon>
+                <ListItemText primary="Home" />
+              </ListItem>
+            </Link>
+            <Link to="/britschoolartistprofile" className="text-decoration-none" style={linkDecorationStyle}>
+              <ListItem button key="Tracks" selected={activeTab === '/Tracks'} onClick={() => handleTabClick('/Tracks')}>
+                <ListItemIcon style={activeTab === '/Tracks' ? activeLinkStyles : undefined}><IoPeople />
+                </ListItemIcon>
+                <ListItemText primary="Artists" />
+              </ListItem>
+            </Link>
+            <Link to="/britschoolreleaseprofile" className="text-decoration-none" style={linkDecorationStyle}>
+              <ListItem button key="Playlists" selected={activeTab === '/Playlists'} onClick={() => handleTabClick('/Playlists')}>
+                <ListItemIcon style={activeTab === '/Playlists' ? activeLinkStyles : undefined}><FaMusic /></ListItemIcon>
+                <ListItemText primary="Releases" />
+              </ListItem>
+            </Link>
+            <Link to="/britschoolplaylistprofile" className="text-decoration-none" style={linkDecorationStyle}>
+              <ListItem button key="Playlist" selected={activeTab === '/Playlist'} onClick={() => handleTabClick('/Playlist')}>
+                <ListItemIcon style={activeTab === '/Playlist' ? activeLinkStyles : undefined}><MdOutlineQueueMusic /></ListItemIcon>
+                <ListItemText primary="Playlists" />
+              </ListItem>
+            </Link>
+            <Link to="/britschoolearningprofile" className="text-decoration-none" style={linkDecorationStyle}>
+              <ListItem button key="Earnings" selected={activeTab === '/Earnings'} onClick={() => handleTabClick('/Earnings')}>
+                <ListItemIcon style={activeTab === '/Earnings' ? activeLinkStyles : undefined}><RiMoneyDollarCircleFill /></ListItemIcon>
+                <ListItemText primary="Earnings" />
+              </ListItem>
+            </Link>
+          </List>
+        </>
+      ) :
+        (
+          <>
+            {changedSidebarRoutes.includes(location.pathname) ? (
+              <>
+                <List sx={{ pt: 5, pl: 2 }}>
+                  <Link to="/artistprofilehome" className="text-decoration-none" style={linkDecorationStyle}>
+                    <ListItem button key="Home" selected={activeTab === '/'} onClick={() => handleTabClick('/')}>
+                      <ListItemIcon style={activeTab === '/' ? activeLinkStyles : undefined}>
+                        <FaHome style={{ height: '15.51px', width: '17.5px' }} />
+                      </ListItemIcon>
+                      <ListItemText primary="Home" />
+                    </ListItem>
+                  </Link>
+                  <Link to="/artisttrack" className="text-decoration-none" style={linkDecorationStyle}>
+                    <ListItem button key="Tracks" selected={activeTab === '/Tracks'} onClick={() => handleTabClick('/Tracks')}>
+                      <ListItemIcon style={activeTab === '/Tracks' ? activeLinkStyles : undefined}><FaMusic /></ListItemIcon>
+                      <ListItemText primary="Tracks" />
+                    </ListItem>
+                  </Link>
+                  <Link to="/artistprofileplaylist" className="text-decoration-none" style={linkDecorationStyle}>
+                    <ListItem button key="Playlists" selected={activeTab === '/Playlists'} onClick={() => handleTabClick('/Playlists')}>
+                      <ListItemIcon style={activeTab === '/Playlists' ? activeLinkStyles : undefined}><MdOutlineQueueMusic /></ListItemIcon>
+                      <ListItemText primary="Playlists" />
+                    </ListItem>
+                  </Link>
+                  <Link to="/earnings" className="text-decoration-none" style={linkDecorationStyle}>
+                    <ListItem button key="Earnings" selected={activeTab === '/Earnings'} onClick={() => handleTabClick('/Earnings')}>
+                      <ListItemIcon style={activeTab === '/Earnings' ? activeLinkStyles : undefined}><RiMoneyDollarCircleFill /></ListItemIcon>
+                      <ListItemText primary="Earnings" />
+                    </ListItem>
+                  </Link>
+                </List>
+              </>
+            ) : (
+              <>
+                <List sx={{ pt: 2 }}>
+                  <Link to="/" className="text-decoration-none" style={linkDecorationStyle}>
+                    <ListItem button key="Home" selected={activeTab === '/'} onClick={() => handleTabClick('/')}>
+                      <ListItemIcon style={activeTab === '/' ? activeLinkStyles : undefined}><FaHome /></ListItemIcon>
+                      <ListItemText primary="Home" />
+                    </ListItem>
+                  </Link>
+                  <Link to="/Releases" className="text-decoration-none" style={linkDecorationStyle}>
+                    <ListItem button key="New Releases" selected={activeTab === '/Releases'} onClick={() => handleTabClick('/Releases')}>
+                      <ListItemIcon style={activeTab === '/Releases' ? activeLinkStyles : undefined}><GiGrandPiano /></ListItemIcon>
+                      <ListItemText primary="New Releases" />
+                    </ListItem>
+                  </Link>
+                  <Link to="/Playlists" className="text-decoration-none" style={linkDecorationStyle}>
+                    <ListItem button key="My Library" selected={activeTab === '/Playlists'} onClick={() => handleTabClick('/Playlists')}>
+                      <ListItemIcon style={activeTab === '/Playlists' ? activeLinkStyles : undefined}><FaMusic /></ListItemIcon>
+                      <ListItemText primary="My Library" />
+                    </ListItem>
+                  </Link>
+                </List>
+                <Typography variant="subtitle1" sx={{ padding: theme.spacing(2), fontSize: '14px', fontWeight: 'bold', color: 'gray', letterSpacing: '1px', textTransform: 'uppercase' }}>
+                  Playlists <AddIcon sx={{ ml: 10, pt: 3, height: '40px' }} />
+                </Typography>
+                <List >
+                  {['Vintage Jazz Vibes', 'Blue Note Odyssey', 'Latin Jazz Fiesta', 'Groovy Fusion', 'Funky Fusion', 'Cool Chronicles'].map((text, index) => (
+                    <ListItem button key={text} selected={activeTab === text} onClick={() => handleTabClick(text)}>
+                      <ListItemIcon style={activeTab === text ? activeLinkStyles : undefined}><QueueMusicIcon /></ListItemIcon>
+                      <ListItemText primary={text} />
+                    </ListItem>
+                  ))}
+                </List>
+              </>
+            )}
+          </>
+        )}
+
+
+
     </div>
   );
 
@@ -96,7 +191,7 @@ export default function Sidebar(props: SidebarProps) {
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
-        className='sidebar'
+        className="sidebar"
       >
         <Drawer
           variant="permanent"

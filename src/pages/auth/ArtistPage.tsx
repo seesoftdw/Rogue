@@ -17,12 +17,12 @@ interface ArtistsPageProps {
 }
 
 const artists = [
-    { name: 'Royal Big Ben Orchestra', imgSrc: artist1 ,link:'/Artists/profile'},
-    { name: 'Theo Parker', imgSrc: artist2 ,link:'/Artists/profile'},
-    { name: 'Dahlia Cole', imgSrc: artist3 ,link:'/Artists/profile'},
-    { name: 'Urban Jazz Syndicate', imgSrc: artist4 ,link:'/Artists/profile'},
-    { name: 'Finnley Calloway', imgSrc: artist5 ,link:'/Artists/profile'},
-    { name: 'Celeste Holiday', imgSrc: artist6 ,link:'/Artists/profile'},
+    { name: 'Royal Big Ben Orchestra', imgSrc: artist1 ,link:'Profile'},
+    { name: 'Theo Parker', imgSrc: artist2 ,link:'Profile'},
+    { name: 'Dahlia Cole', imgSrc: artist3 ,link:'Profile'},
+    { name: 'Urban Jazz Syndicate', imgSrc: artist4 ,link:'Profile'},
+    { name: 'Finnley Calloway', imgSrc: artist5 ,link:'Profile'},
+    { name: 'Celeste Holiday', imgSrc: artist6 ,link:'Profile'},
 ];
 
 const ArtistsPage: React.FC = () => {
