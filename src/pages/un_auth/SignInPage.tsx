@@ -2,23 +2,46 @@ import React, { useState } from 'react';
 import { Button, CssBaseline, TextField, Paper, Box, Grid, Typography, createTheme, ThemeProvider } from '@mui/material';
 import MainWrapper from '../../components/common/MainWrapper';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../store';
+import { loginUser } from '../../services/userService';
+import { toggleLoggedIn } from '../../slices/userSlice';
+import { useNavigate } from 'react-router-dom';
+
+
+
 
 const theme = createTheme();
 
 const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
+    const dispatch = useDispatch<AppDispatch>();
+    // const authState = useSelector((state: RootState) => state.auth.authState);
+
 
     const [open, setOpen] = useState(true);
     const toggleDrawer = () => {
         setOpen(!open);
     };
 
+    const handleToggleLogin = () => {
+        dispatch(toggleLoggedIn());
+        navigate('/');
+    };
+
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
-        // Handle sign-in logic here
-        console.log({ email, password });
+
+        dispatch(loginUser({ email, password })).then(() => {
+            console.log('Login successful');
+            navigate('/'); 
+        }).catch((error) => {
+            console.error('Error logging in:', error);
+        });
     };
 
 
@@ -78,22 +101,25 @@ const SignIn = () => {
 
 
                                 <Button
+                                    onClick={handleToggleLogin}
                                     type="submit"
                                     fullWidth
                                     sx={{ mt: 1, mb: 1, background: ' linear-gradient(-180deg, rgb(0, 202, 255) 0%, rgb(0, 154, 255) 100%)' }}
                                 >
                                     <Box sx={{ color: 'white' }}>Sign In</Box>
                                 </Button>
+                                {/* {authState.loginError && <Box sx={{ color: 'red', mt: 2 }}>{authState.loginError}</Box>}
+                                {authState.isLoggedIn && <Box sx={{ color: 'green', mt: 2 }}>Login successful!</Box>} */}
                                 <Grid container>
                                     <Grid item xs>
-                                        <Link to="#" >
-                                            <Box sx={{ textAlign: 'center', fontSize: '16px', color: ' rgb(0, 154, 255)' }}><Link to='/resetyourpassword' className='links'>Forgot password?</Link></Box>
-                                        </Link>
+
+                                        <Box sx={{ textAlign: 'center', fontSize: '16px', color: ' rgb(0, 154, 255)' }}><Link to='/resetyourpassword' style={{ textDecorationLine: 'none' }} className='links'>Forgot password?</Link></Box>
+
                                     </Grid>
                                     <Grid item>
                                     </Grid>
                                 </Grid>
-                                <Box sx={{ textAlign: 'center', fontSize: '16px', paddingTop: '2%' , color : 'rgba(10, 32, 46, 0.7)' }}>OR</Box>
+                                <Box sx={{ textAlign: 'center', fontSize: '16px', paddingTop: '2%', color: 'rgba(10, 32, 46, 0.7)' }}>OR</Box>
 
                                 <Button
                                     type="submit"
@@ -120,20 +146,20 @@ const SignIn = () => {
                                 </Button>
 
                                 <Link to="/signup" className='links'>
-                                    <Box sx={{ width: '100%'  ,}}>
-                                        <Grid container spacing={2} sx = {{ justifyContent : 'center'}}>
+                                    <Box sx={{ width: '100%', }}>
+                                        <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
                                             <Grid item xs={12} sm={6}>
-                                                <Typography  textAlign="center" sx = {{pl : 3.5 , color : 'black',textDecoration : 'none'}}>
+                                                <Typography textAlign="center" sx={{ pl: 3.5, color: 'black', textDecoration: 'none' }}>
                                                     Don't have an account?
                                                 </Typography>
                                             </Grid>
                                             <Grid item xs={12} sm={4}>
-                                                <Typography variant="body1" textAlign="center" sx={{ color: 'rgb(0, 154, 255)', textDecoration: 'none' ,pr : 4 }}>
+                                                <Typography variant="body1" textAlign="center" sx={{ color: 'rgb(0, 154, 255)', textDecoration: 'none', pr: 4 }}>
                                                     Sign Up here
                                                 </Typography>
                                             </Grid>
                                         </Grid>
-                                    </Box>                            
+                                    </Box>
                                 </Link>
                             </Box>
                         </Box>

@@ -20,11 +20,7 @@ const playlists = [
 
 const ArtistsPlaylist: React.FC = () => {
     return (
-
-        // <ArtistProfile/>
-        // <MainWrapper>
-            <Box padding={0} margin={0}>
-                <Typography sx={{ fontSize: '18px', fontWeight: 'bold', letterspacing: '0.56px', pb: 1, color: 'Black' }} variant="h4" gutterBottom>{'Playlists'}<MdKeyboardArrowRight style={{ height: '11.66px', width: '15.28px;' }} /></Typography>
+            <Box padding={0} margin={0} mt={3}>
                 <Grid container alignContent={'flex-start'} spacing={2} >
                     {playlists.map((playlist, index) => (
                         <Grid item xs={12} sm={3.8} key={index} py={0} px={0}>

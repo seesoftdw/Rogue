@@ -38,7 +38,7 @@
   }
 }
 .sidebar .MuiPaper-root {
-  margin-top: 80px !important;
+  margin-top: 63px !important;
 }
 .typography{
   display: none !important;
@@ -56,9 +56,50 @@
   top: 0;
   width: 100%;
   z-index: -1;
-  height: 590px;
+  height: 400px;
+  /* height: 450px; */
 }
 
-Link{
-  text-decoration: none;
+.bg-grad-gray1:before {
+  content: "";
+  background: linear-gradient(-180deg, rgb(255, 255, 255) 0%, rgb(10 32 46 / 11%) 100%);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+  height: 200px;
+}
+.bg-grad-gray5:before {
+  content: "";
+  background: linear-gradient(-180deg, rgb(255, 255, 255) 0%, rgb(10 32 46 / 11%) 100%);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+  height: 550px;
+}
+.bg-grad-gray2:before {
+  content: "";
+  background: linear-gradient(-180deg, rgb(255, 255, 255) 0%, rgb(10 32 46 / 11%) 100%);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+  height: 150px;
+}
+
+
+.links{
+  text-decoration-line: none;
+}
+.artistsProfileTab{
+  text-decoration-line: none;
+  
+}
+
+.remove-before .bg-grad-gray:before{
+  display: none;
 }

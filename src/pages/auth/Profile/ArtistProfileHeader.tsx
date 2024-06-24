@@ -6,13 +6,14 @@ import avatar1 from '../../../assets/images/artist-1.jpg'
 
 const Header: React.FC = () => {
     return (
-        <Box sx={{ height: '400px', backgroundColor: 'red',padding:'0',margin:0 }} >
+        <Box sx={{ height: '210px',padding:'0',margin:0 }} >
             <Box sx={{
                 backgroundImage: `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0, 0.8)),url(${profileBG})`,
                 backgroundSize: 'cover', height: '400px',
+                maxHeight: '200px'
             }}>
 
-                <Box my={2} display={'flex'} px={'3%'} py={'22%'} mx={0}>
+                <Box my={2} display={'flex'} px={'3%'} py={'5%'} mx={0}>
                     <Box>
                         <Avatar
                             alt="Royal Big Ben Orchestra"

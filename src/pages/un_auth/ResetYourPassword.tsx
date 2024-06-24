@@ -16,7 +16,6 @@ const Resetpassword = () => {
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
-        // Handle sign-in logic here
         console.log({ email, password });
     };
 
@@ -68,7 +67,7 @@ const Resetpassword = () => {
                                     fullWidth
                                     sx={{ mt: 3, mb: 2, background: ' linear-gradient(-180deg, rgb(0, 202, 255) 0%, rgb(0, 154, 255) 100%)' }}
                                 >
-                                    <Box sx={{ color: 'white' }}>SEND INSTRUCTIONS</Box>
+                                <Link to = '/resetpasswordconfirmation'><Box sx={{ color: 'white' }}>SEND INSTRUCTIONS</Box></Link>    
                                 </Button>
                                 <Grid container>
                                     <Grid item xs>
