@@ -11,7 +11,7 @@ const lightTheme = createTheme({});
 
 const MainWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [open, setOpen] = useState(true);
-  const isLoggedIn = useSelector((state: RootState) => state.auth.authState.isLoggedIn);
+  const isLoggedIn = sessionStorage.getItem('token') ? true : false;
   const location = useLocation();
 
   const toggleDrawer = () => {

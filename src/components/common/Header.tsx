@@ -20,7 +20,7 @@ import BritSchool from '../../assets/images/britSchool.png'
 import Divider from '@mui/material/Divider';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
 
@@ -62,9 +62,10 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const settings = [' Manage Profile', 'Settings', 'Sign Out'];
   const location = useLocation();
+  const navigate = useNavigate();
 
   const changedProfilePicture = ['/artistprofilehome', '/artisttrack', '/uploadtrackprofile', '/uploadtrackicon', '/artistprofileplaylist', '/artistplaylistsecondpage', '/artistplaylisticon', '/earnings'];
-  const britSchoolRoutes = ['/britschoolprofile', '/britschoolheader', '/britschoolartist', '/britprofilesecond' , '/BritSchoolProfile' , '/thebritschoolinnerprofile'];
+  const britSchoolRoutes = ['/britschoolprofile', '/britschoolheader', '/britschoolartist', '/britprofilesecond', '/BritSchoolProfile', '/thebritschoolinnerprofile'];
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   // const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -73,6 +74,10 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleSignOut = () => {
+    sessionStorage.clear();
+    navigate('/');
+  }
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -158,7 +163,7 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
                       >
 
                         {britSchoolRoutes.includes(location.pathname) ? <Avatar alt="" src={BritSchool} /> : changedProfilePicture.includes(location.pathname) ? <Avatar alt="" src={Artist1} /> : <Avatar alt="Remy Sharp" src={Profile} />}
-                        
+
 
                       </IconButton>
                     </Tooltip>
@@ -234,7 +239,7 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
                         Settings
                       </MenuItem>
                     </Link>
-                    <MenuItem onClick={handleClose}>
+                    <MenuItem onClick={handleSignOut}>
                       <Settings fontSize="small" />
                       <p>Sign Out</p>
                     </MenuItem>

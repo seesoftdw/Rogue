@@ -49,7 +49,7 @@ export const getUserById = createAsyncThunk<User, string>(
 export const addUser = createAsyncThunk("users", async (user: createUser) => {
     try {
 
-        const response = await axiosInstance.post("users", user);
+        const response = await axiosInstance.post("register", user);
         return response.data;
 
     } catch (error) {
@@ -62,7 +62,20 @@ export const loginUser = createAsyncThunk("user/login", async ({ email, password
     // const navigate = useNavigate();
     try {
 
-        const response = await axiosInstance.post("users/login", { email, password });
+        const response = await axiosInstance.post("login", { email, password });
+        return response.data;
+
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+});
+
+export const resetPassword = createAsyncThunk("user/reset-password", async ({ email, new_password }: { email: string, new_password: string }) => {
+    // const navigate = useNavigate();
+    try {
+
+        const response = await axiosInstance.post("reset-password", { email, new_password });
         return response.data;
 
     } catch (error) {

@@ -23,24 +23,24 @@ const ManageProfile: React.FC = () => {
     });
     const dispatch = useAppDispatch();
 
-    useEffect(() => {
-        const userId = 'da162b5c-44bd-443f-b2ad-9e977a717b60'
-        dispatch(getUserById(userId))
-            .then((action) => {
-                if (getUserById.fulfilled.match(action)) {
-                    setUsers((prevState) => ({
-                        ...prevState,
-                        ...action.payload,
-                        isArtist: action.payload.isArtist === 'true' 
-                    }));
-                } else {
-                    console.error('Failed to fetch user data');
-                }
-            })
-            .catch((error) => {
-                console.error('Error fetching user data:', error);
-            });
-    }, [dispatch]);
+    // useEffect(() => {
+    //     const userId = 'da162b5c-44bd-443f-b2ad-9e977a717b60'
+    //     dispatch(getUserById(userId))
+    //         .then((action) => {
+    //             if (getUserById.fulfilled.match(action)) {
+    //                 setUsers((prevState) => ({
+    //                     ...prevState,
+    //                     ...action.payload,
+    //                     isArtist: action.payload.isArtist === 'true' 
+    //                 }));
+    //             } else {
+    //                 console.error('Failed to fetch user data');
+    //             }
+    //         })
+    //         .catch((error) => {
+    //             console.error('Error fetching user data:', error);
+    //         });
+    // }, [dispatch]);
 
 
     return (
@@ -53,7 +53,8 @@ const ManageProfile: React.FC = () => {
                     <Link to='/editprofile'><Avatar src="/broken-image.jpg" style={{ height: '128px', width: '128px' }} /></Link>
                 </Box>
                 <Typography variant="body1" sx={{ textAlign: 'center', p: 3, fontSize: '16px', color: 'rgb(0, 154, 255)' }}>
-                    {users.email}
+                    {/* {users.email} */}
+                    example@emil.com
                 </Typography>
                 <Box display="flex" justifyContent="center" sx={{ mt: 2 }}>
                     <Link to='/createartistprofile'>

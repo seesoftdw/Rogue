@@ -7,6 +7,7 @@ import { AppDispatch, RootState } from '../../store';
 import { loginUser } from '../../services/userService';
 import { toggleLoggedIn } from '../../slices/userSlice';
 import { useNavigate } from 'react-router-dom';
+import GenericSnackbar from '../../components/common/Snackbar';
 
 
 
@@ -17,30 +18,50 @@ const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
+    const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'info' | 'warning' | 'error'>('info');
 
     const dispatch = useDispatch<AppDispatch>();
     // const authState = useSelector((state: RootState) => state.auth.authState);
-
 
     const [open, setOpen] = useState(true);
     const toggleDrawer = () => {
         setOpen(!open);
     };
 
-    const handleToggleLogin = () => {
-        dispatch(toggleLoggedIn());
-        navigate('/');
+    const handleCloseSnackbar = (event?: React.SyntheticEvent | Event, reason?: string) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setSnackbarOpen(false);
     };
 
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
 
-        dispatch(loginUser({ email, password })).then(() => {
-            console.log('Login successful');
-            navigate('/'); 
+        dispatch(loginUser({ email, password })).then((response) => {
+            console.log(response);
+            if (response.payload.verification_status === "SUCCESS") {
+                sessionStorage.setItem(
+                    "token",
+                    response.payload.access_token
+                );
+                console.log(response);
+                navigate('/');
+            } else {
+                console.error('Error logging in:', Error);
+                setSnackbarMessage('Username or password is incorrect');
+                setSnackbarSeverity('error');
+                setSnackbarOpen(true);
+            }
+
+
         }).catch((error) => {
             console.error('Error logging in:', error);
+            setSnackbarMessage('An error occurred during login.');
+            setSnackbarOpen(true);
         });
     };
 
@@ -48,7 +69,6 @@ const SignIn = () => {
     return (
         <MainWrapper>
             <ThemeProvider theme={theme}>
-
                 <Grid container component="main" sx={{ height: '100vh' }}>
                     <CssBaseline />
 
@@ -101,7 +121,7 @@ const SignIn = () => {
 
 
                                 <Button
-                                    onClick={handleToggleLogin}
+                                    // onClick={handleToggleLogin}
                                     type="submit"
                                     fullWidth
                                     sx={{ mt: 1, mb: 1, background: ' linear-gradient(-180deg, rgb(0, 202, 255) 0%, rgb(0, 154, 255) 100%)' }}
@@ -162,6 +182,12 @@ const SignIn = () => {
                                     </Box>
                                 </Link>
                             </Box>
+                            <GenericSnackbar
+                                open={snackbarOpen}
+                                message={snackbarMessage}
+                                severity={snackbarSeverity}
+                                handleClose={handleCloseSnackbar}
+                            />
                         </Box>
                     </Grid>
                 </Grid>

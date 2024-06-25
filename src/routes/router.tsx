@@ -1,4 +1,3 @@
-// src/router.tsx
 import React, { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../components/common/layout';
@@ -31,7 +30,7 @@ import BritschoolPlaylistProfile from '../pages/auth/Profile/BritschoolPlaylistP
 import BritschoolEarningtProfile from '../pages/auth/Profile/BritschoolEarningProfile'
 import TheBritSchoolHeader from '../pages/auth/Profile/TheBritSchool';
 import TheBritSchoolinnerProfile from '../pages/auth/Profile/TheBritSchoolinnerProfile';
-
+import Authorized from '../components/Authorized';
 
 
 const Playlist = lazy(() => import('../pages/auth/ArtistPage'));
@@ -55,7 +54,7 @@ const AppRouter = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <Authorized><Home /></Authorized>,
       },
       {
         path: 'Artists',
@@ -68,16 +67,15 @@ const AppRouter = createBrowserRouter([
             path:'/Artists/Profile',
             element:<ArtistProfile />
           },
-  
         ],
       },
       {
         path:'Releases',
-        element:<Release />
+        element:<Authorized><Release /></Authorized>
       },
       {
         path:'Playlists',
-        element:<Playlists />
+        element:<Authorized><Playlists /></Authorized>
       },
       {
         path: 'signin',
@@ -102,125 +100,120 @@ const AppRouter = createBrowserRouter([
       },
       {
         path : 'manage-profiles',
-        element : <ManageProfiles/>
+        element : <Authorized><ManageProfiles/></Authorized>
       },
       {
         path : 'cartprofile',
-        element :<CartProfile/>
+        element :<Authorized><CartProfile/></Authorized>
       },
       {
         path : 'editprofile',
-        element : <EditProfile/>
+        element : <Authorized><EditProfile/></Authorized>
       },
       {
         path : 'yourprofiles',
-        element : <YourProfiles/>
+        element : <Authorized><YourProfiles/></Authorized>
       },
       {
         path : 'cartcheckout',
-        element : <CartCheckout/>
+        element : <Authorized><CartCheckout/></Authorized>
       },
       {
         path : 'emptycart',
-        element : <EmptyCart/>
+        element : <Authorized><EmptyCart/></Authorized>
       },
       {
         path : 'createartistprofile',
-        element : <CreateArtistProfile/>
+        element : <Authorized><CreateArtistProfile/></Authorized>
       },
       {
         path : 'yourprofileone',
-        element : <YourProfileOne/>
+        element : <Authorized><YourProfileOne/></Authorized>
       },
       {
         path : 'editartistprofiletwo',
-        element : <EditArtistProfileTwo/>
+        element : <Authorized><EditArtistProfileTwo/></Authorized>
       },
       {
         path : 'playlistprofilefirst',
-        element : <PlaylistProfileFirst/>
+        element : <Authorized><PlaylistProfileFirst/></Authorized>
       },
       {
         path : 'artisttrack',
-        element : <ArtistTrack/>
+        element : <Authorized><ArtistTrack/></Authorized>
       },
       {
         path : 'uploadtrackprofile',
-        element : <UploadTrackprofile/>
+        element : <Authorized><UploadTrackprofile/></Authorized>
       },
       {
         path : 'uploadtrackicon',
-        element : <UploadTrackIcon/>
+        element : <Authorized><UploadTrackIcon/></Authorized>
       },
       {
         path : 'artistprofilehome',
-        element : <ArtistProfileHome/>
+        element : <Authorized><ArtistProfileHome/></Authorized>
       },
       {
         path : 'artistprofileplaylist',
-        element : <ArtistProfileplaylist/>
+        element : <Authorized><ArtistProfileplaylist/></Authorized>
       },
       {
         path : 'artistplaylistsecondpage',
-        element : <ArtistPlaylistSecondpage/>
+        element : <Authorized><ArtistPlaylistSecondpage/></Authorized>
       },
       {
         path : 'artistplaylisticon',
-        element : <ArtistPlaylistIcon/>
+        element : <Authorized><ArtistPlaylistIcon/></Authorized>
       },
       {
         path : 'earnings',
-        element : <Earnings/>
+        element : <Authorized><Earnings/></Authorized>
       },
       {
         path :  'accountsettings',
-        element :<AccountSettings/>
+        element :<Authorized><AccountSettings/></Authorized>
       },
       {
         path : 'britschoolprofile',
-        element : <BritSchoolProfile/>
+        element : <Authorized><BritSchoolProfile/></Authorized>
       },
       {
         path : 'britschoolheader',
-        element : <BritSchoolHeader/>
+        element : <Authorized><BritSchoolHeader/></Authorized>
       },
       {
         path : 'britschoolartist',
-        element : <BritSchoolArtist/>
+        element : <Authorized><BritSchoolArtist/></Authorized>
       },
       {
         path : 'britprofilesecond',
-        element : <BritProfleSecond/>
+        element : <Authorized><BritProfleSecond/></Authorized>
       },
       {
         path : 'britschoolartistprofile',
-        element : <BritschoolArtistProfile/>
+        element : <Authorized><BritschoolArtistProfile/></Authorized>
       },
       {
         path : 'britschoolreleaseprofile',
-        element : <BritschoolReleaseProfile/>
+        element : <Authorized><BritschoolReleaseProfile/></Authorized>
       },
       {
         path : 'britschoolplaylistprofile',
-        element : <BritschoolPlaylistProfile/>
+        element : <Authorized><BritschoolPlaylistProfile/></Authorized>
       },
       {
         path : 'britschoolearningprofile',
-        element : <BritschoolEarningtProfile/>
+        element : <Authorized><BritschoolEarningtProfile/></Authorized>
       },
       {
         path : 'thebritschoolheader',
-        element : <TheBritSchoolHeader/>
+        element : <Authorized><TheBritSchoolHeader/></Authorized>
       },
       {
         path : 'thebritschoolinnerprofile',
-        element : <TheBritSchoolinnerProfile/>
-      }
-      
-      
-      
- 
-      
+        element : <Authorized><TheBritSchoolinnerProfile/></Authorized>
+      }  
     ],
   },
 ]);

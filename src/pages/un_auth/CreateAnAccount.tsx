@@ -13,6 +13,16 @@ const SignIn = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate()
     const [open, setOpen] = useState(true);
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
+    const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'info' | 'warning' | 'error'>('info');
+
+    const handleCloseSnackbar = (event?: React.SyntheticEvent | Event, reason?: string) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setSnackbarOpen(false);
+    };
     const toggleDrawer = () => {
         setOpen(!open);
     };
@@ -24,12 +34,14 @@ const SignIn = () => {
             email: email,
             password: password,
             username: email,
-            isArtist: "true"
+            isArtist: "false"
         }
         dispatch(addUser(postData)).then((result) => {
-            if (result) {
-                console.log('result', result);
-                console.log('User added successfully');
+            if (result.meta.requestStatus === 'fulfilled') {
+                setSnackbarMessage('User Created Successfully!');
+                setSnackbarSeverity('success');
+                setSnackbarOpen(true);
+                navigate('/signin');
             } else {
                 console.error('Error adding user');
             }
