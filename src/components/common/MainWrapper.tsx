@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Sidebar from './SideBar';
-import Banner from '../un_auth/Banner';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import Banner from './Banner';
+
 
 const lightTheme = createTheme({});
 
@@ -26,7 +25,7 @@ const MainWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   }, []);
 
   const shouldShowBanner = location.pathname !== '/signin' && location.pathname !== '/signup';
-  const hideBannerRoutes = ['/termsofservices', '/resetyourpassword', '/resetpassword', '/resetpasswordconfirmation', '/Artists/Profile', '/trackprofile', '/Releases', '/Playlists', '/YourProfiles', '/CartCheckout', '/EmptyCart', '/CreateArtistProfile', '/YourProfileOne', '/EditArtistProfileTwo', '/PlaylistProfileFirst'];
+  const hideBannerRoutes = ['/termsofservices', '/resetyourpassword', '/resetpassword', '/resetpasswordconfirmation', '/Artists/Profile', '/trackprofile', '/Releases', '/Playlists', '/YourProfiles', '/CartCheckout', '/EmptyCart', '/CreateArtistProfile', '/YourProfileOne', '/EditArtistProfileTwo', '/PlaylistProfileFirst' ,  '/newpassword','/password-reset-success'];
   const shouldHideBanner = hideBannerRoutes.includes(location.pathname);
 
   const shouldHideSidebarAndBanner = location.pathname === '/accountsettings';

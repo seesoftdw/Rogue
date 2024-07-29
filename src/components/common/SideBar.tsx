@@ -62,12 +62,12 @@ export default function Sidebar(props: SidebarProps) {
     color: 'rgba(0,0,0,0.87)',
   };
 
-  const changedSidebarRoutes = ['/artistprofilehome', '/artisttrack', '/uploadtrackprofile', '/uploadtrackicon', '/artistprofileplaylist', '/artistplaylistsecondpage', '/artistplaylisticon', '/earnings',];
+  const changedSidebarRoutes = ['/artistprofilehome', '/artisttrack', '/uploadtrack', '/uploadtrackicon', '/artistprofileplaylist', '/artistplaylistsecondpage', '/artistplaylisticon', '/earnings',];
   const britSchoolRoutes = ['/britprofilesecond', '/britschoolartistprofile', '/britschoolreleaseprofile', '/britschoolplaylistprofile' , '/britschoolearningprofile'];
 
   const sidebarContent = (
 
-    <div>
+    <div style={{background:"rgba(10, 32, 46, 0.02)"}}>
       {britSchoolRoutes.includes(location.pathname) ? (
         <>
           <List sx={{ pt: 5, pl: 2 }}>

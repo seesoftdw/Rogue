@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Typography, Grid } from '@mui/material';
+import {  Box, Button, Typography, Grid } from '@mui/material';
 import React from 'react';
 import MainWrapper from '../../../components/common/MainWrapper';
 import picture1 from '../../../assets/images/attist.png'

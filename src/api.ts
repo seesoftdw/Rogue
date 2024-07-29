@@ -2,14 +2,16 @@
 
 import axios from 'axios';
 
-const development = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
-
-const baseURL =
-    "https://lhwzmhouv4.execute-api.us-west-2.amazonaws.com/Stage";
+const baseURL = process.env.REACT_APP_USER_API_URL;
 
 
-const axiosInstance = axios.create({
+const uploadAPIURL = process.env.REACT_APP_UPLOAD_API_URL;
+
+export const axiosInstance = axios.create({
     baseURL
 });
 
-export default axiosInstance;
+export const axiosArtistApiInstance = axios.create({
+  baseURL: uploadAPIURL
+});
+

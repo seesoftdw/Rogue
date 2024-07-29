@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Sidebar from './SideBar';
 import  ArtistSidebar from './ArtistSidebar'
-import Banner from '../un_auth/Banner';
+import Banner from './Banner';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 
