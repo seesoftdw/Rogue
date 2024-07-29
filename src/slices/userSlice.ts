@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { addUser, getUser, loginUser, updateUser, deleteUser, getUserById } from '../services/userService';
-import { createUser } from '../models/User';
+import { addUser, getUser, loginUser, deleteUser, getUserById, resetPassword } from '../services/userService';
 
 interface UserState {
     list: {
@@ -12,7 +11,7 @@ interface UserState {
     save: {
         isSaving: boolean;
         isDeleting: boolean;
-        error: null;
+        error: string | null;
     };
     authState: {
         isLoggedIn: boolean;
@@ -38,6 +37,7 @@ const initialState: UserState = {
     },
 };
 
+
 export const userSlice = createSlice({
     name: 'user',
     initialState,
@@ -52,13 +52,12 @@ export const userSlice = createSlice({
         toggleLoggedIn: (state) => {
             state.authState.isLoggedIn = !state.authState.isLoggedIn;
         }
-
     },
     extraReducers: (builder) => {
         builder
             .addCase(getUser.pending, (state) => {
                 state.list.status = 'pending';
-                state.list.isLoading = false;
+                state.list.isLoading = true;
             })
             .addCase(getUser.fulfilled, (state, action: PayloadAction<any[]>) => {
                 state.list.status = 'success';
@@ -72,7 +71,7 @@ export const userSlice = createSlice({
             })
             .addCase(getUserById.pending, (state) => {
                 state.list.status = 'pending';
-                state.list.isLoading = false;
+                state.list.isLoading = true;
             })
             .addCase(getUserById.fulfilled, (state, action: PayloadAction<any>) => {
                 state.list.status = 'success';
@@ -88,37 +87,21 @@ export const userSlice = createSlice({
                 state.save.isSaving = true;
             })
             .addCase(addUser.fulfilled, (state) => {
-                state.save.isSaving = true;
-                state.authState.isLoggedIn = true;
+                state.save.isSaving = false;
             })
             .addCase(addUser.rejected, (state) => {
                 state.save.isSaving = false;
-                state.save.error = null;
+                state.save.error = "Failed to add user";
             })
             .addCase(loginUser.pending, (state) => {
                 state.authState.loginError = undefined;
             })
-            .addCase(loginUser.fulfilled, (state, action: PayloadAction<any>) => {
+            .addCase(loginUser.fulfilled, (state, action: PayloadAction<{ user: any }>) => {
                 state.authState.isLoggedIn = true;
-                state.authState.user = action.payload;
+                state.authState.user = action.payload.user;
             })
-            .addCase(loginUser.rejected, (state, action) => {
-                state.authState.loginError = "Invalid email or password";
-            })
-
-            .addCase(updateUser.pending, (state) => {
-                state.list.isLoading = true;
-            })
-            .addCase(updateUser.fulfilled, (state, action: PayloadAction<createUser>) => {
-                state.save.isSaving = false;
-                const index = state.list.values.findIndex(user => user.id === action.payload.id);
-                if (index !== -1) {
-                    state.list.values[index] = action.payload;
-                }
-            })
-            .addCase(updateUser.rejected, (state, action: PayloadAction<any>) => {
-                state.list.isLoading = false;
-                state.save.error = action.payload;
+            .addCase(loginUser.rejected, (state) => {
+                state.authState.loginError = "Invalid username or password";
             })
             .addCase(deleteUser.pending, (state) => {
                 state.save.isDeleting = true;
@@ -131,6 +114,17 @@ export const userSlice = createSlice({
             .addCase(deleteUser.rejected, (state, action: PayloadAction<any>) => {
                 state.save.isDeleting = false;
                 state.save.error = action.payload || 'Failed to delete user';
+            })
+            .addCase(resetPassword.pending, (state) => {
+                state.save.isSaving = true;
+            })
+            .addCase(resetPassword.fulfilled, (state) => {
+                state.save.isSaving = false;
+                state.save.error = null;
+            })
+            .addCase(resetPassword.rejected, (state, action) => {
+                state.save.isSaving = false;
+                state.save.error = action.error.message || 'Failed to reset password';
             });
     },
 });

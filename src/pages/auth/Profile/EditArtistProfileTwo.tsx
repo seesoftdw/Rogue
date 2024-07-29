@@ -1,15 +1,11 @@
-import { Avatar, Box, Button, TextField, Typography, Grid, SelectChangeEvent, TextareaAutosize } from '@mui/material';
+import { Box, Button, TextField, Typography, Grid, SelectChangeEvent, TextareaAutosize } from '@mui/material';
 import React from 'react';
 import MainWrapper from '../../../components/common/MainWrapper';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { FormControl, MenuItem, Select } from '@mui/material';
 import { Link } from 'react-router-dom';
 import picture2 from '../../../assets/images/avatar-artist.jpg'
 import bgcover from '../../../assets/images/profile-header-artist.jpg'
-
-
-
-
-
+import './styles.scss'
 
 const CreateArtistProfile: React.FC<{}> = () => {
     const [firstDropdown, setFirstDropdown] = React.useState('');
@@ -23,144 +19,145 @@ const CreateArtistProfile: React.FC<{}> = () => {
         setSecondDropdown(event.target.value as string);
     };
     return (
-        <MainWrapper>
-            <Box sx={{ mt: 10 }}>
-                <Typography sx={{ fontWeight: 'bold', fontSize: '36px', textAlign: 'center' }}>
-                    Create artist profile
-                </Typography>
-                <Typography sx={{ color: ' rgba(10, 32, 46, 0.7)', fontSize: '14px', pl: 44, pt: 5 }}>Artist/Band name</Typography>
-                <TextField placeholder="Royal Big Ben Orchestra" size='small' sx={{ width: '448px', ml: 44, mt: 1, background: 'rgba(10, 32, 46, 0.05)' }}></TextField>
+        <Box className="artistProfileTwo">
+            <MainWrapper>
+                <Box sx={{ mt: 10 }}>
+                    <Typography className='main-heading'>
+                        Create artist profile
+                    </Typography>
+                    <Typography className='artistname' sx={{ pl: 44, pt: 5 }}>Artist/Band name</Typography>
+                    <TextField className='artistnameinput' placeholder="Royal Big Ben Orchestra" size='small' sx={{ ml: 44, mt: 1, }}>
 
-                <Box sx={{}}>
-                    <Box sx={{}}>
-                        <Box sx={{ display: 'flex', gap: 2, mt: 3 }}>
-                            <FormControl size='small' fullWidth variant="outlined" sx={{ width: '212px', ml: 44 }}>
-                                <Typography sx={{ color: ' rgba(10, 32, 46, 0.7)', fontSize: '14px' }}>Genre</Typography>
-                                <Select
-                                    labelId="first-dropdown-label"
-                                    value={firstDropdown}
-                                    onChange={handleFirstDropdownChange}
-                                    label="First Dropdown"
-                                    style={{ background: "rgba(10, 32, 46, 0.05)" }}
-                                >
-                                    <MenuItem value=""><em>None</em></MenuItem>
-                                    <MenuItem value={10}>Option 1</MenuItem>
-                                    <MenuItem value={20}>Option 2</MenuItem>
-                                    <MenuItem value={30}>Option 3</MenuItem>
-                                </Select>
-                            </FormControl>
-                            <FormControl size='small' fullWidth variant="outlined" sx={{ width: '220px' }}>
-                                <Typography sx={{ color: ' rgba(10, 32, 46, 0.7)', fontSize: '14px' }}>Country</Typography>
+                    </TextField>
 
-                                <Select
+                    <Box>
+                        <Box>
+                            <Box sx={{ display: 'flex', gap: 2, mt: 3 }}>
+                                <FormControl size='small' fullWidth variant="outlined" sx={{ width: '212px', ml: 44 }}>
+                                    <Typography className='genre'>Genre</Typography>
+                                    <Select
+                                        labelId="first-dropdown-label"
+                                        value={firstDropdown}
+                                        onChange={handleFirstDropdownChange}
+                                        label="First Dropdown"
+                                        style={{ background: "rgba(10, 32, 46, 0.05)" }}
+                                    >
+                                        <MenuItem value=""><em>None</em></MenuItem>
+                                        <MenuItem value={10}>Option 1</MenuItem>
+                                        <MenuItem value={20}>Option 2</MenuItem>
+                                        <MenuItem value={30}>Option 3</MenuItem>
+                                    </Select>
+                                </FormControl>
+                                <FormControl size='small' fullWidth variant="outlined" sx={{ width: '220px' }}>
+                                    <Typography className='country'>Country</Typography>
 
-                                    labelId="second-dropdown-label"
-                                    value={secondDropdown}
-                                    onChange={handleSecondDropdownChange}
-                                    label="Second Dropdown"
-                                    style={{ background: "rgba(10, 32, 46, 0.05)" }}
-                                >
-                                    <MenuItem value=""><em>None</em></MenuItem>
-                                    <MenuItem value={10}>Option 1</MenuItem>
-                                    <MenuItem value={20}>Option 2</MenuItem>
-                                    <MenuItem value={30}>Option 3</MenuItem>
-                                </Select>
-                            </FormControl>
+                                    <Select
+
+                                        labelId="second-dropdown-label"
+                                        value={secondDropdown}
+                                        onChange={handleSecondDropdownChange}
+                                        label="Second Dropdown"
+                                        style={{ background: "rgba(10, 32, 46, 0.05)" }}
+                                    >
+                                        <MenuItem value=""><em>None</em></MenuItem>
+                                        <MenuItem value={10}>Option 1</MenuItem>
+                                        <MenuItem value={20}>Option 2</MenuItem>
+                                        <MenuItem value={30}>Option 3</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Box>
                         </Box>
                     </Box>
-                </Box>
-                <Typography sx={{ color: ' rgba(10, 32, 46, 0.7)', fontSize: '14px', pl: 44, pt: 2 }}>Bio</Typography>
+                    <Typography className='bio' sx={{ pl: 44, pt: 2 }}>Bio</Typography>
 
-                <Box  sx={{ ml: 44 }}>
-                    <TextareaAutosize
-                        aria-label="minimum height"
-                        minRows={12}
-                        placeholder=  "Royal Big Ben Orchestra, hailing from the heart of London, United Kingdom, embodies the rich musical heritage and vibrant culture of its historic city. Formed under the shadow of the iconic Big Ben, this ensemble of seasoned jazz musicians brings together a unique blend of classic jazz melodies, innovative arrangements, and a distinctly British flair."
-                        style={{ width: '448px', padding: '8px', borderRadius: '4px', borderColor: 'gray', background: "rgba(10, 32, 46, 0.05)"  , fontSize :'14px'  , color: 'rgba(10, 32, 46, 0.7)' }}
-                    />
-                </Box>
+                    <Box sx={{ ml: 44 }}>
+                        <TextareaAutosize
+                            aria-label="minimum height"
+                            minRows={12}
+                            placeholder="Royal Big Ben Orchestra, hailing from the heart of London, United Kingdom, embodies the rich musical heritage and vibrant culture of its historic city. Formed under the shadow of the iconic Big Ben, this ensemble of seasoned jazz musicians brings together a unique blend of classic jazz melodies, innovative arrangements, and a distinctly British flair."
+                            className='textarea'
+                        />
+                    </Box>
 
-                <Box sx={{ borderBottom: '1px solid rgba(10, 32, 46, 0.2)', width: '448px', ml: 44, mt: 2 }}></Box>
+                    <Box className='BorderBottom' sx={{ ml: 44, mt: 2 }}></Box>
 
-                <Typography sx={{ color: 'rgba(10, 32, 46, 0.9)', fontSize: '18px', fontWeight: 'bold', pl: 44, pb: 1, pt: 2 }}>Profile image</Typography>
+                    <Typography className='profile' sx={{ pl: 44, pb: 1, pt: 2 }}>Profile image</Typography>
 
-                <Box sx = {{ml : 44}}>
-                    <img src={picture2} alt="Image 2" style={{ width: '129px', height: '129px' }} />
-                </Box>
+                    <Box sx={{ ml: 44 }}>
+                        <img src={picture2} alt="Image 2" style={{ width: '129px', height: '129px' }} />
+                    </Box>
 
 
-                <Box display="flex" sx={{ mt: 1, ml: 44, }}>
-                    <Button
-                        // variant="contained"
-                        color="primary"
+                    <Box display="flex" sx={{ mt: 1, ml: 44, }}>
+                        <Button
+                            color="primary"
+                            className='browsefilebtn'
+                        >
+                            BROWSE FILE
+                        </Button>
+                    </Box>
+
+                    <Typography className='Recommended' sx={{ pl: 44, pb: 1, pt: 2 }}>Recommended file resolution 1700x1700. Supported file  <br></br>formats PNG, JPG. Maximum file size 10MB.</Typography>
+
+                    <Typography className='Coverimage' sx={{ pl: 44, pb: 1, pt: 2 }}>Cover image</Typography>
+                    <Box sx={{ ml: 44 }}>
+                        <img src={bgcover} alt="Image 2" style={{ width: '449px', height: '129px' }} />
+                    </Box>
+
+                    <Box display="flex" sx={{ mt: 1, ml: 44, }}>
+                        <Button
+                            color="primary"
+                            className='browsefilebtn'
+                        >
+                            BROWSE FILE
+                        </Button>
+                    </Box>
+
+                    <Typography className='Recommended-file'
                         sx={{
-                            background: 'rgb(255, 255, 255)',
-                            height: '28px',
-                            width: '112px',
-                            borderRadius: '6px',
-                            fontSize: '10px',
-                            fontWeight: 'bold',
-                            color: ' rgba(10, 32, 46, 0.6)',
-                            border: '1px solid rgba(10, 32, 46, 0.4)'
+                            pl: 44,
+                            pb: 1,
+                            pt: 2
                         }}
                     >
-                        BROWSE FILE
-                    </Button>
-                </Box>
+                        Recommended file resolution 1700x1700. Supported file  <br></br>formats PNG, JPG. Maximum file size 10MB.
+                    </Typography>
+                    <Box sx={{ borderBottom: '1px solid rgba(10, 32, 46, 0.2)', width: '448px', ml: 44, mt: 2 }}></Box>
 
-                <Typography sx={{ color: 'rgba(10, 32, 46, 0.4)', fontSize: '14px', pl: 44, pb: 1, pt: 2 }}>Recommended file resolution 1700x1700. Supported file  <br></br>formats PNG, JPG. Maximum file size 10MB.</Typography>
+                    <Typography className='homepage' sx={{ pl: 44, pt: 5 }}>
+                        Homepage
+                    </Typography>
+                    <TextField className='textfield' size='small' placeholder="https://" sx={{ ml: 44, mt: 1, }} />
 
-                <Typography sx={{ color: 'rgba(10, 32, 46, 0.9)', fontSize: '18px', fontWeight: 'bold', pl: 44, pb: 1, pt: 2 }}>Cover image</Typography>
-                <Box sx = {{ml : 44}}>
-                    <img src={bgcover} alt="Image 2" style={{ width: '449px', height: '129px' }} />
-                </Box>
+                    <Typography className='fbpage' sx={{ pl: 44, pt: 2 }}>
+                        Facebook Page
+                    </Typography>
+                    <TextField className='textfield' size='small' placeholder="https://" sx={{ ml: 44, mt: 1 }} />
 
-                <Box display="flex" sx={{ mt: 1, ml: 44, }}>
-                    <Button
-                        // variant="contained"
-                        color="primary"
-                        sx={{
-                            background: 'rgb(255, 255, 255)',
-                            height: '28px',
-                            width: '112px',
-                            borderRadius: '6px',
-                            fontSize: '10px',
-                            fontWeight: 'bold',
-                            color: ' rgba(10, 32, 46, 0.6)',
-                            border: '1px solid rgba(10, 32, 46, 0.4)'
-                        }}
-                    >
-                        BROWSE FILE
-                    </Button>
-                </Box>
-
-                <Typography sx={{ color: 'rgba(10, 32, 46, 0.4)', fontSize: '14px', pl: 44, pb: 1, pt: 2 }}>Recommended file resolution 1700x1700. Supported file  <br></br>formats PNG, JPG. Maximum file size 10MB.</Typography>
-                <Box sx={{ borderBottom: '1px solid rgba(10, 32, 46, 0.2)', width: '448px', ml: 44, mt: 2 }}></Box>
-                <Typography sx={{ color: ' rgba(10, 32, 46, 0.7)', fontSize: '14px', pl: 44, pt: 5 }}>Homepage</Typography>
-                <TextField size='small' placeholder="https://" sx={{ width: '448px', ml: 44, mt: 1, background: 'rgba(10, 32, 46, 0.05)' }}></TextField>
-                <Typography sx={{ color: ' rgba(10, 32, 46, 0.7)', fontSize: '14px', pl: 44, pt: 2 }}>Facebook Page</Typography>
-                <TextField size='small' placeholder="https://" sx={{ width: '448px', ml: 44, mt: 1, background: 'rgba(10, 32, 46, 0.05)' }}></TextField>
-                <Typography sx={{ color: ' rgba(10, 32, 46, 0.7)', fontSize: '14px', pl: 44, pt: 2 }}>Instagram</Typography>
-                <TextField size='small' placeholder="https://" sx={{ width: '448px', ml: 44, mt: 1, background: 'rgba(10, 32, 46, 0.05)' }}></TextField>
-                <Typography sx={{ color: ' rgba(10, 32, 46, 0.7)', fontSize: '14px', pl: 44, pt: 2 }}>Tik Tok</Typography>
-                <TextField size='small' placeholder="https://" sx={{ width: '448px', ml: 44, mt: 1, background: 'rgba(10, 32, 46, 0.05)' }}></TextField>
-                <Box sx={{ borderBottom: '1px solid rgba(10, 32, 46, 0.2)', width: '448px', ml: 44, mt: 3 }}></Box>
-                <Grid container spacing={2} sx={{ mt: 2, px: 20 }}>
-                    <Grid item xs={12} sx={{ ml: 24, mb: 7 }}>
-                        <Box sx={{ display: 'flex', gap: 2 , ml : 30 }}>
-                            <Button variant="contained"  sx={{width: '94px', background: 'white', color: 'black', fontSize: '16px', fontWeight: 'bold' }}>
-                                CANCEL
-                            </Button>
-                            <Link to="/yourprofileone">
-                                <Button variant="contained" sx={{ width: '94px', background: ' linear-gradient(-180deg, rgb(0, 202, 255) 0%, rgb(0, 154, 255) 100%)', color: 'white', fontSize: '16px', fontWeight: 'bold' }}>
-                                  SAVE
+                    <Typography className='igpage' sx={{ pl: 44, pt: 2 }}>
+                        Instagram
+                    </Typography>
+                    <TextField size='small' placeholder="https://" sx={{ width: '448px', ml: 44, mt: 1, background: 'rgba(10, 32, 46, 0.05)' }}></TextField>
+                    <Typography sx={{ color: ' rgba(10, 32, 46, 0.7)', fontSize: '14px', pl: 44, pt: 2 }}>Tik Tok</Typography>
+                    <TextField size='small' placeholder="https://" sx={{ width: '448px', ml: 44, mt: 1, background: 'rgba(10, 32, 46, 0.05)' }}></TextField>
+                    <Box sx={{ borderBottom: '1px solid rgba(10, 32, 46, 0.2)', width: '448px', ml: 44, mt: 3 }}></Box>
+                    <Grid container spacing={2} sx={{ mt: 2, px: 20 }}>
+                        <Grid item xs={12} sx={{ ml: 24, mb: 7 }}>
+                            <Box sx={{ display: 'flex', gap: 2, ml: 30 }}>
+                                <Button className='cancel' variant="contained" >
+                                    CANCEL
                                 </Button>
-                            </Link>
-                        </Box>
+                                <Link to="/yourprofileone">
+                                    <Button className='save' variant="contained">
+                                        SAVE
+                                    </Button>
+                                </Link>
+                            </Box>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Box>
-        </MainWrapper>
+                </Box>
+            </MainWrapper>
+        </Box>
     );
 };
 

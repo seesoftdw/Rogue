@@ -7,7 +7,7 @@ import Container from "@mui/material/Container";
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import IconButton from '@mui/material/IconButton';
-import MusicPlayerSlider from "./player";
+import MusicPlayerSlider from "./Player";
 import { IoCart } from "react-icons/io5";
 import { Menu as MenuIcon } from '@mui/icons-material';
 import Tooltip from '@mui/material/Tooltip';
@@ -20,7 +20,7 @@ import BritSchool from '../../assets/images/britSchool.png'
 import Divider from '@mui/material/Divider';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
 
@@ -62,9 +62,10 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const settings = [' Manage Profile', 'Settings', 'Sign Out'];
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const changedProfilePicture = ['/artistprofilehome', '/artisttrack', '/uploadtrackprofile', '/uploadtrackicon', '/artistprofileplaylist', '/artistplaylistsecondpage', '/artistplaylisticon', '/earnings'];
-  const britSchoolRoutes = ['/britschoolprofile', '/britschoolheader', '/britschoolartist', '/britprofilesecond' , '/BritSchoolProfile' , '/thebritschoolinnerprofile'];
+  const changedProfilePicture = ['/artistprofilehome', '/artisttrack', '/uploadtrack', '/uploadtrackicon', '/artistprofileplaylist', '/artistplaylistsecondpage', '/artistplaylisticon', '/earnings'];
+  const britSchoolRoutes = ['/britschoolprofile', '/britschoolheader', '/britschoolartist', '/britprofilesecond', '/BritSchoolProfile', '/thebritschoolinnerprofile', '/britprofilesecond', '/britschoolartistprofile', '/britschoolreleaseprofile', '/britschoolplaylistprofile', '/britschoolearningprofile'];
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   // const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -88,6 +89,12 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleSignOut = () => {
+    sessionStorage.clear();
+    navigate('/');
+  }
+
   const linkDecorationStyle = {
     textDecoration: 'none',
     color: 'rgba(0,0,0,0.87)',
@@ -158,7 +165,7 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
                       >
 
                         {britSchoolRoutes.includes(location.pathname) ? <Avatar alt="" src={BritSchool} /> : changedProfilePicture.includes(location.pathname) ? <Avatar alt="" src={Artist1} /> : <Avatar alt="Remy Sharp" src={Profile} />}
-                        
+
 
                       </IconButton>
                     </Tooltip>
@@ -199,7 +206,7 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                   >
-                    <Link to='#' style={linkDecorationStyle} >
+                    <Link to='/' style={linkDecorationStyle} >
                       <MenuItem onClick={handleClose}>
                         <Avatar alt="Remy Sharp" src={Profile} />
                         <Typography sx={{ pl: 1 }}>Fred Smith</Typography>
@@ -234,7 +241,7 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
                         Settings
                       </MenuItem>
                     </Link>
-                    <MenuItem onClick={handleClose}>
+                    <MenuItem onClick={handleSignOut}>
                       <Settings fontSize="small" />
                       <p>Sign Out</p>
                     </MenuItem>
@@ -245,12 +252,34 @@ const Header: React.FC<HeaderProps> = ({ open, toggleDrawer, isLoggedIn }) => {
           ) : (
             <Box >
               <Link to="/signin">
-                <Button variant="contained" sx={{ color: 'black', background: 'linear-gradient(-180deg, rgba(10, 32, 46, 0.05) 0%, rgba(10, 32, 46, 0.1) 100%)', boxShadow: 'none', fontWeight: 'bold', border: '1px solid black', fontSize: '10px', mx: 1 }}>
-                  Sign In
+                <Button
+                  sx={{
+                    height: '35px',
+                    width: '74px',
+                    color: 'black',
+                    background: 'linear-gradient(-180deg, rgba(10, 32, 46, 0.05) 0%, rgba(10, 32, 46, 0.1) 100%)',
+                    boxShadow: '0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12)',
+                    fontWeight: 'bold',
+                    fontSize: '10px',
+                    mx: 1,
+                    border: '0.1px solid gray'
+                  }}
+                >Sign In
                 </Button>
               </Link>
               <Link to="/signup">
-                <Button variant="contained" sx={{ fontSize: '10px', fontWeight: 'bold', border: '1px solid black', mx: 1, boxShadow: 'none' }}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    background: 'linear-gradient(-180deg, rgb(0, 202, 255) 0%, rgb(0, 154, 255) 100%)',
+                    height: '35px',
+                    borderRadius: '6px',
+                    fontSize: '10px',
+                    fontWeight: 'bold',
+                    color: 'rgb(255, 255, 255)',
+                  }}
+                >
                   Sign Up
                 </Button>
               </Link>

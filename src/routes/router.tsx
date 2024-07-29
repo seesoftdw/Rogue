@@ -1,230 +1,383 @@
-// src/router.tsx
 import React, { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import Layout from '../components/common/layout';
-import ArtistProfile from '../pages/auth/Profile/ArtistProfile';
-import CartProfile from '../pages/auth/Profile/CartProfile';
-import EditProfile from '../pages/auth/Profile/EditProfile';
-import YourProfiles from '../pages/auth/Profile/YourProfiles'
-import CartCheckout from '../pages/auth/Profile/CartCheckout';
-import EmptyCart from '../pages/auth/Profile/EmptyCart';
-import CreateArtistProfile from '../pages/auth/Profile/CreateArtistProfile'
-import YourProfileOne from '../pages/auth/Profile/YoursProfileOne'
-import EditArtistProfileTwo from '../pages/auth/Profile/EditArtistProfileTwo'
-import PlaylistProfileFirst from '../pages/auth/Profile/PlaylistProfileFirst'
-import ArtistTrack from  '../pages/auth/Profile/ArtistTrack'
-import UploadTrackprofile from '../pages/auth/Profile/UploadTrackProfile'
-import UploadTrackIcon from '../pages/auth/Profile/UploadtrackIcon'
-import ArtistProfileHome from '../pages/auth/Profile/ArtistProfileHome'
-import ArtistProfileplaylist from '../pages/auth/Profile/ArtistProfileplaylist'
-import ArtistPlaylistSecondpage from '../pages/auth/Profile/ArtistPlaylistSecondpage'
-import ArtistPlaylistIcon from  '../pages/auth/Profile/ArtistPlaylistIcon'
-import Earnings from '../pages/auth/Profile/Earnings'
-import AccountSettings from '../pages/auth/Profile/AccountSettings'
-import BritSchoolProfile  from '../pages/auth/Profile/BritSchoolProfile'
-import BritSchoolHeader from '../pages/auth/Profile/BritSchoolHeader'
-import BritSchoolArtist from '../pages/auth/Profile/BritSchoolArtist'
-import BritProfleSecond from '../pages/auth/Profile/BritProfileSecond'
-import BritschoolArtistProfile from '../pages/auth/Profile/BriitschoolArtistProfile'
-import BritschoolReleaseProfile from '../pages/auth/Profile/BritschoolReleaseProfile';
-import BritschoolPlaylistProfile from '../pages/auth/Profile/BritschoolPlaylistProfile'
-import BritschoolEarningtProfile from '../pages/auth/Profile/BritschoolEarningProfile'
-import TheBritSchoolHeader from '../pages/auth/Profile/TheBritSchool';
-import TheBritSchoolinnerProfile from '../pages/auth/Profile/TheBritSchoolinnerProfile';
-
-
+import Layout from '../components/common/Layout';
+import Authorized from '../components/Authorized';
+import Unauthorized from '../components/Unauthorized';
+import NewPassword from '../pages/signin/NewPassword';
+import PasswordResetSuccess from '../pages/signin/PasswordResetSuccess';
+import ArtistProfile from "../pages/auth/Artist/ArtistProfile";
+import CartProfile from "../pages/auth/Payment/CartProfile";
+import EditProfile from "../pages/auth/Profile/EditProfile";
+import YourProfiles from "../pages/auth/Profile/YourProfiles";
+import CartCheckout from "../pages/auth/Payment/CartCheckout";
+import EmptyCart from "../pages/auth/Payment/EmptyCart";
+import CreateArtistProfile from "../pages/auth/Profile/CreateArtistProfile";
+import YourProfileOne from "../pages/auth/Profile/YoursProfileOne";
+import EditArtistProfileTwo from "../pages/auth/Profile/EditArtistProfileTwo";
+import PlaylistProfileFirst from "../pages/auth/Profile/PlaylistProfileFirst";
+import ArtistTrack from "../pages/auth/Artist/ArtistTrack";
+import UploadTrackprofile from "../pages/auth/Artist/UploadTrack/UploadTrack";
+import UploadTrackIcon from "../pages/auth/Artist/Tracks/UploadtrackIcon";
+import ArtistProfileHome from "../pages/auth/Artist/ArtistProfileHome";
+import ArtistProfileplaylist from "../pages/auth/Artist/ArtistProfileplaylist";
+import ArtistPlaylistSecondpage from "../pages/auth/Artist/ArtistPlaylistSecondpage";
+import ArtistPlaylistIcon from "../pages/auth/Artist/ArtistPlaylistIcon";
+import Earnings from "../pages/auth/Profile/Earnings";
+import AccountSettings from "../pages/auth/Profile/AccountSettings";
+import BritSchoolProfile from "../pages/auth/BritSchool/BritSchoolProfile";
+import BritSchoolHeader from "../pages/auth/BritSchool/BritSchoolHeader";
+import BritSchoolArtist from "../pages/auth/BritSchool/BritSchoolArtist";
+import BritProfleSecond from "../pages/auth/BritSchool/BritProfileSecond";
+import BritschoolArtistProfile from "../pages/auth/BritSchool/BriitschoolArtistProfile";
+import BritschoolReleaseProfile from "../pages/auth/BritSchool/BritschoolReleaseProfile";
+import BritschoolPlaylistProfile from "../pages/auth/BritSchool/BritschoolPlaylistProfile";
+import BritschoolEarningtProfile from "../pages/auth/BritSchool/BritschoolEarningProfile";
+import TheBritSchoolHeader from "../pages/auth/BritSchool/TheBritSchool";
+import TheBritSchoolinnerProfile from "../pages/auth/BritSchool/TheBritSchoolinnerProfile";
 
 const Playlist = lazy(() => import('../pages/auth/ArtistPage'));
 const Release = lazy(() => import('../pages/auth/ReleasesPage'));
-const Playlists = lazy(()=> import('../pages/auth/PlaylistPage'))
+const Playlists = lazy(() => import('../pages/auth/PlaylistPage'));
 const Home = lazy(() => import('../pages/auth/Home'));
-const SigninPage = lazy(() => import('../pages/un_auth/SignInPage'));
-const CreateAnAccount = lazy (() =>import('../pages/un_auth/CreateAnAccount'));
-const ResetYourPassword = lazy (() => import ('../pages/un_auth/ResetYourPassword'));
-const ResetPasswordConfirmation = lazy (() => import ('../pages/un_auth/ResetPasswordConfirmation'));
-const TrackProfile = lazy (() => import ('../pages/auth/Profile/TrackProfile'));
-const ManageProfiles = lazy (() => import ('../pages/auth/Profile/ManageProfiles'));
-
-
-// 
+const SigninPage = lazy(() => import('../pages/signin/SignInPage'));
+const CreateAnAccount = lazy(() => import('../pages/signin/CreateAnAccount'));
+const ResetYourPassword = lazy(() => import('../pages/signin/ResetYourPassword'));
+const ResetPasswordConfirmation = lazy(() => import('../pages/signin/ResetPasswordConfirmation'));
+const TrackProfile = lazy(() => import('../pages/auth/Track/TrackProfile'));
+const ManageProfiles = lazy(() => import('../pages/auth/Profile/ManageProfiles'));
 
 const AppRouter = createBrowserRouter([
   {
-    path: '/',
-    element: <Layout />, 
+    path: "/",
+    element: <Layout />,
     children: [
       {
         index: true,
         element: <Home />,
       },
       {
-        path: 'Artists',
+        path: "Artists",
         children: [
           {
             index: true,
             element: <Playlist />,
           },
           {
-            path:'/Artists/Profile',
-            element:<ArtistProfile />
+            path: "/Artists/Profile",
+            element: (
+              <Authorized>
+                <ArtistProfile />
+              </Authorized>
+            ),
           },
-  
         ],
       },
       {
-        path:'Releases',
-        element:<Release />
+        path: "Releases",
+        element: (
+          <Authorized>
+            <Release />
+          </Authorized>
+        ),
       },
       {
-        path:'Playlists',
-        element:<Playlists />
+        path: "Playlists",
+        element: (
+          <Authorized>
+            <Playlists />
+          </Authorized>
+        ),
       },
       {
-        path: 'signin',
-        element: <SigninPage />
+        path: "signin",
+        element: (
+          <Unauthorized>
+            <SigninPage />
+          </Unauthorized>
+        ),
       },
       {
-        path : 'signup',
-        element : <CreateAnAccount/>
-      },
-   
-      {
-        path :'resetyourpassword',
-        element : <ResetYourPassword/>
-      },
-      {
-        path :'resetPasswordConfirmation',
-        element : <ResetPasswordConfirmation/>
+        path: "signup",
+        element: (
+          <Unauthorized>
+            <CreateAnAccount />
+          </Unauthorized>
+        ),
       },
       {
-        path : 'trackprofile',
-        element : <TrackProfile/>
+        path: "resetyourpassword",
+        element: (
+          <Unauthorized>
+            <ResetYourPassword />
+          </Unauthorized>
+        ),
       },
       {
-        path : 'manage-profiles',
-        element : <ManageProfiles/>
+        path: "resetPasswordConfirmation",
+        element: (
+          <Unauthorized>
+            <ResetPasswordConfirmation />
+          </Unauthorized>
+        ),
       },
       {
-        path : 'cartprofile',
-        element :<CartProfile/>
+        path: "trackprofile",
+        element: (
+          <Authorized>
+            <TrackProfile />
+          </Authorized>
+        ),
       },
       {
-        path : 'editprofile',
-        element : <EditProfile/>
+        path: "manage-profiles",
+        element: (
+          <Authorized>
+            <ManageProfiles />
+          </Authorized>
+        ),
       },
       {
-        path : 'yourprofiles',
-        element : <YourProfiles/>
+        path: "cartprofile",
+        element: (
+          <Authorized>
+            <CartProfile />
+          </Authorized>
+        ),
       },
       {
-        path : 'cartcheckout',
-        element : <CartCheckout/>
+        path: "editprofile",
+        element: (
+          <Authorized>
+            <EditProfile />
+          </Authorized>
+        ),
       },
       {
-        path : 'emptycart',
-        element : <EmptyCart/>
+        path: "yourprofiles",
+        element: (
+          <Authorized>
+            <YourProfiles />
+          </Authorized>
+        ),
       },
       {
-        path : 'createartistprofile',
-        element : <CreateArtistProfile/>
+        path: "cartcheckout",
+        element: (
+          <Authorized>
+            <CartCheckout />
+          </Authorized>
+        ),
       },
       {
-        path : 'yourprofileone',
-        element : <YourProfileOne/>
+        path: "emptycart",
+        element: (
+          <Authorized>
+            <EmptyCart />
+          </Authorized>
+        ),
       },
       {
-        path : 'editartistprofiletwo',
-        element : <EditArtistProfileTwo/>
+        path: "createartistprofile",
+        element: (
+          <Authorized>
+            <CreateArtistProfile />
+          </Authorized>
+        ),
       },
       {
-        path : 'playlistprofilefirst',
-        element : <PlaylistProfileFirst/>
+        path: "yourprofileone",
+        element: (
+          <Authorized>
+            <YourProfileOne />
+          </Authorized>
+        ),
       },
       {
-        path : 'artisttrack',
-        element : <ArtistTrack/>
+        path: "editartistprofiletwo",
+        element: (
+          <Authorized>
+            <EditArtistProfileTwo />
+          </Authorized>
+        ),
       },
       {
-        path : 'uploadtrackprofile',
-        element : <UploadTrackprofile/>
+        path: "playlistprofilefirst",
+        element: (
+          <Authorized>
+            <PlaylistProfileFirst />
+          </Authorized>
+        ),
       },
       {
-        path : 'uploadtrackicon',
-        element : <UploadTrackIcon/>
+        path: "uploadtrack",
+        element: (
+          <Authorized>
+            <UploadTrackprofile />
+          </Authorized>
+        ),
       },
       {
-        path : 'artistprofilehome',
-        element : <ArtistProfileHome/>
+        path: "artisttrack",
+        element: (
+          <Authorized>
+            <ArtistTrack />
+          </Authorized>
+        ),
       },
       {
-        path : 'artistprofileplaylist',
-        element : <ArtistProfileplaylist/>
+        path: "uploadtrackprofile",
+        element: (
+          <Authorized>
+            <UploadTrackprofile />
+          </Authorized>
+        ),
       },
       {
-        path : 'artistplaylistsecondpage',
-        element : <ArtistPlaylistSecondpage/>
+        path: "uploadtrackicon",
+        element: (
+          <Authorized>
+            <UploadTrackIcon />
+          </Authorized>
+        ),
       },
       {
-        path : 'artistplaylisticon',
-        element : <ArtistPlaylistIcon/>
+        path: "artistprofilehome",
+        element: (
+          <Authorized>
+            <ArtistProfileHome />
+          </Authorized>
+        ),
       },
       {
-        path : 'earnings',
-        element : <Earnings/>
+        path: "artistprofileplaylist",
+        element: (
+          <Authorized>
+            <ArtistProfileplaylist />
+          </Authorized>
+        ),
       },
       {
-        path :  'accountsettings',
-        element :<AccountSettings/>
+        path: "artistplaylistsecondpage",
+        element: (
+          <Authorized>
+            <ArtistPlaylistSecondpage />
+          </Authorized>
+        ),
       },
       {
-        path : 'britschoolprofile',
-        element : <BritSchoolProfile/>
+        path: "artistplaylisticon",
+        element: (
+          <Authorized>
+            <ArtistPlaylistIcon />
+          </Authorized>
+        ),
       },
       {
-        path : 'britschoolheader',
-        element : <BritSchoolHeader/>
+        path: "earnings",
+        element: (
+          <Authorized>
+            <Earnings />
+          </Authorized>
+        ),
       },
       {
-        path : 'britschoolartist',
-        element : <BritSchoolArtist/>
+        path: "accountsettings",
+        element: (
+          <Authorized>
+            <AccountSettings />
+          </Authorized>
+        ),
       },
       {
-        path : 'britprofilesecond',
-        element : <BritProfleSecond/>
+        path: "britschoolprofile",
+        element: (
+          <Authorized>
+            <BritSchoolProfile />
+          </Authorized>
+        ),
       },
       {
-        path : 'britschoolartistprofile',
-        element : <BritschoolArtistProfile/>
+        path: "britschoolheader",
+        element: (
+          <Authorized>
+            <BritSchoolHeader />
+          </Authorized>
+        ),
       },
       {
-        path : 'britschoolreleaseprofile',
-        element : <BritschoolReleaseProfile/>
+        path: "britschoolartist",
+        element: (
+          <Authorized>
+            <BritSchoolArtist />
+          </Authorized>
+        ),
       },
       {
-        path : 'britschoolplaylistprofile',
-        element : <BritschoolPlaylistProfile/>
+        path: "britprofilesecond",
+        element: (
+          <Authorized>
+            <BritProfleSecond />
+          </Authorized>
+        ),
       },
       {
-        path : 'britschoolearningprofile',
-        element : <BritschoolEarningtProfile/>
+        path: "britschoolartistprofile",
+        element: (
+          <Authorized>
+            <BritschoolArtistProfile />
+          </Authorized>
+        ),
       },
       {
-        path : 'thebritschoolheader',
-        element : <TheBritSchoolHeader/>
+        path: "britschoolreleaseprofile",
+        element: (
+          <Authorized>
+            <BritschoolReleaseProfile />
+          </Authorized>
+        ),
       },
       {
-        path : 'thebritschoolinnerprofile',
-        element : <TheBritSchoolinnerProfile/>
-      }
-      
-      
-      
- 
-      
+        path: "britschoolplaylistprofile",
+        element: (
+          <Authorized>
+            <BritschoolPlaylistProfile />
+          </Authorized>
+        ),
+      },
+      {
+        path: "britschoolearningprofile",
+        element: (
+          <Authorized>
+            <BritschoolEarningtProfile />
+          </Authorized>
+        ),
+      },
+      {
+        path: "thebritschoolheader",
+        element: (
+          <Authorized>
+            <TheBritSchoolHeader />
+          </Authorized>
+        ),
+      },
+      {
+        path: "thebritschoolinnerprofile",
+        element: (
+          <Authorized>
+            <TheBritSchoolinnerProfile />
+          </Authorized>
+        ),
+      },
+      {
+        path: 'newpassword',
+        element: <Unauthorized><NewPassword /></Unauthorized>,
+      },
+      {
+        path: 'password-reset-success',
+        element: <Unauthorized><PasswordResetSuccess /></Unauthorized>,
+      },
     ],
   },
 ]);
 
 export default AppRouter;
-
-

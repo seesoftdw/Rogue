@@ -1,42 +1,48 @@
-import { Avatar, Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography, Grid } from '@mui/material';
 import React from 'react';
 import MainWrapper from '../../../components/common/MainWrapper';
+import picture1 from '../../../assets/images/attist.png'
+import picture2 from '../../../assets/images/avatar-artist.jpg'
 import { Link } from 'react-router-dom';
-import profile from '../../../assets/images/attist.png'
 
-const YourProfile: React.FC = () => {
+const YourProfileOne: React.FC = () => {
     return (
-        <MainWrapper>
-            <Box sx={{ mt: 10 }}>
-                <Typography sx={{ fontWeight: 'bold', fontSize: '36px', textAlign: 'center' }}>
-                    Your Profiles
-                </Typography>
-                <Box display="flex" justifyContent="center" sx={{ mt: 2 }}>
-                    <img src={profile} style={{ height: '130px', width: '150px' }} />
+        <Box className='YourProfileOne'>
+            <MainWrapper>
+                <Box sx={{ mt: 10 }}>
+                    <Typography className='Yprofile' sx={{ fontWeight: '', fontSize: '', }}>
+                        Your Profiles
+                    </Typography>
+                    <Grid container spacing={2} sx={{ mt: 2, px: 20, }}>
+                        <Grid item xs={12} sx={{ ml: 25 }}>
+                            <Box sx={{ display: 'flex', gap: 10 }}>
+                                <Box >
+                                    <img src={picture1} alt="Image 1" style={{ width: '150px', height: '130px' }} />
+                                    <Typography sx={{ pt: 3, fontSize: '16px', color: 'rgb(0, 154, 255)', }}>Firstname Lastname</Typography>
+                                </Box>
+                                <Box >
+                                    <img src={picture2} alt="Image 2" style={{ width: '129px', height: '129px', borderRadius: '70px' }} />
+                                    <Typography sx={{ pt: 3, fontSize: '16px', color: 'rgb(0, 154, 255)' }}>Royal Big Ben Orchestra</Typography>
+                                </Box>
+                            </Box>
+                        </Grid>
+                        <Link to='/editartistprofiletwo'>
+                            <Button className='Ap-Button'
+                                variant="contained"
+                                color="primary"
+                                sx={{
+                                    mt: 7,
+                                    ml: 40
+                                }}
+                            >
+                                + ARTIST PROFILE
+                            </Button>
+                        </Link>
+                    </Grid>
                 </Box>
-                <Typography variant="body1" sx={{ textAlign: 'center', p: 3, fontSize: '16px', color: 'rgb(0, 154, 255)' }}>
-                    name@email.com
-                </Typography>
-                <Box display="flex" justifyContent="center" sx={{ mt: 2 }}>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        sx={{
-                            background: 'linear-gradient(-180deg, rgb(0, 202, 255) 0%, rgb(0, 154, 255) 100%)',
-                            height: '40px',
-                            width: '183px',
-                            borderRadius: '6px',
-                            fontSize: '14px',
-                            fontWeight: 'bold',
-                            color: 'rgb(255, 255, 255)',
-                        }}
-                    >
-                        + ARTIST PROFILE
-                    </Button>
-                </Box>
-            </Box>
-        </MainWrapper>
+            </MainWrapper>
+        </Box>
     );
 };
 
-export default YourProfile;
+export default YourProfileOne;

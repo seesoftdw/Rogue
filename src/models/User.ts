@@ -3,7 +3,7 @@ export interface createUser {
     username: string;
     email: string;
     password: string;
-    isArtist: string;
+    profile_picture_url: string;
 }
 
 export interface UserList extends createUser {

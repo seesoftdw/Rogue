@@ -1,0 +1,49 @@
+.CreateAnAccount .box1 {
+    display: flex;
+    flex-direction: column;
+    align-Items: center
+}
+
+.CreateAnAccount .field1 {
+    font-size: 14px;
+    color: rgba(10, 32, 46, 0.7)
+}
+
+.CreateAnAccount .googleButton {
+    background: white;
+    border: 2px solid rgba(10, 32, 46, 0.4)
+}
+
+.newPassword .input-fields {
+    padding: 6px;
+}
+
+.newPassword .box2 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center
+}
+
+.newPassword .box3 {
+    font-size: 14px;
+    color: rgba(10, 32, 46, 0.7);
+}
+.newPassword .box4 {
+    font-size: 16px;
+    color: white;
+    font-weight : bold
+}
+.newPassword .button1 {
+    background: white;
+    height: 40px;
+    width: 101px;
+    border: 1px solid rgb(157, 166, 171);
+    border-radius: 7px
+}
+.newPassword .button2{
+    background: linear-gradient(-180deg, rgb(0, 202, 255) 0%, rgb(0, 154, 255) 100%);
+    height: 40px;
+    width: 101px;
+    border: 1px solid rgba(10, 32, 46, 0.25);
+    border-radius: 7px
+}

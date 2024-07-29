@@ -10,17 +10,12 @@ import coverarttrack2 from '../../../assets/images/coverart-track-2.jpg';
 import coverarttrack3 from '../../../assets/images/coverart-track-3.jpg';
 import coverarttrack4 from '../../../assets/images/coverart-track-4.jpg';
 import { FaPlay } from "react-icons/fa";
-import { Link } from 'react-router-dom';
 import { FaPlus } from "react-icons/fa";
 import { MdQueueMusic } from "react-icons/md";
 import { IoIosMan } from "react-icons/io";
 import { IoCopy } from "react-icons/io5";
 import { FaMusic } from "react-icons/fa6";
 import { MdOutlineQueueMusic } from "react-icons/md";
-
-
-
-
 
 const playlist = { title: 'Mellow Silhouette Rhapsody', image: playlist1 };
 
@@ -52,19 +47,8 @@ const PlaylistProfileFirst = (props: Props) => {
         setOpenDropdown2(false);
     };
 
-
-    const BritSchoolIcon: React.FC<BritSchoolIconProps> = ({ src, alt }) => {
-        return (
-            <Box>
-                <img src={src} alt={alt} style={{ width: 40, height: 40, borderRadius: 50 }} />
-            </Box>
-        );
-    };
-
-
-
     return (
-        <Box>
+        <Box className='playlistprofilefirst'>
             <MainWrapper>
                 <Box width="100%" className='bg-grad-gray'>
                     <Box>
@@ -92,17 +76,7 @@ const PlaylistProfileFirst = (props: Props) => {
                                             <Grid display={'flex'} item xs={12}>
 
 
-                                                <Box
-                                                    sx={{
-                                                        height: '50px',
-                                                        width: '50px',
-                                                        background: 'linear-gradient(-180deg, rgb(0, 202, 255) 0%, rgb(0, 154, 255) 100%)',
-                                                        borderRadius: '25px',
-                                                        display: 'flex',
-                                                        justifyContent: 'center',
-                                                        alignItems: 'center'
-                                                    }}
-                                                >
+                                                <Box className='playlistbutton1'>
                                                     <TbPlayerPlayFilled style={{ height: '24px', width: '24px', color: 'white' }} />
 
                                                 </Box>
@@ -110,16 +84,9 @@ const PlaylistProfileFirst = (props: Props) => {
                                                     <Grid item xs={5}>
                                                         <Grid container>
                                                             <Grid item xs={2} sx={{ pl: 5, position: 'relative' }}>
-                                                                <Typography
+                                                                <Typography className='typography1'
                                                                     sx={{
-                                                                        cursor: 'pointer',
-                                                                        height: '40px',
-                                                                        width: '40px',
-                                                                        background: 'rgb(255, 255, 255)',
-                                                                        borderRadius: '7px',
-                                                                        border: '1px solid rgba(10, 32, 46, 0.4)',
-                                                                        mt: 1,
-                                                                        textAlign: 'center'
+                                                                        mt: 1
                                                                     }}
                                                                     onClick={handleDropdownClick1}
                                                                 >
@@ -128,21 +95,10 @@ const PlaylistProfileFirst = (props: Props) => {
 
 
                                                                 {openDropdown1 && (
-                                                                    <Box
+                                                                    <Box className='playlistbox1'
                                                                         sx={{
-                                                                            position: 'absolute',
-                                                                            top: '100%',
-                                                                            left: 15,
-                                                                            width: '260px',
-                                                                            background: 'rgb(255, 255, 255)',
-                                                                            border: '1px solid rgba(10, 32, 46, 0.2)',
-                                                                            boxShadow: '0px 8px 10px 0px rgba(10, 32, 46, 0.5)',
-                                                                            height: '88px',
-                                                                            color: 'black',
                                                                             p: 2,
                                                                             mt: 1,
-                                                                            borderRadius: '4px',
-                                                                            zIndex: 1
                                                                         }}
                                                                     >
                                                                         <Grid display={'block'} item xs={12}>
@@ -249,19 +205,7 @@ const PlaylistProfileFirst = (props: Props) => {
                                                         }}
                                                     />
                                                     {hoveredIndex === 2 && (
-                                                        <Box
-                                                            sx={{
-                                                                position: 'absolute',
-                                                                top: 0,
-                                                                left: 0,
-                                                                height: '40px',
-                                                                width: '40px',
-                                                                display: 'flex',
-                                                                justifyContent: 'center',
-                                                                alignItems: 'center',
-                                                                backgroundColor: 'rgba(0, 0, 0, 0.6)',
-                                                                borderRadius: '4px'
-                                                            }}
+                                                        <Box  className='playlistbox2'
                                                         >
                                                             <FaPlay color='white' />
                                                         </Box>
@@ -286,7 +230,7 @@ const PlaylistProfileFirst = (props: Props) => {
                                             2:34  &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; ...
                                         </Typography>
                                         {openDropdown === 2 && (
-                                            <Box
+                                            <Box  
                                                 sx={{
                                                     position: 'absolute',
                                                     top: '50%',
@@ -315,21 +259,9 @@ const PlaylistProfileFirst = (props: Props) => {
                                                             <Typography sx={{ color: 'rgba(10, 32, 46, 0.9)', fontSize: '16px', fontWeight: '500' }}><MdOutlineQueueMusic style={{ height: '20px', width: '20px', color: 'rgba(10, 32, 46, 0.3)', marginTop: 3, marginRight: 18 }} />Add to playlist</Typography>
                                                         </Grid>
                                                         <Grid item xs={2}>
-                                                            <Select
+                                                            <Select className='selectbox'
                                                                 value={openDropdown === 2 ? 'open' : ''}
                                                                 onChange={(e) => handleDropdownClick(2)}
-                                                                sx={{
-                                                                    width: '20px',
-                                                                    height: '20px',
-                                                                    backgroundColor: 'white',
-                                                                    padding: '0 12px',
-                                                                    color: 'rgba(10, 32, 46, 0.9)',
-                                                                    paddingLeft: '25px',
-                                                                    marginTop: 1.5
-                                                                    // '&:focus': {
-                                                                    //     backgroundColor: 'white'
-                                                                    // }
-                                                                }}
                                                             >
 
                                                                 <MenuItem value="add_to_queue" sx={{ width: '250px' }}>
@@ -418,8 +350,6 @@ const PlaylistProfileFirst = (props: Props) => {
                                                         <Grid item xs={10}><Typography sx={{ color: 'rgba(10, 32, 46, 0.9)', fontSize: '16px', fontWeight: '500', pt: 1 }}>Copy track link</Typography> </Grid>
                                                     </Grid>
                                                 </Grid>
-
-
                                             </Box>
                                         )}
                                     </Grid>
@@ -457,20 +387,7 @@ const PlaylistProfileFirst = (props: Props) => {
                                                             }}
                                                         />
                                                         {hoveredIndex === 3 && (
-                                                            <Box
-                                                                sx={{
-                                                                    position: 'absolute',
-                                                                    top: 0,
-                                                                    left: 0,
-                                                                    height: '40px',
-                                                                    width: '40px',
-                                                                    display: 'flex',
-                                                                    justifyContent: 'center',
-                                                                    alignItems: 'center',
-                                                                    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-                                                                    borderRadius: '4px'
-                                                                }}
-                                                            >
+                                                            <Box className= 'playlistbox3' >
                                                                 <FaPlay color='white' />
                                                             </Box>
                                                         )}
@@ -520,19 +437,7 @@ const PlaylistProfileFirst = (props: Props) => {
                                                             }}
                                                         />
                                                         {hoveredIndex === 4 && (
-                                                            <Box
-                                                                sx={{
-                                                                    position: 'absolute',
-                                                                    top: 0,
-                                                                    left: 0,
-                                                                    height: '40px',
-                                                                    width: '40px',
-                                                                    display: 'flex',
-                                                                    justifyContent: 'center',
-                                                                    alignItems: 'center',
-                                                                    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-                                                                    borderRadius: '4px'
-                                                                }}
+                                                            <Box className= 'playlistbox4' 
                                                             >
                                                                 <FaPlay color='white' />
                                                             </Box>
@@ -583,19 +488,7 @@ const PlaylistProfileFirst = (props: Props) => {
                                                             }}
                                                         />
                                                         {hoveredIndex === 5 && (
-                                                            <Box
-                                                                sx={{
-                                                                    position: 'absolute',
-                                                                    top: 0,
-                                                                    left: 0,
-                                                                    height: '40px',
-                                                                    width: '40px',
-                                                                    display: 'flex',
-                                                                    justifyContent: 'center',
-                                                                    alignItems: 'center',
-                                                                    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-                                                                    borderRadius: '4px'
-                                                                }}
+                                                            <Box className= 'playlistbox4' 
                                                             >
                                                                 <FaPlay color='white' />
                                                             </Box>
@@ -646,19 +539,7 @@ const PlaylistProfileFirst = (props: Props) => {
                                                             }}
                                                         />
                                                         {hoveredIndex === 6 && (
-                                                            <Box
-                                                                sx={{
-                                                                    position: 'absolute',
-                                                                    top: 0,
-                                                                    left: 0,
-                                                                    height: '40px',
-                                                                    width: '40px',
-                                                                    display: 'flex',
-                                                                    justifyContent: 'center',
-                                                                    alignItems: 'center',
-                                                                    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-                                                                    borderRadius: '4px'
-                                                                }}
+                                                            <Box className= 'playlistbox4' 
                                                             >
                                                                 <FaPlay color='white' />
                                                             </Box>
@@ -680,9 +561,6 @@ const PlaylistProfileFirst = (props: Props) => {
                         </Grid>
                     </Grid>
                 </Box>
-
-
-
             </MainWrapper >
         </Box >
     );
