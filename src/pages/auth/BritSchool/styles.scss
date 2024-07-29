@@ -1,0 +1,124 @@
+.bsArtistProfile .bsArtistHeader {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.bsArtistProfileSecond .bsHeading1 {
+  color: rgb(10, 32, 46);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.bsArtistProfileSecond .track-title {
+  color: rgba(10, 32, 46, 0.9);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.bsArtistProfileSecond .donations-title {
+  color: rgb(10, 32, 46);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.bsArtistProfileSecond .donations-raised {
+  color: rgb(10, 32, 46);
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.bsArtistProfileSecond .totals {
+  color: rgba(10, 32, 46, 0.9);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.bsEarningProfile .earnings-title {
+  color: rgba(10, 32, 46, 0.4);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.bsEarningProfile .earnings-data {
+  color: black;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.bsEarningProfile .withdraw {
+  height: 40px;
+  width: 129px;
+  border: 1px solid rgba(10, 32, 46, 0.4);
+  color: rgba(10, 32, 46, 0.6);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.bsEarningProfile .earnings-smallText {
+  color: rgba(10, 32, 46, 0.4);
+  font-size: 14px;
+}
+
+.bsEarningProfile .donations-title {
+  color: rgb(10, 32, 46);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.bsPlaylistProfile .bsPlaylistHeading {
+  color: rgb(10, 32, 46);
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.bsPlaylistProfile .newPlaylistButton {
+  height: 40px;
+  width: 227px;
+  background: linear-gradient(
+    -180deg,
+    rgb(0, 202, 255) 0%,
+    rgb(0, 154, 255) 100%
+  );
+  border-radius: 6px;
+  border: 1px solid rgba(10, 32, 46, 0.25);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+.bsPlaylistProfile .bsPlaylistTitles {
+  color: rgba(10, 32, 46, 0.4);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.bsPlaylistProfile .bsPlaylistTitlebar {
+  border-top: 1px solid rgba(10, 32, 46, 0.4);
+  border-bottom: 1px solid rgba(10, 32, 46, 0.4);
+}
+
+.bsPlaylistProfile .bsPlaylistIconBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+}
+
+.bsPlaylistProfile .dropdownFirst{
+   position: absolute;
+   top: 90%;
+   left: -100;
+   width: 260px;
+   background: rgb(255, 255, 255);
+   border: 1px solid rgba(10, 32, 46, 0.2);
+   box-shadow: 0px 8px 10px 0px rgba(10, 32, 46, 0.5);
+   height: 126px;
+   color: black;
+   border-radius: 4px;
+   z-index: 1;
+}

@@ -3,24 +3,15 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Sidebar from './SideBar';
-import Banner from '../un_auth/Banner';
+import Banner from './Banner';
 
-const lightTheme = createTheme({
 
-});
+const lightTheme = createTheme({});
 
 const MainWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [open, setOpen] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const isLoggedIn = sessionStorage.getItem('token') ? true : false;
   const location = useLocation();
-
-  const handleLogin = () => {
-    // login logic
-  };
-
-  const toggleLogin = () => {
-    setIsLoggedIn((prev) => !prev);
-  };
 
   const toggleDrawer = () => {
     setOpen(!open);
@@ -34,24 +25,26 @@ const MainWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   }, []);
 
   const shouldShowBanner = location.pathname !== '/signin' && location.pathname !== '/signup';
-  const hideBannerRoutes = ['/termsofservices', '/resetyourpassword', '/resetpassword','/resetPasswordConfirmation','/Artists/Profile'];
+  const hideBannerRoutes = ['/termsofservices', '/resetyourpassword', '/resetpassword', '/resetpasswordconfirmation', '/Artists/Profile', '/trackprofile', '/Releases', '/Playlists', '/YourProfiles', '/CartCheckout', '/EmptyCart', '/CreateArtistProfile', '/YourProfileOne', '/EditArtistProfileTwo', '/PlaylistProfileFirst' ,  '/newpassword','/password-reset-success'];
   const shouldHideBanner = hideBannerRoutes.includes(location.pathname);
+
+  const shouldHideSidebarAndBanner = location.pathname === '/accountsettings';
 
   return (
     <ThemeProvider theme={lightTheme}>
       <Box sx={{ display: 'flex', flexDirection: isLoggedIn ? 'row' : 'column', height: '100vh' }}>
         <CssBaseline />
         <Header open={open} toggleDrawer={toggleDrawer} isLoggedIn={isLoggedIn} />
-        <Box sx={{ display: 'flex', flexGrow: 1 }}>
-          {isLoggedIn ? <Sidebar open={false} /> : shouldShowBanner && !shouldHideBanner && <Banner />}
+        <Box sx={{ display: 'flex', background: 'rgba(10, 32, 46, 0.02)' }}>
+          {isLoggedIn && !shouldHideSidebarAndBanner ? <Sidebar open={false} /> : !shouldHideSidebarAndBanner && shouldShowBanner && !shouldHideBanner && <Banner />}
         </Box>
         <Box
           component="main"
           sx={{
-            flexGrow: 1,
             height: '100vh',
             overflow: 'visible',
-            mt: 6,
+            mt: 3,
+            width: '100%'
           }}
         >
           <Container maxWidth="lg" sx={{ mt: 5, mb: 4 }}>

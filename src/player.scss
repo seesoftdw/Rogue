@@ -1,0 +1,108 @@
+.playerMainWrapper {
+  display: flex;
+  align-items: center;
+
+  .fontStyle {
+    font-size: 17px;
+  }
+
+  .active {
+    color: cadetblue;
+  }
+
+  .cover-image {
+    width: 48px;
+    height: 48px;
+  }
+
+  .seek-bar {
+
+    height: 4px;
+    @media (max-width:1024px) {
+      width: 250;
+      padding: 0;
+    }
+
+    @media (max-width:1440px) {
+      padding-top: 0;
+      padding-bottom: 3;
+    }
+
+    @media (max-width:768px) {
+      width: 220;
+      padding-bottom: 3;
+    }
+  }
+
+  .volume-slider {
+    appearance: none;
+    width: 312px;
+    height: 6px;
+    border-radius: 25px;
+
+  .tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    pointer-events: none;
+    /* Prevent tooltip from interfering with slider interaction */
+  }
+
+}
+
+
+.MuiDrawer-modal {
+  .MuiDrawer-paper {
+    height: 100% !important;
+    top: 70px;
+    background-color: #e1e0e0;
+    border-top: 3px solid #dad7d7;
+  }
+}
+
+.seek-bar {
+  appearance: none;
+  vertical-align: middle;
+  outline: none;
+  border: none;
+  padding: 0;
+  background: none;
+}
+
+.seek-bar::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  border-radius: 100%;
+  background-color: transparent;
+  height: 0;
+  width: 0;
+  margin-top: -7px;
+}
+
+.MuiGrid-root {
+  margin-top: 0 !important;
+}
+
+.vertical-slider {
+  writing-mode: tb;
+  appearance: vertical-slider;
+  width: 6px;
+  height: 60px;
+  margin: 0;
+  padding: 0;
+  transform: rotate(180deg);
+  border-radius: 5px;
+
+}
+
+.vertical-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: white;
+  height: 12px;
+  width: 12px;
+  border-radius: 10px;
+}
+}

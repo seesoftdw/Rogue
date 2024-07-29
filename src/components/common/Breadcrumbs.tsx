@@ -10,7 +10,7 @@ const CustomBreadcrumbs: React.FC = () => {
 
   return (
     <Breadcrumbs aria-label="breadcrumb">
-      <Link component={RouterLink} to="/">
+      <Link component={RouterLink} to="/" sx = {{color : ' rgba(10, 32, 46, 0.4)' , fontWeight : 500}} className = 'links'>
         Home
       </Link>
       {pathnames.map((value, index) => {
